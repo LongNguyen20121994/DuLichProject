@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="long" extends="struts-default" namespace="/">
+        
+     
+     <!-- Download -->
+		<action name="downloadDanhSachMatKhau" class="controller.longnt.DownloadInfoListTSAction">
+			<result name="success" type="stream">
+			  <param name="contentType">*/*</param>
+			  <param name="inputName">inputStream</param>
+			  <param name="contentDisposition">attachment;filename="${fileDownLoadName}"</param>
+			  <param name="bufferSize">50000000</param>
+			</result>
+			<result name="error" type="chain">info</result>
+		</action>
+	<!-- end dowload -->
+      
+    <!-- Bắt đầu cập nhật phòng thi thực tế-->
+		<action name="showCapNhatPhongThiThucTe" class="controller.longnt.CapNhatPhongThiThucTeAction" method="showCapNhatPhongThiThucTe">
+			<result name="error" type="chain">info</result>
+	        <result name="success">longnt/capNhatPhongThiThucTe.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatPhongThiThucTe" class="controller.longnt.CapNhatPhongThiThucTeAction">
+            <result name="success" type="chain">showCapNhatPhongThiThucTe</result>
+            <result name="input" type="chain">showCapNhatPhongThiThucTe</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListPhongThiThucTe" class="controller.longnt.CapNhatPhongThiThucTeAction" method="capNhatListPhongThiThucTe">
+            <result name="success" type="chain">showCapNhatPhongThiThucTe</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- Kết thúc cập nhật phòng thi thực tế-->
+        
+    <!-- Bắt đầu cập nhật phòng thi -->
+		<action name="showCapNhatPhongThi" class="controller.longnt.CapNhatPhongThiAction" method="showCapNhatPhongThi">
+			<result name="error" type="chain">info</result>
+	        <result name="success">longnt/capNhatPhongThi.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatPhongThi" class="controller.longnt.CapNhatPhongThiAction">
+            <result name="success" type="chain">showCapNhatPhongThi</result>
+            <result name="input" type="chain">showCapNhatPhongThi</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListPhongThi" class="controller.longnt.CapNhatPhongThiAction" method="capNhatListPhongThi">
+            <result name="success" type="chain">showCapNhatPhongThi</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- Kết thúc cập nhật phòng thi -->
+        
+    <!-- Bắt đầu cập nhật địa điểm thi -->
+		<action name="showCapNhatDiaDiemThi" class="controller.longnt.CapNhatDiaDiemThiAction" method="showCapNhatDiaDiemThi">
+			<result name="error" type="chain">info</result>
+	        <result name="success">longnt/capNhatDiaDiemThi.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatDiaDiemThi" class="controller.longnt.CapNhatDiaDiemThiAction">
+            <result name="success" type="chain">showCapNhatDiaDiemThi</result>
+            <result name="input" type="chain">showCapNhatDiaDiemThi</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListDiaDiemThi" class="controller.longnt.CapNhatDiaDiemThiAction" method="capNhatListDiaDiemThi">
+            <result name="success" type="chain">showCapNhatDiaDiemThi</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- Kết thúc cập nhật địa điểm thi -->        
+        
+	<!-- Bắt đầu cập nhật hội đồng thi -->
+        
+        <action name="showCapNhatHoiDongThi" class="controller.longnt.CapNhatHoiDongThiAction" method="showCapNhatHoiDongThi">
+        	<result name="error" type="chain">info</result>
+	        <result name="success">longnt/capNhatHoiDongThi.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatHoiDongThi" class="controller.longnt.CapNhatHoiDongThiAction">
+            <result name="success" type="chain">showCapNhatHoiDongThi</result>
+            <result name="input" type="chain">showCapNhatHoiDongThi</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListHoiDongThi" class="controller.longnt.CapNhatHoiDongThiAction" method="capNhatListHoiDongThi">
+            <result name="success" type="chain">showCapNhatHoiDongThi</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- Kết thúc cập nhật hội đồng thi --> 
+	
+	<!--Update tài khoản quản lý cụm thi -->
+		<action name="updateInfoQuanLyCumThi" class="controller.longnt.UpdateInfoQuanLyCumThiAction">
+			<result name="error" type="chain">info</result>
+			<result name="success" type="chain">showInfoHienThi</result>
+		</action>
+		<action name="showUpdateInfoQuanLyCumThi" class="controller.longnt.UpdateInfoQuanLyCumThiAction" method="display">
+			<result name="error" type="chain">info</result>
+			<result name="success">longnt/updateInfoQuanLyCumThi.jsp</result>
+		</action>
+	<!--End update tài khoản quản lý cụm thi -->
+	
+  
+    <!-- Đăng ký quản lý cụm thi -->
+		<action name="showDangKyQuanLyCumThi" class="controller.longnt.DangKyQuanLyCumThiAction" method="showDangKyQuanLyCumThi">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">longnt/dangKyQuanLyCumThi.jsp</result>
+        </action>
+        <action name="dangKyQuanLyCumThi" class="controller.longnt.DangKyQuanLyCumThiAction">
+	        <result name="info" type="chain">info</result>
+        </action>
+    <!-- End đăng ký quản lý cụm thi -->
+        
+        <action name="showUpdateQuanLyCumThi" class="controller.longnt.UpdateListQuanLyCumThiAction" method="display">
+			<result name="error" type="chain">info</result>
+			<result name="success">longnt/updateQuanLyCumThi.jsp</result>
+		</action>
+		
+		<action name = "updateQuanLyCumThi" class="controller.longnt.UpdateListQuanLyCumThiAction">
+			<result name="error" type="chain">info</result>
+			<result name="success" type="chain">info</result>
+			<result name="edit" type="chain">showUpdateInfoQuanLyCumThi</result>
+			<result name="delete" type="chain">deleteListQuanLyCumThi</result>
+		</action>
+		
+		<!-- Delete  -->
+			<action name="deleteListQuanLyCumThi" class="controller.longnt.DeleteListQuanLyCumThiAction">
+				<result name="error" type="chain">info</result>
+				<result name="success" type="chain">showUpdateQuanLyCumThi</result>
+			</action>		
+		<!-- End Delete -->	
+	
+	<!-- Upload danh sách dự thi kèm điểm -->
+		<action name="ketQuaDuThi" class="controller.longnt.KetQuaDuThiAction">
+			<interceptor-ref name="fileUpload">
+				<!-- <param name="maximumSize">2097152</param> -->
+				<param name="allowedTypes">
+					*/*
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input">longnt/index.jsp</result>
+			<result name="success">longnt/ketQuaDuThi.jsp</result>
+		</action>
+    <!-- End upload danh sách dự thi kèm điểm -->
+	
+    </package>
+</struts>

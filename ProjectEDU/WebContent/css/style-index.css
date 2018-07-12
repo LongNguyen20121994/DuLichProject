@@ -1,0 +1,220 @@
+.datepicker{
+    z-index: 1151 !important;
+}
+.head{
+  margin-top: 24px;
+  font-size: 14px;
+  color: #aaa;
+}
+.item2{
+  margin-top: 12px;
+  color: #665;
+}
+.after{
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+.listnone{
+  list-style: none; 
+}
+.fixed{
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+.content-stick{
+  margin-top: 91px;
+}
+.button-chitiet{
+  padding: 5px 10px;
+  font-size: 10px;
+
+}
+.content{
+  margin-bottom: 30px;
+}
+.footer{
+  background-color: #222729;
+  padding-top: 20px;
+  height: 200px;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-align: center;
+  margin-left:0px;
+  margin-right:0px;
+}
+.footer small a{
+  color: #999;
+}
+.divider{
+display: inline-block;
+margin: 0 5px;
+width: 1px;
+background-color: #333;
+}
+.badge{
+  background-color: rgb(22, 187, 143);
+}
+.nav .open>a:focus{
+    background-color: #1F4529;
+    color:white;
+}
+.nav .open>a:hover{
+    background-color: #1F4529!important;
+}
+.sua{
+    cursor: pointer;
+}
+.glyphicon-refresh{
+    -webkit-animation:spin 1s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+      
+      
+.error{
+    color: #F00;
+    display: none;
+}
+.field-tip {
+    position:relative;
+    cursor:help;
+}
+.field-tip .tip-content {
+    z-index: 500;
+    position:absolute;
+    top:-10px; /* - top padding */
+    right:9999px;
+    width:300px;
+    margin-right:-300px; /* width + left/right padding */
+    padding:10px;
+    color:#fff!important;
+    opacity: 0.1;
+      background-color: rgb(22, 187, 143);
+    -webkit-box-shadow:2px 2px 5px #aaa;
+       -moz-box-shadow:2px 2px 5px #aaa;
+            box-shadow:2px 2px 5px #aaa;
+    -webkit-transition:opacity 250ms ease-out;
+       -moz-transition:opacity 250ms ease-out;
+        -ms-transition:opacity 250ms ease-out;
+         -o-transition:opacity 250ms ease-out;
+            transition:opacity 250ms ease-out;
+}
+.field-tip .tip-content:before {
+    content:' '; /* Must have content to display */
+    position:absolute;
+    top:8%;
+    left:-16px; /* 2 x border width */
+    width:0;
+    height:0;
+    margin-top:-8px; /* - border width */
+    border:8px solid transparent;
+    border-right-color:rgb(22, 187, 143);
+}
+.field-tip:hover .tip-content {
+    right:-20px;
+    opacity: 0.9;
+}
+.open>.dropdown-menu {
+    background-color: #1f3136 !important;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+	text-decoration: underline!important;
+	background-color: #1F4529 !important;
+}
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+	background-color: transparent !important;
+}
+.account{
+	position: absolute; 
+	right:5px;
+	cursor:pointer;
+	color: white!important;
+}
+.showInfoAccout{
+	position: absolute; 
+	top:102%;
+	right:0;
+	display:none;
+	width: 300px;
+	background-color: #f1f1f1;
+	color:white;
+	padding:10px 5px 5px 5px;
+	border-top:1px solid rgba(0,0,0,.15);
+	text-align:center;
+	border-radius:0 0 5px 5px;
+}
+.showInfoAccout>.linkAccout{
+	color: #1f3136;
+}
+.showInfoAccout>img{
+	width: 180px;
+	height: 180px;
+	margin: 10px;
+}
+.showInfoAccout>.linkAccout>a:HOVER{
+	color: #1f3136;
+	text-decoration: underline;
+}
+.nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+    background-color: #fff !important;
+}
+.home-mb {
+	display: none!important;
+}
+.home{
+	display: block;
+}
+.dropdown-menu>li>a {
+    color: #fff!important;
+}
+.navbar-nav>li>a {
+    color: #fff!important;
+}
+.after {
+    color: #428bca;
+    cursor: pointer;
+}
+.label {
+    color: #000;
+}
+.after:HOVER {
+    color: #2a6496;
+    text-decoration: underline!important;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    color: #262626!important;
+}
+.title {
+    padding: 6px 12px;
+    font-weight: 400;
+    display: table-cell;
+}
+label {
+    font-weight: normal!important;
+    margin: 4px 15px 0px 0px;
+}
+@media (min-width: 768px) and (max-width:992px){
+	.nav>li>a {
+	    padding: 15px 10px!important;
+	}
+}
+@media (max-width: 768px) and (max-width:992px){
+	.home{
+		display: none!important;
+	}
+	.account{
+		position: static!important;
+	}
+	.home-mb {
+		display: block!important;
+	}
+	.showInfoAccout{
+		left:0;
+		width: 100%;
+	}
+}

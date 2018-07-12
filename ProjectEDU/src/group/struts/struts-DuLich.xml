@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="dulich" extends="struts-default" namespace="/">
+    	
+    	<!-- Bắt đầu đăng nhập tài khoản -->
+		<action name="showLogin" class="controller.khoi.LoginAction" method="showLogin">
+            <result name="success">login.jsp</result>
+            <result name="error" type="chain">info</result>
+        </action>
+        
+        <action name="login" class="controller.khoi.LoginAction">
+	        <result name="input">login.jsp</result>
+	        <result name="success">index.jsp</result>
+	        <result name="doiMK" type="chain">showDoiMatKhau</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        
+        <action name="logout" class="controller.khoi.LogoutAction">
+            <result name="success">index.jsp</result>
+        </action>
+<!-- Kết thúc đăng nhập tài khoản -->
+		<!-- Bắt đầu đăng ký Nhân viên -->        
+        <action name="showDangKyNhanVien" class="controller.dulich.DangKyNhanVienAction" method="showDangKyNhanVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">dlDangKyNhanVien.jsp</result>
+        </action>
+        <action name="dangKyNhanVien" class="controller.dulich.DangKyNhanVienAction">
+	        <result name="info" type="chain">info</result>
+        </action>
+        <action name="showCapNhatNhanVien" class="controller.dulich.DangKyNhanVienAction" method="showCapNhatNhanVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">dlCapNhatNhanVien.jsp</result>
+	        <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatNhanVien" class="controller.dulich.DangKyNhanVienAction" method="capNhatNhanVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="login" type="chain">showLogin</result>
+        </action>
+		<!-- Kết thúc đăng ký Nhân Viên -->
+		
+	<!-- Bắt đầu đăng ký Tour-->
+		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">dlDangKyTour.jsp</result>
+        </action>
+        <action name="dangKyTour" class="controller.dulich.DangKyTourAction">
+	        <result name="info" type="chain">info</result>
+        </action>
+        
+        <!-- <action name="showCapNhatGiangVien" class="controller.khoi.DangKyGiangVienAction" method="showCapNhatGiangVien">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+	        <result name="success">khoitv/capNhatGiangVien.jsp</result>
+        </action>
+        <action name="capNhatGiangVien" class="controller.khoi.DangKyGiangVienAction" method="capNhatGiangVien">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action> -->
+        
+	<!-- Kết thúc đăng ký giảng viên -->
+	
+	<!-- Bắt đầu hiển thị thông tin trường -->
+		<action name="showInfoTour" class="controller.dulich.ShowInfoTourAction" method="showInfoTour">
+	        <result name="success">dlDangKyTour.jsp</result>
+            <result name="info" type="chain">info</result>
+        </action>
+	<!-- Kết thúc hiển thị thông tin trường -->
+	<!-- Bắt đầu hiển thị danh sách trường đại học cao đẳng -->
+			<action name="showListTour" class="controller.dulich.ShowListToursAction">
+		        <result name="success">showListTour.jsp</result>
+	            <result name="info" type="chain">info</result>
+	        </action>
+	        <action name="ajaxShowListTour" class="controller.dulich.ShowListToursAction" method="ajaxShowListTour">
+	        	<result name="success">ajaxShowListTour.jsp</result>
+	        </action>
+	<!-- Kết thúc hiển thị -->
+	</package>
+</struts>

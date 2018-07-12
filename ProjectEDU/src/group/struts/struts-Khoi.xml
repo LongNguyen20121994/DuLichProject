@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+    <package name="khoi" extends="struts-default" namespace="/">
+<!-- Bắt đầu báo lỗi ok-->
+		<action name="info" class="controller.khoi.ShowInfoAction">
+            <result name="success">khoitv/info.jsp</result>
+        </action>
+<!-- Kết thúc báo lỗi -->
+
+<!-- Bắt đầu thêm Tỉnh huyện xã ok-->
+        <action name="addTinhHuyenXaExcel" class="controller.khoi.CapNhatTinhHuyenXaAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatTinhHuyenXa.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="showAddTinhHuyenXa" class="controller.khoi.CapNhatTinhHuyenXaAction" method="showAddTinhHuyenXa">
+	        <result name="success">khoitv/capNhatTinhHuyenXa.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm Tỉnh huyện xã ok-->
+
+<!-- Bắt đầu thêm dân tộc ok-->
+        <action name="addDanTocExcel" class="controller.khoi.CapNhatDanTocAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatDanToc.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="showAddDanToc" class="controller.khoi.CapNhatDanTocAction" method="showAddDanToc">
+	        <result name="success">khoitv/capNhatDanToc.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm dân tộc -->
+
+<!-- Bắt đầu thêm TruongTHPT ok-->
+        <action name="addTruongTHPTExcel" class="controller.khoi.CapNhatTruongTHPTAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatTruongTHPT.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="themTruongTHPT" class="controller.khoi.CapNhatTruongTHPTAction" method="themTruongTHPT">
+	        <result name="success">khoitv/capNhatTruongTHPT.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="showThemTruongTHPT" class="controller.khoi.CapNhatTruongTHPTAction" method="showThemTruongTHPT">
+	        <result name="success">khoitv/capNhatTruongTHPT.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm TruongTHPT -->
+
+<!-- Bắt đầu thêm trường ĐHCĐ ok-->
+        <action name="addTruongDHCDExcel" class="controller.khoi.CapNhatTruongDHCDAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatTruongDHCD.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="themTruongDHCD" class="controller.khoi.CapNhatTruongDHCDAction" method="themTruongDHCD">
+	        <result name="input">khoitv/capNhatTruongDHCD.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="showThemTruongDHCD" class="controller.khoi.CapNhatTruongDHCDAction" method="showThemTruongDHCD">
+	        <result name="success">khoitv/capNhatTruongDHCD.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm trường ĐHCĐ -->
+
+<!-- Bắt đầu thêm ngành ok-->
+		<action name="themNganhExcel" class="controller.khoi.CapNhatNganhAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatNganh.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="themNganh" class="controller.khoi.CapNhatNganhAction" method="themNganh">
+	        <result name="input">khoitv/capNhatNganh.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="showThemNganh" class="controller.khoi.CapNhatNganhAction" method="showThemNganh">
+	        <result name="success">khoitv/capNhatNganh.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm ngành -->
+
+<!-- Bắt đầu thêm môn thi -->
+		<action name="themMonThi" class="controller.khoi.CapNhatMonThiAction">
+	        <result name="success" type="chain">showThemMonThi</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="showThemMonThi" class="controller.khoi.CapNhatMonThiAction" method="showThemMonThi">
+	        <result name="success">khoitv/capNhatMonThi.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListMonThi" class="controller.khoi.CapNhatMonThiAction" method="capNhatListMonThi">
+            <result name="success" type="chain">showThemMonThi</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm môn thi -->
+
+<!-- Bắt đầu thêm khối thi -->
+		<action name="themKhoiThi" class="controller.khoi.CapNhatKhoiThiAction">
+	        <result name="success" type="chain">showThemKhoiThi</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="showThemKhoiThi" class="controller.khoi.CapNhatKhoiThiAction" method="showThemKhoiThi">
+	        <result name="success">khoitv/capNhatKhoiThi.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListKhoiThi" class="controller.khoi.CapNhatKhoiThiAction" method="capNhatListKhoiThi">
+            <result name="success" type="chain">showThemKhoiThi</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm khối thi -->
+
+<!-- Bắt đầu cập nhật chi tiết khối thi ok-->
+		<action name="capNhatChiTietKhoiThi" class="controller.khoi.CapNhatChiTietKhoiThiAction">
+	        <result name="input">khoitv/capNhatChiTietKhoiThi.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="success" type="chain">showCapNhatChiTietKhoiThi</result>
+        </action>
+        <action name="showCapNhatChiTietKhoiThi" class="controller.khoi.CapNhatChiTietKhoiThiAction" method="showCapNhatChiTietKhoiThi">
+	        <result name="success">khoitv/capNhatChiTietKhoiThi.jsp</result> 
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+<!-- Kết thúc cập nhật chi tiết khối thi -->
+
+<!-- Bắt đầu thêm ngành ĐH-CĐ -ok-->
+		<action name="themNganhDHCDExcel" class="controller.khoi.CapNhatNganhDHCDAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatNganhDHCD.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="inputerror" type="chain">showThemNganhDHCD</result>
+        </action>
+        <action name="themNganhDHCD" class="controller.khoi.CapNhatNganhDHCDAction" method="themNganhDHCD">
+	        <result name="input">khoitv/capNhatNganhDHCD.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="inputerror" type="chain">showThemNganhDHCD</result>
+            <result name="success" type="chain">showThemKhoiThiNganhDHCD</result>
+        </action>
+        
+        <action name="showThemNganhDHCD" class="controller.khoi.CapNhatNganhDHCDAction" method="showThemNganhDHCD">
+	        <result name="success">khoitv/capNhatNganhDHCD.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+        <action name="showListNganhDHCD" class="controller.khoi.CapNhatNganhDHCDAction" method="showListNganhDHCD">
+	        <result name="success">khoitv/listNganhDHCD.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListNganhDHCD" class="controller.khoi.CapNhatNganhDHCDAction" method="capNhatListNganhDHCD">
+	        <result name="success" type="chain">showListNganhDHCD</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="updateKhoi" type="chain">showThemKhoiThiNganhDHCD</result>
+            <result name="updateHS" type="chain">showCapNhatXetTuyenNganhDHCD</result>
+            <result name="updateDiem" type="chain">showCapNhatDiemChuan</result>
+        </action>
+<!-- Kết thúc thêm ngành ĐH-CĐ -->
+
+<!-- Bắt đầu thêm khối thi ngành ĐH-CĐ ok-->
+		<action name="themKhoiThiNganhDHCDExcel" class="controller.khoi.CapNhatKhoiThiNganhDHCDAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input">khoitv/capNhatKhoiThiNganhDHCD.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="themKhoiThiNganhDHCD" class="controller.khoi.CapNhatKhoiThiNganhDHCDAction" method="themKhoiThiNganhDHCD">
+	        <result name="input">khoitv/capNhatKhoiThiNganhDHCD.jsp</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="success" type="chain">showThemKhoiThiNganhDHCD</result>
+        </action>
+        <action name="showThemKhoiThiNganhDHCD" class="controller.khoi.CapNhatKhoiThiNganhDHCDAction" method="showThemKhoiThiNganhDHCD">
+	        <result name="success">khoitv/capNhatKhoiThiNganhDHCD.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc thêm khối thi ngành ĐH-CĐ -->
+
+<!-- Bắt đầu đăng nhập tài khoản ok-->
+		<action name="showLogin" class="controller.khoi.LoginAction" method="showLogin">
+            <result name="success">khoitv/login.jsp</result>
+            <result name="error" type="chain">info</result>
+        </action>
+        
+        <action name="login" class="controller.khoi.LoginAction">
+	        <result name="input">khoitv/login.jsp</result>
+	        <result name="success">index.jsp</result>
+	        <result name="doiMK" type="chain">showDoiMatKhau</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        
+        <action name="logout" class="controller.khoi.LogoutAction">
+            <result name="success">index.jsp</result>
+        </action>
+<!-- Kết thúc đăng nhập tài khoản -->
+
+<!-- Bắt đầu đổi mật khẩu ok-->
+		<action name="showDoiMatKhau" class="controller.khoi.DoiMatKhauAction" method="showDoiMatKhau">
+	        <result name="error" type="chain">info</result>  
+            <result name="success">khoitv/doiMatKhau.jsp</result>
+        </action>
+        <action name="doiMatKhau" class="controller.khoi.DoiMatKhauAction">
+	        <result name="success" type="chain">info</result>
+        </action>
+<!-- Kết thúc đổi mật khẩu -->
+
+<!-- Bắt đầu upload ảnh ok-->
+        <action name="uploadHinhAnh" class="controller.khoi.UploadHinhAnhAction">
+	        <interceptor-ref name="exception"/>
+	        <interceptor-ref name="i18n"/>
+	        <interceptor-ref name="fileUpload">
+	        	<param name="allowedTypes">*/*</param>
+<!-- 	            <param name="allowedTypes">application/excel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param> -->
+	            <param name="maximumSize">5000000</param>
+	        </interceptor-ref> 
+	        <interceptor-ref name="params">
+	            <param name="excludeParams">dojo\..*,^struts\..*</param>
+	        </interceptor-ref>
+	        <interceptor-ref name="validation">
+	            <param name="excludeMethods">input,back,cancel,browse</param>
+	        </interceptor-ref>
+	        <interceptor-ref name="workflow">
+	            <param name="excludeMethods">input,back,cancel,browse</param>
+        	</interceptor-ref>
+        </action>
+<!-- Kết thúc upload ảnh -->
+
+<!-- Bắt đầu ajax hiển thị huyện xã -->
+		<action name="showHuyen" class="controller.khoi.AjaxHuyenXaAction"></action>
+		<action name="showXa" class="controller.khoi.AjaxHuyenXaAction" method="showXa"></action>
+		<action name="showDHCD" class="controller.khoi.AjaxHuyenXaAction" method="showDHCD"></action>
+<!-- Kết thúc ajax hiển thị huyện xã -->
+
+<!-- Bắt đầu ajax hiển thị hồ sơ -->
+		<action name="showListMT" class="controller.khoi.AjaxHoSoAction"></action>
+		<action name="checkMonThi" class="controller.khoi.AjaxHoSoAction" method="checkMonThi"></action>
+		<action name="showListKhoiThi" class="controller.khoi.AjaxHoSoAction" method="showListKhoiThi"></action>
+		<action name="checkKhoiThi" class="controller.khoi.AjaxHoSoAction" method="checkKhoiThi"></action>
+		<action name="showNganhDHCD" class="controller.khoi.AjaxHoSoAction" method="showNganhDHCD"></action>
+		<action name="showKhoiThi" class="controller.khoi.AjaxHoSoAction" method="showKhoiThi"></action>
+		<action name="showChiTietHoSo" class="controller.khoi.AjaxHoSoAction" method="showChiTietHoSo"></action>
+		<action name="showListKhoiThiXetTuyen" class="controller.khoi.AjaxHoSoAction" method="showListKhoiThiXetTuyen"></action>
+		<action name="showListKhoiThiNganhDHCD" class="controller.khoi.AjaxHoSoAction" method="showListKhoiThiNganhDHCD"></action>
+<!-- Kết thúc ajax hiển thị hồ sơ -->
+
+<!-- Bắt đầu đăng ký giảng viên-->
+		<action name="showDangKyGiangVien" class="controller.khoi.DangKyGiangVienAction" method="showDangKyGiangVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">khoitv/dangKyGiangVien.jsp</result>
+        </action>
+        <action name="dangKyGiangVien" class="controller.khoi.DangKyGiangVienAction">
+	        <result name="info" type="chain">info</result>
+        </action>
+        
+        <action name="showCapNhatGiangVien" class="controller.khoi.DangKyGiangVienAction" method="showCapNhatGiangVien">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+	        <result name="success">khoitv/capNhatGiangVien.jsp</result>
+        </action>
+        <action name="capNhatGiangVien" class="controller.khoi.DangKyGiangVienAction" method="capNhatGiangVien">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        
+<!-- Kết thúc đăng ký giảng viên -->
+
+<!-- Bắt đầu đăng ký quản trị viên SUA XOA-->
+		<action name="showDangKyQuanTriVien" class="controller.khoi.DangKyQuanTriVienAction" method="showDangKyQuanTriVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">khoitv/dangKyQuanTriVien.jsp</result>
+        </action>
+        <action name="dangKyQuanTriVien" class="controller.khoi.DangKyQuanTriVienAction">
+	        <result name="info" type="chain">info</result>
+        </action>
+        <action name="showCapNhatQuanTriVien" class="controller.khoi.DangKyQuanTriVienAction" method="showCapNhatQuanTriVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">khoitv/capNhatQuanTriVien.jsp</result>
+	        <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatQuanTriVien" class="controller.khoi.DangKyQuanTriVienAction" method="capNhatQuanTriVien">
+	        <result name="info" type="chain">info</result>
+	        <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc đăng ký quản trị viên -->
+
+<!-- Bắt đầu xét tuyển ngành ĐHCĐ ok-->
+		<action name="showCapNhatXetTuyenNganhDHCD" class="controller.khoi.CapNhatXetTuyenNganhDHCDAction" method="showCapNhatXetTuyenNganhDHCD">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">khoitv/capNhatXetTuyenNganhDHCD.jsp</result>
+	        <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatXetTuyenNganhDHCD" class="controller.khoi.CapNhatXetTuyenNganhDHCDAction">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+	        <result name="input" type="chain">showCapNhatXetTuyenNganhDHCD</result>
+        </action>
+<!-- Kết thúc xét tuyển ngành ĐHCĐ -->
+
+<!-- Bắt đầu đăng ký xét tuyển XOA(LIST)-->
+		<action name="showDangKyXetTuyen" class="controller.khoi.DangKyXetTuyenAction" method="showDangKyXetTuyen">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+	        <result name="success">khoitv/dangKyXetTuyen.jsp</result>
+        </action>
+        <action name="dangKyXetTuyen" class="controller.khoi.DangKyXetTuyenAction">
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc đăng ký xét tuyển -->
+
+<!-- Bắt đầu cập nhật điểm chuẩn OK-->
+        <action name="downloadDanhSachKhoiThiNganhDHCD" class="controller.khoi.CapNhatDiemChuanAction" method="downloadDanhSachKhoiThiNganhDHCD">
+			<result name="success" type="stream">
+			  <param name="contentType">*/*</param>
+			  <param name="inputName">inputStream</param>
+			  <param name="contentDisposition">attachment;filename="${fileDownLoadName}"</param>
+			  <param name="bufferSize">50000000</param>
+			</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+		</action>
+		<action name="capNhatDiemChuanExcel" class="controller.khoi.CapNhatDiemChuanAction">
+        	<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">20097152</param>  
+				<param name="allowedTypes">  
+				    */* 
+				</param>  
+	        </interceptor-ref> 
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result name="input" type="chain">showCapNhatDiemChuan</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="showCapNhatDiemChuan" class="controller.khoi.CapNhatDiemChuanAction" method="showCapNhatDiemChuan">
+	        <result name="success">khoitv/capNhatDiemChuan.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatDiemChuan" class="controller.khoi.CapNhatDiemChuanAction" method="capNhatDiemChuan">
+	        <result name="input" type="chain">showCapNhatDiemChuan</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc cập nhật điểm chuẩn -->
+<!-- Bắt đầu Kích hoạt tài khoản OK-->
+		<action name="showKichHoatTaiKhoan" class="controller.khoi.KichHoatTaiKhoanAction" method="showKichHoatTaiKhoan">
+	        <result name="success">khoitv/kichHoatTaiKhoan.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="kichHoatTaiKhoan" class="controller.khoi.KichHoatTaiKhoanAction">
+	        <result name="input" type="chain">showKichHoatTaiKhoan</result> 
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="ajaxKichHoat" class="controller.khoi.KichHoatTaiKhoanAction" method="ajaxKichHoat">
+	        <result name="input">khoitv/ajaxKichHoat.jsp</result>
+        </action>
+<!-- Kết thúc kích hoạt tài khoản -->
+
+<!-- Bắt đầu quên mật khẩu OK-->
+		<action name="quenMatKhau" class="controller.khoi.QuenMatKhauAction">
+            <result name="info" type="chain">info</result>
+            <result name="input" type="chain">showQuenMatKhau</result>
+        </action>
+        <action name="showQuenMatKhau" class="controller.khoi.QuenMatKhauAction" method="showQuenMatKhau">
+	        <result name="success">khoitv/quenMatKhau.jsp</result>
+        </action>
+<!-- Kết thúc quên mật khẩu -->
+
+<!-- Bắt đầu cập nhật đợt xét tuyển-->
+		<action name="themDotXT" class="controller.khoi.CapNhatDotXetTuyenAction">
+            <result name="input" type="chain">showCapNhatDotXetTuyen</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatDotXT" class="controller.khoi.CapNhatDotXetTuyenAction" method="capNhatDotXT">
+            <result name="input" type="chain">showCapNhatDotXetTuyen</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="showCapNhatDotXetTuyen" class="controller.khoi.CapNhatDotXetTuyenAction" method="showCapNhatDotXetTuyen">
+	        <result name="success">khoitv/capNhatDotXetTuyen.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc cập nhật đợt xét tuyển -->
+
+<!-- Bắt đầu cập nhật năm tuyển sinh -->
+		<action name="showCapNhatNamTuyenSinh" class="controller.khoi.CapNhatNamTuyenSinhAction" method="showCapNhatNamTuyenSinh">
+	        <result name="success">khoitv/capNhatNamTuyenSinh.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="capNhatNamTS" class="controller.khoi.CapNhatNamTuyenSinhAction">
+            <result name="input" type="chain">showCapNhatNamTuyenSinh</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+<!-- Kết thúc cập nhật năm tuyển sinh -->
+
+<!-- Bắt đầu cập nhật khu vực ưu tiên -->
+		<action name="showCapNhatKhuVucUT" class="controller.khoi.CapNhatKhuVucUTAction" method="showCapNhatKhuVucUT">
+	        <result name="success">khoitv/capNhatKhuVucUT.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatKhuVucUT" class="controller.khoi.CapNhatKhuVucUTAction">
+            <result name="success" type="chain">showCapNhatKhuVucUT</result>
+            <result name="input" type="chain">showCapNhatKhuVucUT</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListKhuVucUT" class="controller.khoi.CapNhatKhuVucUTAction" method="capNhatListKhuVucUT">
+            <result name="success" type="chain">showCapNhatKhuVucUT</result>
+            <result name="input" type="chain">showCapNhatKhuVucUT</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc cập nhật khu vực ưu tiên -->
+
+<!-- Bắt đầu cập nhật đối tượng ưu tiên -->
+		<action name="showCapNhatDoiTuongUT" class="controller.khoi.CapNhatDoiTuongUTAction" method="showCapNhatDoiTuongUT">
+	        <result name="success">khoitv/capNhatDoiTuongUT.jsp</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatDoiTuongUT" class="controller.khoi.CapNhatDoiTuongUTAction">
+            <result name="success" type="chain">showCapNhatDoiTuongUT</result>
+            <result name="input" type="chain">showCapNhatDoiTuongUT</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListDoiTuongUT" class="controller.khoi.CapNhatDoiTuongUTAction" method="capNhatListDoiTuongUT">
+            <result name="success" type="chain">showCapNhatDoiTuongUT</result>
+            <result name="input" type="chain">showCapNhatDoiTuongUT</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc cập nhật khu vực ưu tiên -->
+
+<!-- Bắt đầu cập nhật cụm thi -->
+		<action name="showCapNhatCumThi" class="controller.khoi.CapNhatCumThiAction" method="showCapNhatCumThi">
+	        <result name="success">khoitv/capNhatCumThi.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="capNhatCumThi" class="controller.khoi.CapNhatCumThiAction">
+            <result name="success" type="chain">showCapNhatCumThi</result>
+            <result name="input" type="chain">showCapNhatCumThi</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="capNhatListCumThi" class="controller.khoi.CapNhatCumThiAction" method="capNhatListCumThi">
+            <result name="success" type="chain">showCapNhatCumThi</result>
+            <result name="input" type="chain">showCapNhatCumThi</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+<!-- Kết thúc cập nhật cụm thi -->
+
+<!-- Bắt đầu hiển thị thông tin trường -->
+		<action name="showInfoDHCD" class="controller.khoi.ShowInfoDHCDAction" method="showInfoDHCD">
+	        <result name="success">khoitv/showInfoDHCD.jsp</result>
+            <result name="info" type="chain">info</result>
+        </action>
+<!-- Kết thúc hiển thị thông tin trường -->
+
+<!-- Bắt đầu hiển thị danh sách trường đại học cao đẳng -->
+		<action name="showListDaiHocCaoDang" class="controller.khoi.ShowListDaiHocCaoDangAction">
+	        <result name="success">khoitv/showListDaiHocCaoDang.jsp</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="ajaxShowListDHCD" class="controller.khoi.ShowListDaiHocCaoDangAction" method="ajaxShowListDHCD">
+        	<result name="success">khoitv/ajaxShowListDHCD.jsp</result>
+        </action>
+<!-- Kết thúc hiển thị -->
+
+<!-- Bắt đầu hiển thị danh sách hồ sơ xét tuyển thí sinh -->
+		<action name="showListHoSoXTThiSinh" class="controller.khoi.ShowListHoSoXTThiSinhAction" method="showListHoSoXTThiSinh">
+	        <result name="success">khoitv/showListHoSoXTThiSinh.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+<!-- Kết thúc hiển thị -->
+
+<!-- Bắt đầu quản lý tài khoản-->
+		<action name="showQuanLyTaiKhoan" class="controller.khoi.QuanLyTaiKhoanAction" method="showQuanLyTaiKhoan">
+	        <result name="success">khoitv/quanLyTaiKhoan.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="quanLyTaiKhoan" class="controller.khoi.QuanLyTaiKhoanAction">
+	        <result name="input" type="chain">showQuanLyTaiKhoan</result> 
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="ajaxTaiKhoan" class="controller.khoi.QuanLyTaiKhoanAction" method="ajaxTaiKhoan">
+	        <result name="input">khoitv/ajaxTaiKhoan.jsp</result>
+        </action>
+<!-- Kết thúc quản lý tài khoản -->
+
+<!-- Bắt đầu quản lý tài khoản khóa-->
+		<action name="showQuanLyTaiKhoanKhoa" class="controller.khoi.QuanLyTaiKhoanKhoaAction" method="showQuanLyTaiKhoanKhoa">
+	        <result name="success">khoitv/quanLyTaiKhoanKhoa.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="quanLyTaiKhoanKhoa" class="controller.khoi.QuanLyTaiKhoanKhoaAction">
+	        <result name="input" type="chain">showQuanLyTaiKhoanKhoa</result> 
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="ajaxTaiKhoanKhoa" class="controller.khoi.QuanLyTaiKhoanKhoaAction" method="ajaxTaiKhoanKhoa">
+	        <result name="input">khoitv/ajaxTaiKhoanKhoa.jsp</result>
+        </action>
+<!-- Kết thúc quản lý tài khoản khóa -->
+
+<!-- Bắt đầu send mail xác nhận -->
+		<action name="sendMailXacNhan" class="controller.khoi.SendMailXacNhanAction" />
+<!-- Kết thúc send mail xác nhận -->
+
+<!-- Bắt đầu xem chi tiết hồ sơ xét tuyển -->
+		<action name="showChiTietHoSoXetTuyen" class="controller.khoi.ShowChiTietHoSoXetTuyenAction">
+	        <result name="success">khoitv/showChiTietHoSoXetTuyen.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+<!-- Kết thúc xem chi tiết hồ sơ xét tuyển -->
+    </package>
+</struts>
