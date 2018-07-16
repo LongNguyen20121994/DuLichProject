@@ -2,141 +2,276 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Tạo tour mới</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
-<jsp:include page="css/style.html"/>
-<script lang="Javascript">
-    $(document).ready(function() {
-        $('input[type=file]').ajaxfileupload({
-            'action' : 'uploadHinhAnh.trip',
-            'onComplete' : function(response) {
-                $('#upload').hide();
-                
-                var statusVal = JSON.stringify(response.status);
-    
-                if(statusVal == "false")
-                {
-                    $("#anhCaNhan").html("<font color='red'>"+ JSON.stringify(response.message) +" </font>");
-                }   
-                if(statusVal == "true")
-                {
-                    $("#anhCaNhan").html("<img src='anhThanhVien\\"+$('input[type=file]').val().split('\\').pop()+"' class='img-thumbnail' width='100%'/>");
-                }           
-            },
-            'onStart' : function() {
-                $('#upload').show();
-            }
-        });
-    });
-</script>
+	<meta charset="utf-8">
+	<title>Tạo tour mới</title>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
+	<jsp:include page="css/style.html"/>
+	
+	<!-- table css + js-->
+	<link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+	<!-- /table -->
+	
+	<script lang="Javascript">
+	    $(document).ready(function() {
+	        $('input[type=file]').ajaxfileupload({
+	            'action' : 'uploadHinhAnh.trip',
+	            'onComplete' : function(response) {
+	                $('#upload').hide();
+	                
+	                var statusVal = JSON.stringify(response.status);
+	    
+	                if(statusVal == "false")
+	                {
+	                    $("#anhCaNhan").html("<font color='red'>"+ JSON.stringify(response.message) +" </font>");
+	                }   
+	                if(statusVal == "true")
+	                {
+	                    $("#anhCaNhan").html("<img src='anhThanhVien\\"+$('input[type=file]').val().split('\\').pop()+"' class='img-thumbnail' width='100%'/>");
+	                }           
+	            },
+	            'onStart' : function() {
+	                $('#upload').show();
+	            }
+	        });
+	    });
+	</script>
 </head>
 <body>
 	<%@include file="frame/header.jsp"%>﻿
 	<div class="container content">
 		<div class="row">
-			<!-- <div class="col-md-8"> -->
-				    <h2 style="margin-bottom:0px;">Tạo Tour mới</h2>
+			<div class="col-md-8">
+				<div class="col-md-12">
+				    <h2 style="margin-bottom:0px;">Tạo Tour</h2>
 		            <br><br>
-			        <s:form method="post" action="dangKyTour.trip">
-				        <div>
-				        	<table class="table">
-				        		<tr>
-				        			<td style="width:80px; padding-top:15px;">Chọn Tỉnh</td>
-				        			<td>
-					        			<div class="input-group">
-											<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-											<s:select name="tour.maTinh" id="maTinh" cssClass="form-control" list="listTinh" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn tỉnh" />
-										</div>
-				        			</td>
-				        		</tr>
-				        		<tr>
-				        			<td style="width:80px; padding-top:15px;">Ảnh bìa</td>
-				        			<td colspan="2">
-				        				<div id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
-								        	<img src="images/addImage.jpg" class="img-thumbnail" width="20%" />
-								        </div>
-								        <s:file name="hinhAnh" cssStyle="display:none;" accept="image/*"></s:file>
-				        			</td>
-				        		</tr>
-				        		<tr>
-				        			<td style="width:80px; padding-top:15px;">Tiêu đề</td>
-                                   	<td colspan="2">
-                                       	<s:textarea name="tour.tieuDe" id="tieuDe"></s:textarea>
-										<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
-                               			<script type="text/javascript">CKEDITOR.replace('tieuDe',{
-                               				filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
-                               				filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
-                               				filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
-                               				filebrowserUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
-                               				filebrowserImageUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
-                               				filebrowserFlashUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
-                               			}); </script>
-                                    </td>
-				        		</tr>
-				        		<tr>
-				        			<td style="padding-top:15px;">Mô tả tổng quan</td>
-				        			<td colspan="2">
-                                       	<s:textarea name="tour.moTaTongQuan" id="moTaTongQuan"></s:textarea>
-										<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
-                               			<script type="text/javascript">CKEDITOR.replace('moTaTongQuan'); </script>
-                                    </td>
-				        		</tr>
-				        		<tr>
-				        			<td style="padding-top:15px;">Lịch trình</td>
-				        			<td colspan="2">
-                                       	<s:textarea name="tour.lichTrinh" id="lichTrinh"></s:textarea>
-										<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
-                               			<script type="text/javascript">CKEDITOR.replace('lichTrinh'); </script>
-                                    </td>
-				        		</tr>
-				        		<tr>
-				        			<td style="padding-top:15px;">Địa điểm khởi hành</td>
-				        			<td>
-					        			<div class="input-group">
-											<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-											<s:textfield name="tour.diaDiemKhoiHanh" cssClass="form-control" placeholder="Địa điểm khởi hành" aria-describedby="basic-addon1" />
-										</div>
-				        			</td>
-				        		</tr>
-				        		<tr>
-				        			<td style="padding-top:15px;">Số ngày</td>
-				        			<td>
-					        			<div class="input-group">
-											<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-											<s:textfield name="tour.soNgay" cssClass="form-control" aria-describedby="basic-addon1" />
-										</div>
-				        			</td>
-				        		</tr>
-				        		<tr>
-				        			<td style="padding-top:15px;">Số đêm</td>
-				        			<td>
-					        			<div class="input-group">
-											<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-											<s:textfield name="tour.soDem" cssClass="form-control" aria-describedby="basic-addon1" />
-										</div>
-				        			</td>
-				        		</tr>
-				        		<tr>
-				        			<td style="padding-top:15px;">Ghi chú</td>
-				        			<td>
-					        			<div class="input-group">
-											<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-											<s:textfield name="tour.ghiChu" cssClass="form-control" aria-describedby="basic-addon1" />
-										</div>
-				        			</td>
-				        		</tr>
-				        		<tr>
-				        			<td colspan="2" align="right">
-				        				<s:reset value="Làm mới" cssClass="btn btn-primary"/>
-					        			<s:submit value="Lưu tour" cssClass="btn btn-primary"/>
-				        			</td>
-				        		</tr>
-				        	</table>
-				        </div>			        
-			        </s:form>
-			<!-- </div> -->
-			<%-- <%@include file="frame/right.jsp"%> --%>
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#input">Tạo mới tour</a></li>
+						<li><a data-toggle="tab" href="#excel">Lịch trình chi tiết</a></li>
+					</ul>
+		            <br><br>
+		            <div class="tab-content">
+						<div id="input" class="tab-pane fade in active">
+					        <s:form method="post" action="dangKyTour.trip">
+						        <div>
+						        	<table class="table">
+						        		<tr>
+						        			<td style="width:80px; padding-top:15px;">Chọn Tỉnh</td>
+						        			<td>
+							        			<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:select name="tour.maTinh" id="maTinh" cssClass="form-control" list="listTinh" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn tỉnh" />
+												</div>
+						        			</td>
+						        		</tr>
+						        		<tr>
+						        			<td style="width:80px; padding-top:15px;">Ảnh bìa</td>
+						        			<td colspan="2">
+						        				<div id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
+										        	<img src="images/addImage.jpg" class="img-thumbnail" width="20%" />
+										        </div>
+										        <s:file name="hinhAnh" cssStyle="display:none;" accept="image/*"></s:file>
+						        			</td>
+						        		</tr>
+						        		<tr>
+						        			<td style="width:80px; padding-top:15px;">Tiêu đề</td>
+		                                   	<td colspan="2">
+		                                       	<s:textarea name="tour.tieuDe" id="tieuDe"></s:textarea>
+												<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+		                               			<script type="text/javascript">
+		                               				/* var editor = CKEDITOR.replace('editor');
+		                               				CKFinder.setupCKEditor(editor, 'ckfinder/'); */
+		                               				CKEDITOR.replace('tieuDe',{
+		                               				filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
+		                               				filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
+		                               				filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
+		                               				filebrowserUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+		                               				filebrowserImageUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+		                               				filebrowserFlashUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
+		                               			}); </script>
+		                                    </td>
+						        		</tr>
+						        		<tr>
+						        			<td style="padding-top:15px;">Mô tả tổng quan</td>
+						        			<td colspan="2">
+		                                       	<s:textarea name="tour.moTaTongQuan" id="moTaTongQuan"></s:textarea>
+												<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+		                               			<script type="text/javascript">CKEDITOR.replace('moTaTongQuan'); </script>
+		                                    </td>
+						        		</tr>
+						        		<tr>
+						        			<td style="padding-top:15px;">Lịch trình</td>
+						        			<td colspan="2">
+		                                       	<s:textarea name="tour.lichTrinh" id="lichTrinh"></s:textarea>
+												<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+		                               			<script type="text/javascript">CKEDITOR.replace('lichTrinh'); </script>
+		                                    </td>
+						        		</tr>
+						        		<tr>
+						        			<td style="padding-top:15px;">Địa điểm khởi hành</td>
+						        			<td>
+							        			<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
+													<s:textfield name="tour.diaDiemKhoiHanh" cssClass="form-control" placeholder="Địa điểm khởi hành" aria-describedby="basic-addon1" />
+												</div>
+						        			</td>
+						        		</tr>
+						        		<tr>
+						        			<td style="padding-top:15px;">Số ngày</td>
+						        			<td>
+							        			<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:textfield name="tour.soNgay" cssClass="form-control" aria-describedby="basic-addon1" />
+												</div>
+						        			</td>
+						        		</tr>
+						        		<tr>
+						        			<td style="padding-top:15px;">Số đêm</td>
+						        			<td>
+							        			<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:textfield name="tour.soDem" cssClass="form-control" aria-describedby="basic-addon1" />
+												</div>
+						        			</td>
+						        		</tr>
+						        		<tr>
+						        			<td style="padding-top:15px;">Ghi chú</td>
+						        			<td>
+							        			<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:textfield name="tour.ghiChu" cssClass="form-control" aria-describedby="basic-addon1" />
+												</div>
+						        			</td>
+						        		</tr>
+						        		<tr>
+						        			<td colspan="2" align="right">
+						        				<s:reset value="Làm mới" cssClass="btn btn-primary"/>
+							        			<s:submit value="Lưu tour" cssClass="btn btn-primary"/>
+						        			</td>
+						        		</tr>
+						        	</table>
+						        </div>			        
+					        </s:form>
+						</div>
+						<div id="excel" class="tab-pane fade" style="width:100%;">
+							<s:form method="post" action="taoChiTietTour.trip">
+					        	<table class="table">
+					        		<tr>
+					        			<td style="width:150px; padding-top:15px;">Ngày khởi hành</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
+												<s:textfield name="ctTour.ngayKhoiHanh" id="datepicker" cssClass="form-control" placeholder="Ngày khởi hành" aria-describedby="basic-addon1" />
+											</div>
+											<script src="js/bootstrap-datepicker.js"></script>
+								            <script type="text/javascript">
+								                // When the document is ready
+								                $(document).ready(function () {
+								                    $('#datepicker').datepicker({
+								                        format: "dd/mm/yyyy"
+								                    });
+								                });
+								            </script>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Giờ khởi hành</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-time"></span></span>
+												<s:textfield cssClass="form-control" placeholder="Giờ khởi hành" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Đặc điểm</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-pencil"></span></span>
+												<s:textfield name="tour.dacDiem" cssClass="form-control" placeholder="Đặc điểm" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Giá vé người lớn</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
+												<s:textfield name="tour.giaVeNguoiLon" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Giá vé trẻ em</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
+												<s:textfield name="tour.giaVeTreEm" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Giá vé trẻ nhỏ</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
+												<s:textfield name="tour.giaVeTreNho" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Giá vé trẻ sơ sinh</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
+												<s:textfield name="tour.giaVeSoSinh" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td style="width:80px; padding-top:15px;">Số chỗ</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
+												<s:textfield name="tour.soCho" cssClass="form-control" placeholder="Số chỗ" aria-describedby="basic-addon1" />
+											</div>
+					        			</td>
+					        		</tr>
+					        	</table>					        	
+							</s:form>
+							<div id="danhSach">
+								<table id="table" class="table table-striped table-bordered"  style="width:100%;">
+							        <thead>
+							            <tr>
+							                <th style="text-align: center;width:40px;">STT</th>
+							                <th style="text-align: center;">Ngày khởi hành</th>
+							                <th style="text-align: center;width:65px;">Đăc điểm</th>
+							                <th style="text-align: center;width:65px;">Giá</th>
+							                <th style="text-align: center;width:65px;">Số chỗ</th>
+							                <th style="text-align: center;width:65px;">Tác vụ</th>
+							            </tr>
+							        </thead>
+							       	<tfoot>
+							       		 <tr>
+							                <th style="text-align: center;width:40px;">STT</th>
+							                <th style="text-align: center;">Ngày khởi hành</th>
+							                <th style="text-align: center;width:65px;">Đăc điểm</th>
+							                <th style="text-align: center;width:65px;">Giá</th>
+							                <th style="text-align: center;width:65px;">Số chỗ</th>
+							                <th style="text-align: center;width:65px;">Tác vụ</th>
+							            </tr>
+							        </tfoot>
+							        <tbody>
+							       	</tbody>
+						    	</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%@include file="frame/right.jsp"%>
 		</div>
 	</div>
 	<%@include file="frame/footer.jsp"%>

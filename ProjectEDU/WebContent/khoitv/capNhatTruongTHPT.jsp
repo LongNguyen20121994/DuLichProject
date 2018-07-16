@@ -10,7 +10,7 @@
 	<%@include file="../frame/header.jsp"%>﻿
 	<div class="container content">
 		<div class="row">
-			﻿﻿<div class="col-md-8 left">
+			﻿﻿<div class="col-md-8">
 				<div class="col-md-12">
 				    <h2 style="margin-bottom:0px;">Thêm trường Trung học phổ thông</h2>
 		            <s:a href=""><small><small><i>Bấm vào đây để tải về danh sách trường đã có để cập nhật.</i></small></small></s:a>

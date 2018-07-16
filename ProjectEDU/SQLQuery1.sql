@@ -28,14 +28,53 @@ Create table Tour(
 	GhiChu nvarchar(max),
 	MaTinh varchar(20) foreign key references Tinh(MaTinh)
 )
+-- Khach san
+Create table KhachSan(
+	MaKS varchar(10) primary key,
+	TenKS nvarchar(250),
+	DiaChi nvarchar(500),
+	Sao int
+)
 -- Chi tiết Tour
 Create table ChiTietTour(
-	MaChiTiet int,
+	MaChiTietTour varchar(10) primary key,
 	MaTour varchar(10) foreign key references Tour(MaTour),
-	NgayKhoiHanh date,
+	MaKS varchar(10) foreign key references KhachSan(MaKS),
+	NgayKhoiHanh datetime,
 	DacDiem nvarchar(500),
-	GiaVe decimal,
+	GiaVeNguoiLon decimal,
+	GiaVeTreEm decimal,
+	GiaVeTreNho decimal,
+	GiaVeSoSinh decimal,
 	SoCho int,
-	SoChoDaDat int,
-	primary key (MaChiTiet,MaTour)
+	SoChoDaDat int
+)
+-- Khach Hang
+Create table KhachHang(
+	MaKH varchar(10) primary key,
+	HoTen nvarchar(100) not null,
+	Email varchar(40)check (Email  like '%@%.%'),
+	SoDT varchar(20)Check(SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+)
+-- Chi Tiet Dat Tour
+Create table ChiTietDatTour(
+	MaChiTietDatTour varchar(10) primary key,
+	MaChiTietTour varchar(10) foreign key references ChiTietTour(MaChiTietTour),
+	MaKH varchar(10) foreign key references KhachHang(MaKH),
+	HoTen nvarchar(100),
+	NgaySinh date,
+	GioiTinh bit default ('false'),
+	DiaChi nvarchar(500)
+)
+
+--Test A
+create table TestA(
+	MaA nvarchar(10) primary key,
+	TenA nvarchar(20)
+)
+--Test B
+create table TestB(
+	MaB nvarchar(10) primary key,
+	TenB nvarchar(20),
+	MaA nvarchar(10) foreign key references TestA(MaA)
 )

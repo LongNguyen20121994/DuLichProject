@@ -3,10 +3,15 @@ package model.bean;
 import java.sql.Date;
 
 public class DLChiTietTour {
+	private String maChiTietTour;
 	private String maTour;
+	private String maKS;
 	private Date ngayKhoiHanh;
 	private String dacDiem;
-	private double giaVe;
+	private double giaVeNguoiLon;
+	private double giaVeTreEm;
+	private double giaVeTreNho;
+	private double giaVeSoSinh;
 	private int soCho;
 	private int soChoDaDat;
 	
@@ -28,12 +33,6 @@ public class DLChiTietTour {
 	public void setDacDiem(String dacDiem) {
 		this.dacDiem = dacDiem;
 	}
-	public double getGiaVe() {
-		return giaVe;
-	}
-	public void setGiaVe(double giaVe) {
-		this.giaVe = giaVe;
-	}
 	public int getSoCho() {
 		return soCho;
 	}
@@ -45,5 +44,41 @@ public class DLChiTietTour {
 	}
 	public void setSoChoDaDat(int soChoDaDat) {
 		this.soChoDaDat = soChoDaDat;
+	}
+	public String getMaChiTietTour() {
+		return maChiTietTour;
+	}
+	public void setMaChiTietTour(String maChiTietTour) {
+		this.maChiTietTour = maChiTietTour;
+	}
+	public String getMaKS() {
+		return maKS;
+	}
+	public void setMaKS(String maKS) {
+		this.maKS = maKS;
+	}
+	public double getGiaVeNguoiLon() {
+		return giaVeNguoiLon;
+	}
+	public void setGiaVeNguoiLon(double giaVeNguoiLon) {
+		this.giaVeNguoiLon = giaVeNguoiLon;
+	}
+	public double getGiaVeTreEm() {
+		return giaVeTreEm;
+	}
+	public void setGiaVeTreEm(double giaVeTreEm) {
+		this.giaVeTreEm = giaVeTreEm;
+	}
+	public double getGiaVeTreNho() {
+		return giaVeTreNho;
+	}
+	public void setGiaVeTreNho(double giaVeTreNho) {
+		this.giaVeTreNho = giaVeTreNho;
+	}
+	public double getGiaVeSoSinh() {
+		return giaVeSoSinh;
+	}
+	public void setGiaVeSoSinh(double giaVeSoSinh) {
+		this.giaVeSoSinh = giaVeSoSinh;
 	}
 }

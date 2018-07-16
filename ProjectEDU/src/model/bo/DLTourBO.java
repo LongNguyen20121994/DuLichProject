@@ -16,6 +16,11 @@ public class DLTourBO {
 		return new DLTourDAO().insertTour(tour);
 	}
 	
+	public boolean updateTour(DLTour tour) {
+		// TODO Auto-generated method stub
+		return new DLTourDAO().updateTour(tour);
+	}
+	
 	public List<DLTour> getAllByMaTinh(String maTinh) {
 		return new DLTourDAO().getAllByMaTinh(maTinh);
 	}

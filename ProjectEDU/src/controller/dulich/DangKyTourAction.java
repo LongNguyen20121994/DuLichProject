@@ -1,7 +1,9 @@
 package controller.dulich;
 
 import java.util.HashMap;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import common.Library;
@@ -10,10 +12,17 @@ import model.bean.DLTour;
 import model.bean.Info;
 import model.bo.DLTinhBO;
 import model.bo.DLTourBO;
+import model.bo.khoi.CumThiBO;
+import model.bo.khoi.GiangVienBO;
+import model.bo.khoi.HuyenQuanBO;
+import model.bo.khoi.TinhThanhPhoBO;
+import model.bo.khoi.TruongDHCDBO;
+import model.bo.khoi.XaPhuongBO;
 
 @SuppressWarnings("serial")
 public class DangKyTourAction extends ActionSupport {
 	private DLTour tour;
+	private String maTour;
 	private String hinhAnh;
 	private int maxTour;
 	private HashMap<String, String> listTinh;
@@ -24,6 +33,12 @@ public class DangKyTourAction extends ActionSupport {
 	}
 	public void setTour(DLTour tour) {
 		this.tour = tour;
+	}
+	public String getMaTour() {
+		return maTour;
+	}
+	public void setMaTour(String maTour) {
+		this.maTour = maTour;
 	}
 	public String getHinhAnh() {
 		return hinhAnh;
@@ -70,7 +85,7 @@ public class DangKyTourAction extends ActionSupport {
 		}
 		tour.setMaTour(taoMaTour(maxTour));
 		if(hinhAnh != null){
-			tour.setHinhAnh("anhDaiDien/" + Library.renameFile("/anhTour", hinhAnh, ""+ taoMaTour(maxTour)));
+			tour.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, ""+ taoMaTour(maxTour)));
 		} else {
 			tour.setHinhAnh("images/default.jpg");
 		}
@@ -102,5 +117,44 @@ public class DangKyTourAction extends ActionSupport {
 	public String showDangKyTour(){
 		listTinh = new DLTinhBO().getAllSelect();
 		return SUCCESS;
+	}
+	
+	public String showCapNhatTour(){
+		info = new LoginAction().checkLogin("6");
+		if(info != null) {
+			if(info.getTieuDe() == null){
+				return "login";
+			} else {
+				return "info";
+			}
+		}
+		tour = new DLTourBO().getInfo(maTour);
+		listTinh = new DLTinhBO().getAllSelect();
+		//listHuyen = new HuyenQuanBO().getListHuyenSelect(gv.getMaTinh());
+		//listXa = new XaPhuongBO().getListXaSelect(gv.getMaTinh(),gv.getMaHuyen());
+		//listDHCD = new TruongDHCDBO().getAllSelect();
+		return SUCCESS;
+	}
+	public String capNhatTour(){
+		info = new LoginAction().checkLogin("6");
+		if(info != null) {
+			if(info.getTieuDe() == null){
+				return "login";
+			} else {
+				return "info";
+			}
+		}
+		if(hinhAnh != null){
+			tour.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, tour.getMaTour()));
+		}
+		
+		DLTourBO tourbo = new DLTourBO();
+		if(tourbo.updateTour(tour)){
+			info = new Info("Cập nhật tour","Cập nhật Tour thành công.!");
+			return "info";
+		} else {
+			info = new Info("Cập nhật tour","Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+			return "info";
+		}
 	}
 }

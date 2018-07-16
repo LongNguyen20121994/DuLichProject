@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.bean.CumThi;
 import model.bean.DLTour;
 import model.dao.khoi.ConnectDB;
 
@@ -81,9 +82,9 @@ public class DLTourDAO {
 		con.openConnection();
 		String sql;
 		if(maTinh.equals("-1")) {
-			sql = "select MaTour,TieuDe from Tour";
+			sql = "select MaTour,TieuDe,AnhDaiDien from Tour";
 		} else {
-			sql = "select t.MaTour,TieuDe from Tour t, Tinh th where t.MaTinh=th.MaTinh and th.MaTinh=?";
+			sql = "select t.MaTour,TieuDe,AnhDaiDien from Tour t, Tinh th where t.MaTinh=th.MaTinh and th.MaTinh=?";
 		}		
         PreparedStatement stmt = null;
         try {
@@ -97,6 +98,7 @@ public class DLTourDAO {
     			tur = new DLTour();
     			tur.setMaTour(rs.getString(1));
     			tur.setTieuDe(rs.getString(2));
+    			tur.setHinhAnh(rs.getString(3));
     			list.add(tur);
     		} 
         	stmt.close();
@@ -140,5 +142,35 @@ public class DLTourDAO {
             con.closeConnection();
         }
         return tur;
+	}
+	
+	public boolean updateTour(DLTour tour) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "update Tour set TieuDe=?, AnhDaiDien=?, MoTaTongQuan=?, LichTrinh=?, DiaDiemKhoiHanh=?, "
+				+"SoNgay=?, SoDem=?, GhiChu=?, MaTinh=? where MaTour=?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+			stmt.setString(1, tour.getTieuDe());
+			stmt.setString(2, tour.getHinhAnh());
+			stmt.setString(3, tour.getMoTaTongQuan());
+			stmt.setString(4, tour.getLichTrinh());
+			stmt.setString(5, tour.getDiaDiemKhoiHanh());
+			stmt.setInt(6, tour.getSoNgay());
+			stmt.setInt(7, tour.getSoDem());
+			stmt.setString(8, tour.getGhiChu());
+			stmt.setString(9, tour.getMaTinh());
+			stmt.setString(10, tour.getMaTour());
+			if(stmt.executeUpdate() > 0){
+				return true;
+			}
+        	return false;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            con.closeConnection();
+        }
 	}
 }

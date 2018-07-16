@@ -3,8 +3,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Danh sách Tours</title>
-<jsp:include page="../css/style.html"/>
+<title>Cập nhật tài khoản Admin</title>
+<jsp:include page="css/style.html"/>
 
 <!-- table css + js-->
 <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -12,8 +12,8 @@
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
 <!-- /table -->
-</head>
 
+</head>
 <script type="text/javascript">
 	$(document).ready(function() {
 	    $('#table').DataTable();
@@ -29,35 +29,34 @@
 	});
 </script>
 <body>
-	<%@include file="../frame/header.jsp"%>﻿
+	<%@include file="frame/header.jsp"%>
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="col-md-12">
-				<!-- Tab 1 -->
-				<div class="tab-content">
-					<div class="tab-pane fade in active">
-					<h2 style="margin-bottom:0px; text-align: center">Danh sách Tours</h2>
-			            <br>
-			            <div class="input-group">
-							<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-							<s:select list="listTinh" name="maTinh" id="selectDS" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Tours thuộc tỉnh"/>
-						</div>
-				        <br>
-				        <div id="danhSach">
-	       			        <table id="table" class="table table-striped table-bordered"  style="width:100%;">
+					<div class="tab-content">
+						<div class="tab-pane fade in active">
+							<h2 style="margin-bottom:0px; text-align: center">Danh sách Tour</h2>
+					        <br>
+				            <div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
+								<s:select list="listTinh" name="maTinh" id="selectDS" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn tỉnh"/>
+							</div>
+					        <br>
+							<div id="danhSach">
+								<table id="table" class="table table-striped table-bordered"  style="width:100%;">
 						        <thead>
 						            <tr>
-						                <th style="text-align: center;width:40px;">M.Tour</th>
+						                <th style="text-align: center; width:100px;">Mã Tour</th>
 						                <th style="text-align: center;">Tiêu đề</th>
-						                <th style="text-align: center;width:65px;">Tác vụ</th>
+						                <th style="text-align: center;width:100px;">Tác vụ</th>
 						            </tr>
 						        </thead>
 						       	<tfoot>
 						       		 <tr>
-						                <th style="text-align: center;">M.Tour</th>
+						                <th style="text-align: center;width:100px;">Mã Tour</th>
 						                <th style="text-align: center;">Tiêu đề</th>
-						                <th style="text-align: center;">Tác vụ</th>
+						                <th style="text-align: center;width:100px;">Tác vụ</th>
 						            </tr>
 						        </tfoot>
 						        <tbody>
@@ -66,23 +65,21 @@
 							                <td align="center"><s:property value="maTour"/></td>
 							                <td><s:property value="tieuDe"/></td>
 							                <td align="center">
-							                	<s:a action="showInfoTour.trip?maTour=%{maTour}">Xem</s:a>
+							                	<s:a action="showInfoTour.trip?maTour=%{maTour}">Xem</s:a> |
+							                	<s:a action="showCapNhatTour.trip?maTour=%{maTour}">Nộp</s:a>
 							                </td>
 						           		 </tr>
 						       		</s:iterator>
 						       	</tbody>
 						    </table>
-					    </div>
-			    		<s:if test="info != null">
-                        	<div align="right">${info.noiDung} </div>
-                        </s:if>
+							</div>
+						</div>
 					</div>
 				</div>
-				</div>
 			</div>
-			<%@include file="../frame/right.jsp"%>
+			<%@include file="frame/right.jsp"%>
 		</div>
 	</div>
-	<%@include file="../frame/footer.jsp"%>
+	<%@include file="frame/footer.jsp"%>
 </body>
 </html>

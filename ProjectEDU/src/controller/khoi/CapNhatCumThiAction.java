@@ -135,18 +135,18 @@ public class CapNhatCumThiAction extends ActionSupport {
 		}
 		if(btnUpdate != null){
 			if(new CumThiBO().updateCumThi(ct)){
-				info = new Info("","<font style='color:blue;'>"+ ct.getTenCumThi() +" đã được cập nhật!</font><br/>");
+				info = new Info("","<font style='color:blue;'>"+ ct.getTenCumThi() +" Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t!</font><br/>");
 			} else {
-				info = new Info("","<font style='color:red;'>"+ ct.getTenCumThi() +" cập nhật không thành công!</font><br/>");
+				info = new Info("","<font style='color:red;'>"+ ct.getTenCumThi() +" cáº­p nháº­t khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 			}
 			classList = "active";
 		} else {
 			if(btnAddNew != null){
 				if(new CumThiBO().insertCumThi(ct)){
-					info = new Info("","<font style='color:blue;'>"+ ct.getTenCumThi() +" đã được thêm vào danh sách!</font><br/>");
+					info = new Info("","<font style='color:blue;'>"+ ct.getTenCumThi() +" Ä‘Ã£ Ä‘Æ°á»£c thÃªm vÃ o danh sÃ¡ch!</font><br/>");
 					classList = "active";
 				} else {
-					info = new Info("","<font style='color:red;'>"+ ct.getTenCumThi() +" thêm không thành công!</font><br/>");
+					info = new Info("","<font style='color:red;'>"+ ct.getTenCumThi() +" thÃªm khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 					classInput = "active";
 				}
 			}
@@ -173,13 +173,13 @@ public class CapNhatCumThiAction extends ActionSupport {
 						maCT = listMaCT.get(0);
 						classInput = "active";
 					} else {
-						info = new Info("","<font style='color:red;'>Chức năng sửa chỉ áp dụng cho 1 cụm thi!</font><br/>");
+						info = new Info("","<font style='color:red;'>Chức năng này chỉ dành cho 1 cụm thi!</font><br/>");
 						classList = "active";
 					}
 				} else {
 					if(btnDelete != null) {
 						if(new CumThiBO().deleteListCumThi(listMaCT)){
-							info = new Info("","<font style='color:red;'>Đã xóa thành công!</font><br/>");
+							info = new Info("","<font style='color:red;'>Xóa thành công!</font><br/>");
 						}
 						classList = "active";
 					}
