@@ -8,4 +8,13 @@ public class ChiTietTourBO {
 		// TODO Auto-generated method stub
 		return new ChiTietTourDAO().insertChiTietTour(ctTour);
 	}
+	
+	public boolean updateChiTietTour(DLChiTietTour ctTour) {
+		// TODO Auto-generated method stub
+		return new ChiTietTourDAO().updateChiTietTour(ctTour);
+	}
+
+	public String getMaxRecord() {
+		return new ChiTietTourDAO().getMaxRecord();
+	}
 }

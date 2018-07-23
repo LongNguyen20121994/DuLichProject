@@ -40,7 +40,7 @@ public class ShowListToursAction extends ActionSupport {
 		if(maTinh == null) {
 			maTinh = "-1";
 		}
-		listTours = new DLTourBO().getAllByMaTinh(maTinh);
+		listTours = new DLTourBO().getAllByMaTinhObject(maTinh);
 		return SUCCESS;
 	}
 
@@ -48,7 +48,7 @@ public class ShowListToursAction extends ActionSupport {
 		if(maTinh == null) {
 			maTinh = "-1";
 		}
-		listTours = new DLTourBO().getAllByMaTinh(maTinh);
+		listTours = new DLTourBO().getAllByMaTinhObject(maTinh);
 		return SUCCESS;
 	}
 }

@@ -50,19 +50,47 @@
 	        <result name="info" type="chain">info</result>
         </action>  
         
-        <action name="showCapNhatTour" class="controller.dulich.DangKyTourAction" method="showCapNhatTour">
+        <!-- <action name="showCapNhatTour" class="controller.dulich.DangKyTourAction" method="showCapNhatTour">
             <result name="info" type="chain">info</result>
 	        <result name="success">capNhatTour.jsp</result>
         </action>
         <action name="capNhatTour" class="controller.dulich.DangKyTourAction" method="capNhatTour">
             <result name="info" type="chain">info</result>
-        </action>      
+        </action>       -->
+	<!-- Kết thúc đăng ký Tour -->
+	
+	<!-- Bắt đầu đăng ký Tour-->
+		<action name="showDangKyKhachSan" class="controller.dulich.DangKyKhachSanAction" method="showDangKyKhachSan">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">dlDangKyKhachSan.jsp</result>
+        </action>
+        <action name="dangKyKhachSan" class="controller.dulich.DangKyKhachSanAction">
+	        <result name="info" type="chain">info</result>
+        </action>  
+        
+        <!-- <action name="showCapNhatTour" class="controller.dulich.DangKyTourAction" method="showCapNhatTour">
+            <result name="info" type="chain">info</result>
+	        <result name="success">capNhatTour.jsp</result>
+        </action>
+        <action name="capNhatTour" class="controller.dulich.DangKyTourAction" method="capNhatTour">
+            <result name="info" type="chain">info</result>
+        </action>       -->
+	<!-- Kết thúc đăng ký Tour -->
+	
+	<!-- Bắt đầu đăng ký Tour-->
+		<action name="showChiTietTour" class="controller.dulich.ChiTietTourAction" method="showChiTietTour">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">dlChiTietTour.jsp</result>
+        </action>
+        <action name="chiTietTour" class="controller.dulich.ChiTietTourAction">
+	        <result name="info" type="chain">info</result>
+        </action>
 	<!-- Kết thúc đăng ký Tour -->
 	
 	<!-- Bắt đầu hiển thị thông tin Tour -->
 		<action name="showInfoTour" class="controller.dulich.ShowInfoTourAction" method="showInfoTour">
+            <result name="error" type="chain">info</result>
 	        <result name="success">capNhatTour.jsp</result>
-            <result name="info" type="chain">info</result>
         </action>
 	<!-- Kết thúc hiển thị thông tin Tour -->
 	
@@ -77,17 +105,24 @@
 	<!-- Kết thúc hiển thị -->
 
 	<!-- Bắt đầu đăng ký giảng viên-->
-		<action name="showTaoChiTietTour" class="controller.dulich.TaoChiTietTourAction" method="showTaoChiTietTour">
+		<!-- <action name="showTaoChiTietTour" class="controller.dulich.TaoChiTietTourAction" method="showTaoChiTietTour">
 	        <result name="info" type="chain">info</result>
 	        <result name="success">dlDangKyTour.jsp</result>
+	        <result name="success">lichTourChiTiet.jsp</result>
+        </action>
+        <action name="taoChiTietTour" class="controller.dulich.TaoChiTietTourAction">
+	        <result name="info" type="chain">info</result>
+        </action> -->
+        
+        <action name="showTaoChiTietTour" class="controller.dulich.TaoChiTietTourAction" method="showTaoChiTietTour">
+	        <result name="info" type="chain">info</result>
+	        <result name="success">lichTourChiTiet.jsp</result>
         </action>
         <action name="taoChiTietTour" class="controller.dulich.TaoChiTietTourAction">
 	        <result name="info" type="chain">info</result>
         </action>
     <!-- Kết thúc đăng ký -->
 	
-			<action name="employee" class="controller.dulich.ShowListToursAction" method="execute">
-	         	<result name="success">employee.jsp</result>
-	      	</action>
+			
 	</package>
 </struts>

@@ -32,8 +32,11 @@ Create table Tour(
 Create table KhachSan(
 	MaKS varchar(10) primary key,
 	TenKS nvarchar(250),
+	HinhAnh varchar(max),
+	MaTinh varchar(20) foreign key references Tinh(MaTinh),
 	DiaChi nvarchar(500),
-	Sao int
+	Sao int,
+	MoTa varchar(max)
 )
 -- Chi tiết Tour
 Create table ChiTietTour(
@@ -65,16 +68,4 @@ Create table ChiTietDatTour(
 	NgaySinh date,
 	GioiTinh bit default ('false'),
 	DiaChi nvarchar(500)
-)
-
---Test A
-create table TestA(
-	MaA nvarchar(10) primary key,
-	TenA nvarchar(20)
-)
---Test B
-create table TestB(
-	MaB nvarchar(10) primary key,
-	TenB nvarchar(20),
-	MaA nvarchar(10) foreign key references TestA(MaA)
 )

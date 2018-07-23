@@ -4,10 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import model.bean.CumThi;
 import model.bean.DLTour;
+import model.bean.TruongDHCD;
 import model.dao.khoi.ConnectDB;
 
 public class DLTourDAO {
@@ -75,13 +76,13 @@ public class DLTourDAO {
 			con.closeConnection();
 		}
 	}
-
-	public List<DLTour> getAllByMaTinh(String maTinh) {
+	
+	public List<DLTour> getAllByMaTinhObject(String maTinh) {
 		List<DLTour> list = new ArrayList<DLTour>();
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
 		String sql;
-		if(maTinh.equals("-1")) {
+		if(maTinh.equals("-1") || maTinh == null) {
 			sql = "select MaTour,TieuDe,AnhDaiDien from Tour";
 		} else {
 			sql = "select t.MaTour,TieuDe,AnhDaiDien from Tour t, Tinh th where t.MaTinh=th.MaTinh and th.MaTinh=?";
@@ -109,6 +110,72 @@ public class DLTourDAO {
             con.closeConnection();
         }
 		return list;
+	}
+
+	public HashMap<String, String> getAllByMaTinh(String maTinh) {
+		HashMap<String, String> list = new HashMap<String, String>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql;
+		//if(maTinh.equals("-1") || maTinh == null) {
+		if(maTinh == null) {
+			sql = "select MaTour,TieuDe,AnhDaiDien from Tour";
+		} else {
+			sql = "select t.MaTour,TieuDe,AnhDaiDien from Tour t, Tinh th where t.MaTinh=th.MaTinh and th.MaTinh=?";
+		}
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		//if(!maTinh.equals("-1")) {
+    		if(maTinh != null) {
+    			stmt.setString(1, maTinh);
+    		}
+    		ResultSet rs = stmt.executeQuery();
+    		while(rs.next()){
+    			list.put(rs.getString(1), rs.getString(2));
+    		} 
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
+		/*List<DLTour> list = new ArrayList<DLTour>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql;
+		//if(maTinh.equals("-1") || maTinh == null) {
+		if(maTinh == null) {
+			sql = "select MaTour,TieuDe,AnhDaiDien from Tour";
+		} else {
+			sql = "select t.MaTour,TieuDe,AnhDaiDien from Tour t, Tinh th where t.MaTinh=th.MaTinh and th.MaTinh=?";
+		}		
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		//if(!maTinh.equals("-1")) {
+    		if(maTinh != null) {
+    			stmt.setString(1, maTinh);
+    		}    		
+    		ResultSet rs = stmt.executeQuery();
+    		DLTour tur;
+    		while(rs.next()){
+    			tur = new DLTour();
+    			tur.setMaTour(rs.getString(1));
+    			tur.setTieuDe(rs.getString(2));
+    			tur.setHinhAnh(rs.getString(3));
+    			list.add(tur);
+    		} 
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;*/
 	}
 
 	public DLTour getInfo(String maTour) {

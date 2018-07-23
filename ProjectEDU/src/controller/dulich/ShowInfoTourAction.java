@@ -34,6 +34,11 @@ public class ShowInfoTourAction extends ActionSupport {
 
 	public String showInfoTour(){
 		tour = new DLTourBO().getInfo(maTour);
-		return SUCCESS;
+		if (tour == null) {
+			info = new Info("Lỗi load thông tin", "Lấy thông tin Tour không thành công!");
+			return ERROR;
+		} else {
+			return SUCCESS;
+		}
 	}
 }

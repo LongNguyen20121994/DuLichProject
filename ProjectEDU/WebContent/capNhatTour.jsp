@@ -3,47 +3,27 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cập nhật tài khoản Quản lý ĐH-CĐ</title>
+<title>Thông tin cá nhân</title>
 <jsp:include page="../css/style.html"/>
-<script lang="Javascript">
-    $(document).ready(function() {
-        $('input[type=file]').ajaxfileupload({
-            'action' : 'uploadHinhAnh.trip',
-            'onComplete' : function(response) {
-                $('#upload').hide();
-                
-                var statusVal = JSON.stringify(response.status);
-    
-                if(statusVal == "false")
-                {
-                    $("#anhCaNhan").html("<font color='red'>"+ JSON.stringify(response.message) +" </font>");
-                }   
-                if(statusVal == "true")
-                {
-                    $("#anhCaNhan").html("<img src='anhThanhVien\\"+$('input[type=file]').val().split('\\').pop()+"' class='img-thumbnail' width='100%'/>");
-                }           
-            },
-            'onStart' : function() {
-                $('#upload').show();
-            }
-        });
-    });
-</script>
 </head>
 <body>
 	<%@include file="../frame/header.jsp"%>﻿
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
-				    <h2 style="margin-bottom:0px;">Cập nhật thông tin Tour</h2>
-		            <br><br>
-			        <s:form method="post" action="capNhatTour.trip">
-				        <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
-				        	<img src='${hinhAnh }' class="img-thumbnail" width="100%" />
-				        </div>
-				        <s:file name="hinhAnh" cssStyle="display:none;" accept="image/*"></s:file>
-				        <div class="col-md-8">
-				        	<table class="table">
+				<h2 style="margin-bottom:0px;">Thông tin giáo viên</h2>
+	            <br><br>
+		        <div class="col-md-4" style="margin:0px 0px 10px 0px; ">
+		        	<img src="${tour.hinhAnh}" class="img-thumbnail" width="100%" />
+		        </div>
+		        <div class="col-md-8">
+		        	<table class="table">
+		        		<tr>
+		        			<td style="width:180px; padding-top:8px;"><strong>Số CMND</strong></td>
+		        			<td><b>: </b><s:property value="tour.maTour"></s:property></td>
+		        		</tr>
+		        	</table>
+				        	<%-- <table class="table">
 				        		<tr>
 				        			<td style="width:80px; padding-top:15px;">Mã Tour</td>
 				        			<td>
@@ -129,9 +109,9 @@
 					        			<s:submit value="Cập nhật" cssClass="btn btn-primary"/>
 				        			</td>
 				        		</tr>
-				        	</table>
-				        </div>			        
-			        </s:form>
+				        	</table> --%>
+				 </div>			        
+			        <%-- </s:form> --%>
 			</div>
 			<%@include file="../frame/right.jsp"%>
 		</div>

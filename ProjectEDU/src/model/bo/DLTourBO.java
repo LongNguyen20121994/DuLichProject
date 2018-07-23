@@ -1,5 +1,6 @@
 package model.bo;
 
+import java.util.HashMap;
 import java.util.List;
 
 import model.bean.DLTour;
@@ -21,7 +22,11 @@ public class DLTourBO {
 		return new DLTourDAO().updateTour(tour);
 	}
 	
-	public List<DLTour> getAllByMaTinh(String maTinh) {
+	public List<DLTour> getAllByMaTinhObject(String maTinh) {
+		return new DLTourDAO().getAllByMaTinhObject(maTinh);
+	}
+	
+	public HashMap<String, String> getAllByMaTinh(String maTinh) {
 		return new DLTourDAO().getAllByMaTinh(maTinh);
 	}
 

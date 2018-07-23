@@ -4,14 +4,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>Tạo tour mới</title>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
+	<script type="text/javascript" src="http://localhost:8081/ckfinder/ckfinder/ckfinder.js"></script>
 	<jsp:include page="css/style.html"/>
 	
 	<!-- table css + js-->
-	<link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<!-- <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script> -->
 	<!-- /table -->
 	
 	<script lang="Javascript">
@@ -84,12 +84,12 @@
 		                               				/* var editor = CKEDITOR.replace('editor');
 		                               				CKFinder.setupCKEditor(editor, 'ckfinder/'); */
 		                               				CKEDITOR.replace('tieuDe',{
-		                               				filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
-		                               				filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
-		                               				filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
-		                               				filebrowserUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
-		                               				filebrowserImageUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
-		                               				filebrowserFlashUploadUrl: 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
+		                               				filebrowserBrowseUrl: '../ckfinder/ckfinder/ckfinder.html',
+		                               				filebrowserImageBrowseUrl: '../ckfinder/ckfinder/ckfinder.html?type=Images',
+		                               				filebrowserFlashBrowseUrl: '../ckfinder/ckfinder/ckfinder.html?type=Flash',
+		                               				filebrowserUploadUrl: '../ckfinder/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+		                               				filebrowserImageUploadUrl: '../ckfinder/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+		                               				filebrowserFlashUploadUrl: '../ckfinder/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
 		                               			}); </script>
 		                                    </td>
 						        		</tr>
@@ -181,25 +181,34 @@
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-time"></span></span>
-												<s:textfield cssClass="form-control" placeholder="Giờ khởi hành" aria-describedby="basic-addon1" />
+												<s:textfield name="gio" cssClass="form-control" placeholder="Giờ khởi hành" aria-describedby="basic-addon1" />
 											</div>
 					        			</td>
 					        		</tr>
-					        		<tr>
+					        		<%-- <tr>
 					        			<td style="width:80px; padding-top:15px;">Đặc điểm</td>
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-pencil"></span></span>
-												<s:textfield name="tour.dacDiem" cssClass="form-control" placeholder="Đặc điểm" aria-describedby="basic-addon1" />
+												<s:textfield name="ctTour.dacDiem" cssClass="form-control" placeholder="Đặc điểm" aria-describedby="basic-addon1" />
 											</div>
 					        			</td>
-					        		</tr>
+					        		</tr> --%>
+					        		<%-- <tr>
+					        			<td style="width:80px; padding-top:15px;">Chọn Khách Sạn</td>
+					        			<td>
+						        			<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
+												<s:select name="ctTour.maKS" id="maKS" cssClass="form-control" list="listKhachSan" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn khách sạn" />
+											</div>
+					        			</td>
+					        		</tr> --%>
 					        		<tr>
 					        			<td style="width:80px; padding-top:15px;">Giá vé người lớn</td>
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
-												<s:textfield name="tour.giaVeNguoiLon" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+												<s:textfield name="ctTour.giaVeNguoiLon" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
 											</div>
 					        			</td>
 					        		</tr>
@@ -208,7 +217,7 @@
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
-												<s:textfield name="tour.giaVeTreEm" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+												<s:textfield name="ctTour.giaVeTreEm" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
 											</div>
 					        			</td>
 					        		</tr>
@@ -217,7 +226,7 @@
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
-												<s:textfield name="tour.giaVeTreNho" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+												<s:textfield name="ctTour.giaVeTreNho" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
 											</div>
 					        			</td>
 					        		</tr>
@@ -226,7 +235,7 @@
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd"></span></span>
-												<s:textfield name="tour.giaVeSoSinh" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
+												<s:textfield name="ctTour.giaVeSoSinh" cssClass="form-control" placeholder="Đơn vị VND" aria-describedby="basic-addon1" />
 											</div>
 					        			</td>
 					        		</tr>
@@ -235,8 +244,14 @@
 					        			<td>
 						        			<div class="input-group">
 												<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-plus"></span></span>
-												<s:textfield name="tour.soCho" cssClass="form-control" placeholder="Số chỗ" aria-describedby="basic-addon1" />
+												<s:textfield name="ctTour.soCho" cssClass="form-control" placeholder="Số chỗ" aria-describedby="basic-addon1" />
 											</div>
+					        			</td>
+					        		</tr>
+					        		<tr>
+					        			<td colspan="2" align="right">
+					        				<s:reset value="Làm mới" cssClass="btn btn-primary"/>
+						        			<s:submit value="Đăng ký" cssClass="btn btn-primary"/>
 					        			</td>
 					        		</tr>
 					        	</table>					        	
@@ -263,8 +278,6 @@
 							                <th style="text-align: center;width:65px;">Tác vụ</th>
 							            </tr>
 							        </tfoot>
-							        <tbody>
-							       	</tbody>
 						    	</table>
 							</div>
 						</div>

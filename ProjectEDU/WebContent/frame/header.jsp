@@ -21,7 +21,7 @@
 			</script>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active" style="margin-top: 0px; color:">
-					<img alt="First slide" src="images/banner1.jpg"
+					<img alt="First slide" src="images/head1.jpg"
 						data-holder-rendered="true" width="100%">
 					<div class="container">
 						<div class="carousel-caption" id="list1">
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<div class="item" style="margin-top: 0px;">
-					<img alt="Second slide" src="images/banner2.jpg"
+					<img alt="Second slide" src="images/head1.jpg"
 						data-holder-rendered="true" width="100%">
 					<div class="container">
 						<div class="carousel-caption">
@@ -50,7 +50,7 @@
 				</div>
 				<div class="item" style="margin-top: 0px;">
 
-					<img alt="Third slide" src="images/banner3.jpg"
+					<img alt="Third slide" src="images/head1.jpg"
 						data-holder-rendered="true" width="100%">
 					<div class="container">
 						<div class="carousel-caption">
