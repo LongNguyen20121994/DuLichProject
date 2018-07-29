@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Tạo tour mới</title>
+	<title>Quản lý Tour</title>
 	<script type="text/javascript" src="http://localhost:8081/ckfinder/ckfinder/ckfinder.js"></script>
 	<jsp:include page="../css/style.html"/>
 	
@@ -45,11 +45,10 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="col-md-12">
-				    <h2 style="margin-bottom:0px;">Tạo Tour</h2>
-		            <br><br>
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#input">Tạo mới tour</a></li>
-						<li><a data-toggle="tab" href="#excel">Lịch trình chi tiết</a></li>
+						<li><a data-toggle="tab" href="#listTour">Danh sách Tour</a></li>
+						<li><a data-toggle="tab" href="#excel">Add danh sách Tour từ excel</a></li>
 					</ul>
 		            <br><br>
 		            <div class="tab-content">
@@ -58,7 +57,7 @@
 						        <div>
 						        	<table class="table">
 						        		<tr>
-						        			<td style="width:80px; padding-top:15px;">Chọn Loại Tour</td>
+						        			<td style="width:80px; padding-top:15px;">Loại Tour</td>
 						        			<td>
 							        			<div class="input-group">
 													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>

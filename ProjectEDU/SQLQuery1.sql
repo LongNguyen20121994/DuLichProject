@@ -51,9 +51,6 @@ Create table ChiTietTour(
 	NgayKhoiHanh datetime,
 	DacDiem nvarchar(500),
 	GiaVeNguoiLon decimal,
-	GiaVeTreEm decimal,
-	GiaVeTreNho decimal,
-	GiaVeSoSinh decimal,
 	SoCho int,
 	SoChoDaDat int
 )

@@ -6,22 +6,28 @@
     <package name="dulich" extends="struts-default" namespace="/">
     	
     	<!-- Bắt đầu đăng nhập tài khoản -->
-		<action name="showLogin" class="controller.khoi.LoginAction" method="showLogin">
-            <result name="success">login.jsp</result>
-            <result name="error" type="chain">info</result>
-        </action>
-        
-        <action name="login" class="controller.khoi.LoginAction">
-	        <result name="input">login.jsp</result>
-	        <result name="success">index.jsp</result>
-	        <result name="doiMK" type="chain">showDoiMatKhau</result>
-            <result name="info" type="chain">info</result>
-        </action>
-        
-        <action name="logout" class="controller.khoi.LogoutAction">
-            <result name="success">index.jsp</result>
-        </action>
-<!-- Kết thúc đăng nhập tài khoản -->
+			<action name="showLogin" class="controller.khoi.LoginAction" method="showLogin">
+	            <result name="success">login.jsp</result>
+	            <result name="error" type="chain">info</result>
+	        </action>
+	        
+	        <action name="login" class="controller.khoi.LoginAction">
+		        <result name="input">login.jsp</result>
+		        <result name="success">index.jsp</result>
+		        <result name="doiMK" type="chain">showDoiMatKhau</result>
+	            <result name="info" type="chain">info</result>
+	        </action>
+	        
+	        <action name="logout" class="controller.khoi.LogoutAction">
+	            <result name="success">index.jsp</result>
+	        </action>
+		<!-- Kết thúc đăng nhập tài khoản -->
+		
+		<!-- Ajax-->
+				<action name="showKhachSan" class="controller.dulich.AjaxKhachSanAction"></action>
+				<action name="showTour" class="controller.dulich.AjaxTourAction"></action>
+		<!-- End ajax -->
+		
 		<!-- Bắt đầu đăng ký Nhân viên -->        
         <action name="showDangKyNhanVien" class="controller.dulich.DangKyNhanVienAction" method="showDangKyNhanVien">
 	        <result name="info" type="chain">info</result>
@@ -42,32 +48,6 @@
 		<!-- Kết thúc đăng ký Nhân Viên -->
 		
 	<!-- Bắt đầu đăng ký Tour-->
-		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
-	        <result name="info" type="chain">info</result>
-	        <result name="success">dulich/dlDangKyTour.jsp</result>
-        </action>
-        <action name="dangKyTour" class="controller.dulich.DangKyTourAction">
-	        <result name="info" type="chain">info</result>
-        </action>
-
-        <action name="showInfoTour" class="controller.dulich.ShowInfoTourAction">
-			<result name="error" type="chain">info</result>
-			<result name="success">dulich/capNhatTour.jsp</result>
-		</action>
-		
-	<!-- Kết thúc đăng ký Tour -->
-	
-	<!-- Bắt đầu đăng ký Tour-->
-		<action name="showChiTietTour" class="controller.dulich.ChiTietTourAction" method="showChiTietTour">
-	        <result name="info" type="chain">info</result>
-	        <result name="success">dulich/dlChiTietTour.jsp</result>
-        </action>
-        <action name="chiTietTour" class="controller.dulich.ChiTietTourAction">
-	        <result name="info" type="chain">info</result>
-        </action>
-	<!-- Kết thúc đăng ký Tour -->
-	
-	<!-- Bắt đầu đăng ký Tour-->
 		<action name="showDangKyKhachSan" class="controller.dulich.DangKyKhachSanAction" method="showDangKyKhachSan">
 	        <result name="info" type="chain">info</result>
 	        <result name="success">dulich/dlDangKyKhachSan.jsp</result>
@@ -82,9 +62,6 @@
 		        <result name="success">dulich/showListTour.jsp</result>
 		        <result name="info" type="chain">info</result>
 	        </action>
-	        <!-- <action name="ajaxShowListTour" class="controller.dulich.ShowListToursAction" method="ajaxShowListTour">
-	        	<result name="success">ajaxShowListTour.jsp</result>
-	        </action> -->
 	<!-- Kết thúc hiển thị -->
 	
 	<!-- Bắt đầu hiển thị danh sách Tour trang chủ -->
@@ -92,47 +69,71 @@
 		        <result name="success">dulich/dlDanhSachTour.jsp</result>
 		        <result name="info" type="chain">info</result>
 	        </action>
-	        <!-- <action name="ajaxShowListTour" class="controller.dulich.ShowListToursAction" method="ajaxShowListTour">
-	        	<result name="success">ajaxShowListTour.jsp</result>
-	        </action> -->
 	<!-- Kết thúc hiển thị -->
-
-	<!-- Bắt đầu đăng ký giảng viên-->
-		<!-- <action name="showTaoChiTietTour" class="controller.dulich.TaoChiTietTourAction" method="showTaoChiTietTour">
+	
+	<!-- Bắt đầu đăng ký Tour-->
+		<!-- <action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
 	        <result name="info" type="chain">info</result>
-	        <result name="success">dlDangKyTour.jsp</result>
-	        <result name="success">lichTourChiTiet.jsp</result>
+	        <result name="success">dulich/dlDangKyTour.jsp</result>
         </action>
-        <action name="taoChiTietTour" class="controller.dulich.TaoChiTietTourAction">
+        <action name="dangKyTour" class="controller.dulich.DangKyTourAction">
 	        <result name="info" type="chain">info</result>
+        </action>
+        <action name="showInfoTour" class="controller.dulich.ShowInfoTourAction">
+			<result name="error" type="chain">info</result>
+			<result name="success">dulich/capNhatTour.jsp</result>
+		</action> -->
+		
+		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
+	        <result name="success">dulich/dlDangKyTour.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="dangKyTour" class="controller.dulich.DangKyTourAction">
+	        <result name="success" type="chain">showDangKyTour</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatTour" class="controller.dulich.DangKyTourAction" method="capNhatTour">
+            <result name="success" type="chain">showDangKyTour</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- Kết thúc đăng ký Tour -->
+	
+		<!-- <action name="showThemMonThi" class="controller.khoi.CapNhatMonThiAction" method="showThemMonThi">
+	        <result name="success">khoitv/capNhatMonThi.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="themMonThi" class="controller.khoi.CapNhatMonThiAction">
+	        <result name="success" type="chain">showThemMonThi</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListMonThi" class="controller.khoi.CapNhatMonThiAction" method="capNhatListMonThi">
+            <result name="success" type="chain">showThemMonThi</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
         </action> -->
-        
-        <action name="showTaoChiTietTour" class="controller.dulich.TaoChiTietTourAction" method="showTaoChiTietTour">
-	        <result name="info" type="chain">info</result>
-	        <result name="success">dulich/lichTourChiTiet.jsp</result>
-        </action>
-        <action name="taoChiTietTour" class="controller.dulich.TaoChiTietTourAction">
-	        <result name="info" type="chain">info</result>
-        </action>
-    <!-- Kết thúc đăng ký -->
 	
-	
-	
-	<!-- Bắt đầu Kích hoạt tài khoản OK-->
-		<action name="showKichHoatTaiKhoan1" class="controller.dulich.KichHoatTaiKhoanAction" method="showKichHoatTaiKhoan1">
-	        <result name="success">test/kichHoatTaiKhoan1.jsp</result>
+	<!-- Lên lịch Tour -->
+        <action name="showLenLichTour" class="controller.dulich.LenLichTourAction" method="showLenLichTour">
+	        <result name="success">dulich/lenLichTour.jsp</result> 
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
         </action>
-        <action name="kichHoatTaiKhoan1" class="controller.dulich.KichHoatTaiKhoanAction">
-	        <result name="input" type="chain">showKichHoatTaiKhoan1</result> 
-            <result name="login" type="chain">showLogin</result>
+        <action name="lenLichTour" class="controller.dulich.LenLichTourAction">
+	        <result name="success" type="chain">showLenLichTour</result>  
             <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
         </action>
-        <action name="ajaxKichHoat1" class="controller.dulich.KichHoatTaiKhoanAction" method="ajaxKichHoat1">
-	        <result name="input">test/ajaxKichHoat1.jsp</result>
+        <action name="capNhatListLichTour" class="controller.dulich.LenLichTourAction" method="capNhatListLichTour">
+            <result name="success" type="chain">showLenLichTour</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
         </action>
-<!-- Kết thúc kích hoạt tài khoản -->
+	<!-- End lên lịch Tour -->
 			
 	</package>
 </struts>

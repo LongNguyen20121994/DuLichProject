@@ -33,6 +33,9 @@ public class DLTourBO {
 	public HashMap<String, String> getAllByMaLoaiTour(String maLoai) {
 		return new DLTourDAO().getAllByMaLoaiTour(maLoai);
 	}
+	public HashMap<String, String> getAllBy() {
+		return new DLTourDAO().getAllBy();
+	}
 
 	public DLTour getInfo(String maTour) {
 		return new DLTourDAO().getInfo(maTour);

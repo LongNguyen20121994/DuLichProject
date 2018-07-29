@@ -64,21 +64,12 @@ public class DLChiTietTour {
 		this.giaVeNguoiLon = giaVeNguoiLon;
 	}
 	public double getGiaVeTreEm() {
-		return giaVeTreEm;
-	}
-	public void setGiaVeTreEm(double giaVeTreEm) {
-		this.giaVeTreEm = giaVeTreEm;
+		return this.giaVeNguoiLon * 0.7;
 	}
 	public double getGiaVeTreNho() {
-		return giaVeTreNho;
-	}
-	public void setGiaVeTreNho(double giaVeTreNho) {
-		this.giaVeTreNho = giaVeTreNho;
+		return this.giaVeNguoiLon * 0.5;
 	}
 	public double getGiaVeSoSinh() {
-		return giaVeSoSinh;
-	}
-	public void setGiaVeSoSinh(double giaVeSoSinh) {
-		this.giaVeSoSinh = giaVeSoSinh;
+		return 200;
 	}
 }
