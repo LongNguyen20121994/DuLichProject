@@ -8,8 +8,8 @@ import common.Library;
 import controller.khoi.LoginAction;
 import model.bean.DLTour;
 import model.bean.Info;
-import model.bo.DLTinhBO;
 import model.bo.DLTourBO;
+import model.bo.LoaiTourBO;
 
 @SuppressWarnings("serial")
 public class DangKyTourAction extends ActionSupport {
@@ -17,7 +17,7 @@ public class DangKyTourAction extends ActionSupport {
 	private String maTour;
 	private String hinhAnh;
 	private int maxTour;
-	private HashMap<String, String> listTinh;
+	private HashMap<String, String> listLoaiTour;
 	private Info info;
 
 	public DLTour getTour() {
@@ -51,13 +51,13 @@ public class DangKyTourAction extends ActionSupport {
 	public void setMaxTour(int maxTour) {
 		this.maxTour = maxTour;
 	}
-
-	public HashMap<String, String> getListTinh() {
-		return listTinh;
+	
+	public HashMap<String, String> getListLoaiTour() {
+		return listLoaiTour;
 	}
 
-	public void setListTinh(HashMap<String, String> listTinh) {
-		this.listTinh = listTinh;
+	public void setListLoaiTour(HashMap<String, String> listLoaiTour) {
+		this.listLoaiTour = listLoaiTour;
 	}
 
 	public Info getInfo() {
@@ -78,7 +78,6 @@ public class DangKyTourAction extends ActionSupport {
 				return "info";
 			}
 		}
-		listTinh = new DLTinhBO().getAllSelect();
 		String timMax = new DLTourBO().getMaxRecord();
 		if (timMax != null) {
 			maxTour = catChuoi(timMax) + 1;
@@ -87,7 +86,7 @@ public class DangKyTourAction extends ActionSupport {
 		}
 		tour.setMaTour(taoMa(maxTour));
 		if (hinhAnh != null) {
-			tour.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, "" + taoMa(maxTour)));
+			tour.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, "" + tour.getMaTour()));
 		} else {
 			tour.setHinhAnh("images/default.jpg");
 		}
@@ -106,7 +105,7 @@ public class DangKyTourAction extends ActionSupport {
 		for (i = 1; n > 10; i++)
 			n /= 10;
 		StringBuilder ma = new StringBuilder();
-		for (int j = 0; j < 10 - i; j++)
+		for (int j = 0; j < 7 - i; j++)
 			ma.append("0");
 		return "TUR" + ma.append(max);
 	}
@@ -117,7 +116,7 @@ public class DangKyTourAction extends ActionSupport {
 	}
 
 	public String showDangKyTour() {
-		listTinh = new DLTinhBO().getAllSelect();
+		listLoaiTour = new LoaiTourBO().getAllSelect();
 		return SUCCESS;
 	}
 
@@ -131,10 +130,7 @@ public class DangKyTourAction extends ActionSupport {
 			}
 		}
 		tour = new DLTourBO().getInfo(maTour);
-		listTinh = new DLTinhBO().getAllSelect();
-		// listHuyen = new HuyenQuanBO().getListHuyenSelect(gv.getMaTinh());
-		// listXa = new XaPhuongBO().getListXaSelect(gv.getMaTinh(),gv.getMaHuyen());
-		// listDHCD = new TruongDHCDBO().getAllSelect();
+		listLoaiTour = new LoaiTourBO().getAllSelect();
 		return SUCCESS;
 	}
 
@@ -160,4 +156,12 @@ public class DangKyTourAction extends ActionSupport {
 			return "info";
 		}
 	}
+	
+	/*public void validate() {
+		if(tour != null) {
+			if(StringUtils.isEmpty(tour.getTieuDe())) {
+				addActionError("Tiêu đề tour không được bỏ trống!");
+			}
+		}
+	}*/
 }

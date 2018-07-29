@@ -15,10 +15,15 @@ Create table Tinh(
 	MaTinh varchar(20) primary key,
 	TenTinh nvarchar(50) not null
 )
+-- Loai Tour
+Create table LoaiTour(
+	MaLoai varchar(20) primary key,
+	TenLoai nvarchar(50) not null
+)
 -- Tour
 Create table Tour(
 	MaTour varchar(10) primary key,
-	TieuDe varchar(max) not null,
+	TieuDe nvarchar(max) not null,
 	AnhDaiDien varchar(max),
 	MoTaTongQuan nvarchar(max),
 	LichTrinh nvarchar(max),
@@ -26,7 +31,7 @@ Create table Tour(
 	SoNgay int,
 	SoDem int,
 	GhiChu nvarchar(max),
-	MaTinh varchar(20) foreign key references Tinh(MaTinh)
+	MaLoai varchar(20) foreign key references LoaiTour(MaLoai)
 )
 -- Khach san
 Create table KhachSan(

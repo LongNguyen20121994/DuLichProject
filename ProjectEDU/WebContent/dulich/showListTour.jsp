@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cập nhật tài khoản Admin</title>
-<jsp:include page="css/style.html"/>
+<jsp:include page="../css/style.html"/>
 
 <!-- table css + js-->
 <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 	});
 </script>
 <body>
-	<%@include file="frame/header.jsp"%>
+	<%@include file="../frame/header.jsp"%>
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
@@ -40,7 +40,7 @@
 					        <br>
 				            <div class="input-group">
 								<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-								<s:select list="listTinh" name="maTinh" id="selectDS" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn tỉnh"/>
+								<s:select list="listLoaiTour" name="maTinh" id="selectDS" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn loại Tour"/>
 							</div>
 					        <br>
 							<div id="danhSach">
@@ -77,9 +77,9 @@
 					</div>
 				</div>
 			</div>
-			<%@include file="frame/right.jsp"%>
+			<%@include file="../frame/right.jsp"%>
 		</div>
 	</div>
-	<%@include file="frame/footer.jsp"%>
+	<%@include file="../frame/footer.jsp"%>
 </body>
 </html>

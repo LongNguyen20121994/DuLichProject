@@ -10,14 +10,17 @@ import model.bo.ChiTietTourBO;
 import model.bo.DLTinhBO;
 import model.bo.DLTourBO;
 import model.bo.KhachSanBO;
+import model.bo.LoaiTourBO;
 
 @SuppressWarnings("serial")
 public class ChiTietTourAction extends ActionSupport {
 	private DLChiTietTour ct;
 	private HashMap<String,String> listTinh;
-	private HashMap<String, String> listTour;
-	private HashMap<String, String> listKhachSan;
 	private String maTinh;
+	private HashMap<String, String> listKhachSan;
+	private HashMap<String, String> listLoaiTour;
+	private String maLoai;
+	private HashMap<String, String> listTour;
 	private Info info;
 	
 	public DLChiTietTour getCt() {
@@ -56,9 +59,21 @@ public class ChiTietTourAction extends ActionSupport {
 	public void setInfo(Info info) {
 		this.info = info;
 	}
-	
+	public HashMap<String, String> getListLoaiTour() {
+		return listLoaiTour;
+	}
+	public void setListLoaiTour(HashMap<String, String> listLoaiTour) {
+		this.listLoaiTour = listLoaiTour;
+	}
+	public String getMaLoai() {
+		return maLoai;
+	}
+	public void setMaLoai(String maLoai) {
+		this.maLoai = maLoai;
+	}
+
 	@Override
-	public String execute() throws Exception {
+	public String execute() {
 		if(ct.getMaTour() != null) {
 			String timMax = new ChiTietTourBO().getMaxRecord();
 			int maxTour = 0;
@@ -84,8 +99,9 @@ public class ChiTietTourAction extends ActionSupport {
 	
 	public String showChiTietTour(){
 		listTinh = new DLTinhBO().getAllSelect();
-		listTour = new DLTourBO().getAllByMaTinh(maTinh);
 		listKhachSan = new KhachSanBO().getAllByMaTinh(maTinh);
+		listLoaiTour = new LoaiTourBO().getAllSelect();
+		listTour = new DLTourBO().getAllByMaLoaiTour(maLoai);
 		return SUCCESS;
 	}
 	
@@ -96,18 +112,19 @@ public class ChiTietTourAction extends ActionSupport {
 	
 	public String taoMa(int max) {
 		int i, n = max;
-		for(i = 1; n > 10; i++)
-			n/= 10;
-		StringBuilder ma = new StringBuilder();		
-		for (int j = 0; j < 10 - i; j++)
+		for (i = 1; n > 10; i++)
+			n /= 10;
+		StringBuilder ma = new StringBuilder();
+		for (int j = 0; j < 7 - i; j++)
 			ma.append("0");
-		return "CTT"+ ma.append(max);
+		return "CTT" + ma.append(max);
 	}
 	
 	public String showCapNhatChiTietTour(){
 		listTinh = new DLTinhBO().getAllSelect();
-		listTour = new DLTourBO().getAllByMaTinh(maTinh);
 		listKhachSan = new KhachSanBO().getAllByMaTinh(maTinh);
+		listLoaiTour = new LoaiTourBO().getAllSelect();
+		listTour = new DLTourBO().getAllByMaLoaiTour(maLoai);
 		return SUCCESS;
 	}
 }

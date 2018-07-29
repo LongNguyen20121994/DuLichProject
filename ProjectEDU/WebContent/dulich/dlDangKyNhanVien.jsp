@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cập nhật tài khoản Admin</title>
-<jsp:include page="css/style.html"/>
+<jsp:include page="../css/style.html"/>
 <script lang="Javascript">
     $(document).ready(function() {
         $('input[type=file]').ajaxfileupload({
@@ -31,14 +31,14 @@
 </script>
 </head>
 <body>
-	<%@include file="frame/header.jsp"%>﻿
+	<%@include file="../frame/header.jsp"%>﻿
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
-				    <h2 style="margin-bottom:0px;">Cập nhật thông tin Nhân viên</h2>
+				    <h2 style="margin-bottom:0px;">Đăng ký thông tin Nhân viên</h2>
 		            <s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
 		            <br><br>
-			        <s:form method="post" action="capNhatNhanVien.trip">
+			        <s:form method="post" action="dangKyNhanVien.trip">
 				        <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
 				        	<img src="images/addImage.jpg" class="img-thumbnail" width="100%" />
 				        </div>
@@ -115,9 +115,9 @@
 				        </div>			        
 			        </s:form>
 			</div>
-			<%@include file="frame/right.jsp"%>
+			<%@include file="../frame/right.jsp"%>
 		</div>
 	</div>
-	<%@include file="frame/footer.jsp"%>
+	<%@include file="../frame/footer.jsp"%>
 </body>
 </html>

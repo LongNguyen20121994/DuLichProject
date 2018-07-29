@@ -3,24 +3,18 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Tạo chi tiết tour mới</title>
+	<title>Lên lịch tour chi tiết</title>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
-	<jsp:include page="css/style.html"/>
-	
-	<!-- table css + js-->
-	<!-- <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script> -->
-	<!-- /table -->
+	<jsp:include page="../css/style.html"/>
+
 </head>
 <body>
-	<%@include file="frame/header.jsp"%>﻿
+	<%@include file="../frame/header.jsp"%>﻿
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="col-md-12">
-				    <h2 style="margin-bottom:0px;">Tạo Tour</h2>
+				    <h2 style="margin-bottom:0px;">Lên lịch Tour chi tiết</h2>
 		            <br><br>
 		            <div class="tab-content">
 						<div id="input" class="tab-pane fade in active">
@@ -74,10 +68,18 @@
 						        		</tr>
 						        		<tr>
 						        			<td style="padding-top:15px;">Đặc điểm</td>
-						        			<td colspan="2">
+		                                    <td colspan="2">
 		                                       	<s:textarea name="tour.dacDiem" id="dacDiem"></s:textarea>
 												<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
-		                               			<script type="text/javascript">CKEDITOR.replace('dacDiem'); </script>
+		                               			<script type="text/javascript">
+		                               				CKEDITOR.replace('dacDiem',{
+		                               				filebrowserBrowseUrl: '../ckfinder/ckfinder/ckfinder.html',
+		                               				filebrowserImageBrowseUrl: '../ckfinder/ckfinder/ckfinder.html?type=Images',
+		                               				filebrowserFlashBrowseUrl: '../ckfinder/ckfinder/ckfinder.html?type=Flash',
+		                               				filebrowserUploadUrl: '../ckfinder/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+		                               				filebrowserImageUploadUrl: '../ckfinder/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+		                               				filebrowserFlashUploadUrl: '../ckfinder/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
+		                               			}); </script>
 		                                    </td>
 						        		</tr>
 						        		<tr>
@@ -138,9 +140,9 @@
 					</div>
 				</div>
 			</div>
-			<%@include file="frame/right.jsp"%>
+			<%@include file="../frame/right.jsp"%>
 		</div>
 	</div>
-	<%@include file="frame/footer.jsp"%>
+	<%@include file="../frame/footer.jsp"%>
 </body>
 </html>

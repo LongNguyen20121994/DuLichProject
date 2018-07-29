@@ -32,7 +32,8 @@ public class ShowInfoTourAction extends ActionSupport {
 		this.info = info;
 	}
 
-	public String showInfoTour(){
+	@Override
+	public String execute() throws Exception {
 		tour = new DLTourBO().getInfo(maTour);
 		if (tour == null) {
 			info = new Info("Lỗi load thông tin", "Lấy thông tin Tour không thành công!");
@@ -41,4 +42,15 @@ public class ShowInfoTourAction extends ActionSupport {
 			return SUCCESS;
 		}
 	}
+	
+	/*public String capNhatTour(){
+		tour = new DLTourBO().getInfo(maTour);
+		if (tour == null) {
+			info = new Info("Lỗi load thông tin", "Lấy thông tin Tour không thành công!");
+			return ERROR;
+		} else {
+			return SUCCESS;
+		}
+	}*/
+	
 }

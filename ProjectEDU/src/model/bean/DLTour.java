@@ -10,7 +10,7 @@ public class DLTour {
 	private int soNgay;
 	private int soDem;
 	private String ghiChu;
-	private String maTinh;
+	private String maLoai;
 	
 	public String getMaTour() {
 		return maTour;
@@ -66,10 +66,10 @@ public class DLTour {
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
-	public String getMaTinh() {
-		return maTinh;
+	public String getMaLoai() {
+		return maLoai;
 	}
-	public void setMaTinh(String maTinh) {
-		this.maTinh = maTinh;
+	public void setMaLoai(String maLoai) {
+		this.maLoai = maLoai;
 	}
 }

@@ -22,12 +22,16 @@ public class DLTourBO {
 		return new DLTourDAO().updateTour(tour);
 	}
 	
-	public List<DLTour> getAllByMaTinhObject(String maTinh) {
-		return new DLTourDAO().getAllByMaTinhObject(maTinh);
+	public List<DLTour> getAll() {
+		return new DLTourDAO().getAll();
 	}
 	
-	public HashMap<String, String> getAllByMaTinh(String maTinh) {
-		return new DLTourDAO().getAllByMaTinh(maTinh);
+	public List<DLTour> getAllByMaLoaiObject(String maLoai) {
+		return new DLTourDAO().getAllByMaLoaiObject(maLoai);
+	}
+	
+	public HashMap<String, String> getAllByMaLoaiTour(String maLoai) {
+		return new DLTourDAO().getAllByMaLoaiTour(maLoai);
 	}
 
 	public DLTour getInfo(String maTour) {

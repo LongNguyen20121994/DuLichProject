@@ -6,49 +6,54 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import model.bean.DLTour;
-import model.bo.DLTinhBO;
 import model.bo.DLTourBO;
+import model.bo.LoaiTourBO;
 
 @SuppressWarnings("serial")
 public class ShowListToursAction extends ActionSupport {
 	private List<DLTour> listTours;
-	private HashMap<String, String> listTinh;
-	private String maTinh;
-
+	private HashMap<String, String> listLoaiTour;
+	private String maLoai;
+	
 	public List<DLTour> getListTours() {
 		return listTours;
 	}
+
 	public void setListTours(List<DLTour> listTours) {
 		this.listTours = listTours;
 	}
-	public HashMap<String, String> getListTinh() {
-		return listTinh;
+
+	public HashMap<String, String> getListLoaiTour() {
+		return listLoaiTour;
 	}
-	public void setListTinh(HashMap<String, String> listTinh) {
-		this.listTinh = listTinh;
+
+	public void setListLoaiTour(HashMap<String, String> listLoaiTour) {
+		this.listLoaiTour = listLoaiTour;
 	}
-	public String getMaTinh() {
-		return maTinh;
+
+	public String getMaLoai() {
+		return maLoai;
 	}
-	public void setMaTinh(String maTinh) {
-		this.maTinh = maTinh;
+
+	public void setMaLoai(String maLoai) {
+		this.maLoai = maLoai;
 	}
-	
+
 	@Override
 	public String execute() throws Exception {
-		listTinh = new DLTinhBO().getAllSelect();
-		if(maTinh == null) {
-			maTinh = "-1";
+		listLoaiTour = new LoaiTourBO().getAllSelect();
+		if(maLoai == null) {
+			maLoai = "-1";
 		}
-		listTours = new DLTourBO().getAllByMaTinhObject(maTinh);
+		listTours = new DLTourBO().getAllByMaLoaiObject(maLoai);
 		return SUCCESS;
 	}
 
 	public String ajaxShowListTour() {
-		if(maTinh == null) {
-			maTinh = "-1";
+		if(maLoai == null) {
+			maLoai = "-1";
 		}
-		listTours = new DLTourBO().getAllByMaTinhObject(maTinh);
+		listTours = new DLTourBO().getAllByMaLoaiObject(maLoai);
 		return SUCCESS;
 	}
 }

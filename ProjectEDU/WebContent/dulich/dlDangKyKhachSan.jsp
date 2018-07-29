@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>Tạo Khách Sạn</title>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
-	<jsp:include page="css/style.html"/>
+	<jsp:include page="../css/style.html"/>
 
 	<script lang="Javascript">
 	    $(document).ready(function() {
@@ -33,7 +33,7 @@
 	</script>
 </head>
 <body>
-	<%@include file="frame/header.jsp"%>﻿
+	<%@include file="../frame/header.jsp"%>﻿
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
@@ -112,9 +112,9 @@
 					</div>
 				</div>
 			</div>
-			<%@include file="frame/right.jsp"%>
+			<%@include file="../frame/right.jsp"%>
 		</div>
 	</div>
-	<%@include file="frame/footer.jsp"%>
+	<%@include file="../frame/footer.jsp"%>
 </body>
 </html>
