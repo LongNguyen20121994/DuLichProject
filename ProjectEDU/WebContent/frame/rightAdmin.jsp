@@ -9,9 +9,8 @@
 <li class="listnone item2 list0-item"><s:a action="showCapNhatAdmin.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Cập nhật thông tin Nhân viên</s:a></li>
 <li class="listnone item2 list0-item"><s:a action=""><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý tài khoản Khách đặt tour</s:a></li>
 <li class="listnone item2 list0-item"><s:a action=""><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Hợp đồng</s:a></li>
-<li class="listnone item2 list0-item"><s:a action=""><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Khách sạn</s:a></li>
-<li class="listnone item2 list0-item"><s:a action=""><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Phương tiện di chuyển</s:a></li>
-<li class="listnone item2 list0-item"><s:a action=""><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Phương tiện di chuyển</s:a></li>
+<li class="listnone item2 list0-item"><s:a action="showDangKyKhachSan.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Khách sạn</s:a></li>
+<li class="listnone item2 list0-item"><s:a action="quanLyPhuongTien.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Phương tiện di chuyển</s:a></li>
 <li class="listnone item2 list0-item"><s:a action="showDangKyTour.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Tour</s:a></li>
 <li class="listnone item2 list0-item"><s:a action="showLenLichTour.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý lịch trình Tour</s:a></li>
 <li class="listnone item2 list0-item"><s:a action="showListTour.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Tour(list-thêm-sửa-xóa)</s:a></li>

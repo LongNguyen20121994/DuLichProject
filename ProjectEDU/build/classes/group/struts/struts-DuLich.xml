@@ -71,21 +71,9 @@
 	        </action>
 	<!-- Kết thúc hiển thị -->
 	
-	<!-- Bắt đầu đăng ký Tour-->
-		<!-- <action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
-	        <result name="info" type="chain">info</result>
-	        <result name="success">dulich/dlDangKyTour.jsp</result>
-        </action>
-        <action name="dangKyTour" class="controller.dulich.DangKyTourAction">
-	        <result name="info" type="chain">info</result>
-        </action>
-        <action name="showInfoTour" class="controller.dulich.ShowInfoTourAction">
-			<result name="error" type="chain">info</result>
-			<result name="success">dulich/capNhatTour.jsp</result>
-		</action> -->
-		
+	<!-- Bắt đầu đăng ký Tour-->		
 		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
-	        <result name="success">dulich/dlDangKyTour.jsp</result> 
+	        <result name="success">dulich/dangKyTour.jsp</result> 
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
         </action>
@@ -94,28 +82,11 @@
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
         </action>
-        <action name="capNhatTour" class="controller.dulich.DangKyTourAction" method="capNhatTour">
+        <action name="capNhatListTour" class="controller.dulich.DangKyTourAction" method="capNhatListTour">
             <result name="success" type="chain">showDangKyTour</result>
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
         </action>
-	<!-- Kết thúc đăng ký Tour -->
-	
-		<!-- <action name="showThemMonThi" class="controller.khoi.CapNhatMonThiAction" method="showThemMonThi">
-	        <result name="success">khoitv/capNhatMonThi.jsp</result> 
-            <result name="info" type="chain">info</result>
-            <result name="login" type="chain">showLogin</result>
-        </action>
-        <action name="themMonThi" class="controller.khoi.CapNhatMonThiAction">
-	        <result name="success" type="chain">showThemMonThi</result>  
-            <result name="info" type="chain">info</result>
-            <result name="login" type="chain">showLogin</result>
-        </action>
-        <action name="capNhatListMonThi" class="controller.khoi.CapNhatMonThiAction" method="capNhatListMonThi">
-            <result name="success" type="chain">showThemMonThi</result>
-            <result name="info" type="chain">info</result>
-            <result name="login" type="chain">showLogin</result>
-        </action> -->
 	
 	<!-- Lên lịch Tour -->
         <action name="showLenLichTour" class="controller.dulich.LenLichTourAction" method="showLenLichTour">
@@ -134,6 +105,41 @@
             <result name="login" type="chain">showLogin</result>
         </action>
 	<!-- End lên lịch Tour -->
-			
+	
+	<!-- Khách Sạn -->
+        <action name="showDangKyKhachSan" class="controller.dulich.DangKyKhachSanAction" method="showDangKyKhachSan">
+	        <result name="success">dulich/quanLyKhachSan.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="taoKhackSan" class="controller.dulich.DangKyKhachSanAction">
+	        <result name="success" type="chain">showDangKyKhachSan</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatKhachSan" class="controller.dulich.DangKyKhachSanAction" method="capNhatKhachSan">
+            <result name="success" type="chain">showDangKyKhachSan</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- End Khách Sạn -->
+	
+	<!-- Phương tiện -->
+        <action name="quanLyPhuongTien" class="controller.dulich.QuanLyPhuongTienAction" method="quanLyPhuongTien">
+	        <result name="success">dulich/quanLyPhuongTien.jsp</result> 
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+		<action name="themPhuongTien" class="controller.dulich.QuanLyPhuongTienAction">
+	        <result name="success" type="chain">quanLyPhuongTien</result>  
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="capNhatListPhuongTien" class="controller.dulich.QuanLyPhuongTienAction" method="capNhatListPhuongTien">
+            <result name="success" type="chain">quanLyPhuongTien</result>
+            <result name="info" type="chain">info</result>
+            <result name="login" type="chain">showLogin</result>
+        </action>
+	<!-- Kết thúc thêm môn thi -->
 	</package>
 </struts>

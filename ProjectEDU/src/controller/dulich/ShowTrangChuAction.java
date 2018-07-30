@@ -20,12 +20,12 @@ public class ShowTrangChuAction extends ActionSupport {
 	
 	@Override
 	public String execute() throws Exception {
-		listTours = new DLTourBO().getAll();
+		listTours = new DLTourBO().getTop();
 		return SUCCESS;
 	}
 
 	public String ajaxShowListTour() {
-		listTours = new DLTourBO().getAll();
+		listTours = new DLTourBO().getTop();
 		return SUCCESS;
 	}
 }

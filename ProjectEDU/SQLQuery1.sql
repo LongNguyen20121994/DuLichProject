@@ -27,7 +27,6 @@ Create table Tour(
 	AnhDaiDien varchar(max),
 	MoTaTongQuan nvarchar(max),
 	LichTrinh nvarchar(max),
-	DiaDiemKhoiHanh nvarchar(500),
 	SoNgay int,
 	SoDem int,
 	GhiChu nvarchar(max),
@@ -41,7 +40,14 @@ Create table KhachSan(
 	MaTinh varchar(20) foreign key references Tinh(MaTinh),
 	DiaChi nvarchar(500),
 	Sao int,
-	MoTa varchar(max)
+	MoTa nvarchar(max)
+)
+-- Phương tiện
+Create table PhuongTien(
+	MaPT varchar(10) primary key,
+	TenPT nvarchar(250),
+	MaTinh varchar(20) foreign key references Tinh(MaTinh),
+	MoTa nvarchar(max)
 )
 -- Chi tiết Tour
 Create table ChiTietTour(
@@ -49,6 +55,7 @@ Create table ChiTietTour(
 	MaTour varchar(10) foreign key references Tour(MaTour),
 	MaKS varchar(10) foreign key references KhachSan(MaKS),
 	NgayKhoiHanh datetime,
+	DiaDiemKhoiHanh nvarchar(500),
 	DacDiem nvarchar(500),
 	GiaVeNguoiLon decimal,
 	SoCho int,

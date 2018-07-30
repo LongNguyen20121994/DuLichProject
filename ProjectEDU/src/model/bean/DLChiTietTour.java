@@ -9,9 +9,6 @@ public class DLChiTietTour {
 	private Date ngayKhoiHanh;
 	private String dacDiem;
 	private double giaVeNguoiLon;
-	private double giaVeTreEm;
-	private double giaVeTreNho;
-	private double giaVeSoSinh;
 	private int soCho;
 	private int soChoDaDat;
 	

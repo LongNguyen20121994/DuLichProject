@@ -3,12 +3,39 @@ package model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import model.bean.DLKhachSan;
 import model.dao.khoi.ConnectDB;
 
 public class KhachSanDAO {
+	public String getMaxRecord() {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaKS from KhachSan ORDER BY MaKS DESC";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		ResultSet rs = stmt.executeQuery();
+    		DLKhachSan tur = null;
+    		if(rs.next()){
+    			tur = new DLKhachSan();
+    			tur.setMaKS(rs.getString(1));
+    		}else {
+    			stmt.close();
+    			return null;
+    		}
+        	stmt.close();
+        	return tur.getMaKS();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+	}
 	public HashMap<String, String> getAllSelect() {
 		HashMap<String, String> list = new HashMap<String, String>();
 		ConnectDB con = new ConnectDB();
@@ -138,8 +165,8 @@ public class KhachSanDAO {
 			stmt.setString(3, ks.getHinhAnh());
 			stmt.setString(4, ks.getMaTinh());
 			stmt.setString(5, ks.getDiaChi());
-			stmt.setInt(5, ks.getSao());
-			stmt.setString(6, ks.getMoTa());
+			stmt.setInt(6, ks.getSao());
+			stmt.setString(7, ks.getMoTa());
 			if (stmt.executeUpdate() > 0) {
 				stmt.close();
 				return true;
@@ -178,22 +205,25 @@ public class KhachSanDAO {
         }
 	}
 	
-	public boolean deleteKhachSan(String maKS) {
-		ConnectDB con = new ConnectDB();
-		con.openConnection();
-		String sql = "delete from KhachSan where MaKS=?";
+	public boolean deleteKhachSan(List<String> listMaKS) {
+		ConnectDB connectDB = new ConnectDB();
+		String str = "('";
+		for (int i = 0; i < listMaKS.size() - 1; i++) {
+			str += listMaKS.get(i) + "','";
+		}
+		str += listMaKS.get(listMaKS.size() - 1) + "')";
+		String sql = "delete from KhachSan where MaKS in " + str;
 		PreparedStatement stmt = null;
+		connectDB.openConnection();
 		try {
-			stmt = con.getConnect().prepareStatement(sql);
-			stmt.setString(1, maKS);
+			stmt = connectDB.getConnect().prepareStatement(sql);
 			if (stmt.executeUpdate() > 0) {
 				return true;
 			}
-			stmt.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		} finally {
-			con.closeConnection();
+			connectDB.closeConnection();
 		}
 		return false;
 	}
@@ -222,5 +252,36 @@ public class KhachSanDAO {
 			con.closeConnection();
 		}
 		return false;
+	}
+	
+	public List<DLKhachSan> getAll() {
+		List<DLKhachSan> list = new ArrayList<DLKhachSan>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaKS,TenKS,HinhAnh,MaTinh,DiaChi,Sao,MoTa from KhachSan";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		ResultSet rs = stmt.executeQuery();
+    		DLKhachSan mt;
+    		while(rs.next()){
+    			mt = new DLKhachSan();
+    			mt.setMaKS(rs.getString(1));
+    			mt.setTenKS(rs.getString(2));
+    			mt.setHinhAnh(rs.getString(3));
+    			mt.setMaTinh(rs.getString(4));
+    			mt.setDiaChi(rs.getString(5));
+    			mt.setSao(rs.getInt(6));
+    			mt.setMoTa(rs.getString(7));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
 	}
 }

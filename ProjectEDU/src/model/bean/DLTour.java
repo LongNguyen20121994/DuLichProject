@@ -6,7 +6,6 @@ public class DLTour {
 	private String hinhAnh;
 	private String moTaTongQuan;
 	private String lichTrinh;
-	private String diaDiemKhoiHanh;
 	private int soNgay;
 	private int soDem;
 	private String ghiChu;
@@ -41,12 +40,6 @@ public class DLTour {
 	}
 	public void setLichTrinh(String lichTrinh) {
 		this.lichTrinh = lichTrinh;
-	}
-	public String getDiaDiemKhoiHanh() {
-		return diaDiemKhoiHanh;
-	}
-	public void setDiaDiemKhoiHanh(String diaDiemKhoiHanh) {
-		this.diaDiemKhoiHanh = diaDiemKhoiHanh;
 	}
 	public int getSoNgay() {
 		return soNgay;

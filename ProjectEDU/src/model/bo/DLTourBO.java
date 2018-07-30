@@ -22,8 +22,8 @@ public class DLTourBO {
 		return new DLTourDAO().updateTour(tour);
 	}
 	
-	public List<DLTour> getAll() {
-		return new DLTourDAO().getAll();
+	public List<DLTour> getTop() {
+		return new DLTourDAO().getTop();
 	}
 	
 	public List<DLTour> getAllByMaLoaiObject(String maLoai) {
@@ -39,5 +39,13 @@ public class DLTourBO {
 
 	public DLTour getInfo(String maTour) {
 		return new DLTourDAO().getInfo(maTour);
+	}
+	
+	public boolean deleteListTour(List<String> listMaTour) {
+		return new DLTourDAO().deleteListTour(listMaTour);
+	}
+	
+	public List<DLTour> getAll() {
+		return new DLTourDAO().getAll();
 	}
 }

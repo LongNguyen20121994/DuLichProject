@@ -41,7 +41,7 @@ public class DLTourDAO {
 	public boolean insertTour(DLTour tour) {		
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
-		String sql = "insert into Tour(MaTour,TieuDe,AnhDaiDien,MoTaTongQuan,LichTrinh,DiaDiemKhoiHanh,SoNgay,SoDem,GhiChu,MaLoai) values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into Tour(MaTour,TieuDe,AnhDaiDien,MoTaTongQuan,LichTrinh,SoNgay,SoDem,GhiChu,MaLoai) values(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement stmt = null;
         try {
         	stmt = con.getConnect().prepareStatement(sql);
@@ -50,11 +50,10 @@ public class DLTourDAO {
 			stmt.setString(3, tour.getHinhAnh());
 			stmt.setString(4, tour.getMoTaTongQuan());
 			stmt.setString(5, tour.getLichTrinh());
-			stmt.setString(6, tour.getDiaDiemKhoiHanh());
-			stmt.setInt(7, tour.getSoNgay());
-			stmt.setInt(8, tour.getSoDem());
-			stmt.setString(9, tour.getGhiChu());
-			stmt.setString(10, tour.getMaLoai());
+			stmt.setInt(6, tour.getSoNgay());
+			stmt.setInt(7, tour.getSoDem());
+			stmt.setString(8, tour.getGhiChu());
+			stmt.setString(9, tour.getMaLoai());
 			if (stmt.executeUpdate() > 0) {
 				stmt.close();
 				return true;
@@ -68,7 +67,7 @@ public class DLTourDAO {
 		return false;
 	}
 	
-	public List<DLTour> getAll() {
+	public List<DLTour> getTop() {
 		List<DLTour> list = new ArrayList<DLTour>();
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
@@ -187,7 +186,7 @@ public class DLTourDAO {
 	public DLTour getInfo(String maTour) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
-		String sql = "select MaTour,TieuDe,AnhDaiDien,MoTaTongQuan,LichTrinh,DiaDiemKhoiHanh,SoNgay,SoDem,GhiChu,MaTinh "
+		String sql = "select MaTour,TieuDe,AnhDaiDien,MoTaTongQuan,LichTrinh,SoNgay,SoDem,GhiChu,MaLoai "
 				+ "from Tour where MaTour=?";
         PreparedStatement stmt = null;
         try {
@@ -202,11 +201,10 @@ public class DLTourDAO {
     			tur.setHinhAnh(rs.getString(3));
     			tur.setMoTaTongQuan(rs.getString(4));
     			tur.setLichTrinh(rs.getString(5));
-    			tur.setDiaDiemKhoiHanh(rs.getString(6));
-    			tur.setSoNgay(rs.getInt(7));
-    			tur.setSoDem(rs.getInt(8));
-    			tur.setGhiChu(rs.getString(9));
-    			tur.setMaLoai(rs.getString(10));
+    			tur.setSoNgay(rs.getInt(6));
+    			tur.setSoDem(rs.getInt(7));
+    			tur.setGhiChu(rs.getString(8));
+    			tur.setMaLoai(rs.getString(9));
     		}
         	stmt.close();
             return tur;
@@ -221,8 +219,7 @@ public class DLTourDAO {
 	public boolean updateTour(DLTour tour) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
-		String sql = "update Tour set TieuDe=?, AnhDaiDien=?, MoTaTongQuan=?, LichTrinh=?, DiaDiemKhoiHanh=?, "
-				+"SoNgay=?, SoDem=?, GhiChu=?, MaTinh=? where MaTour=?";
+		String sql = "update Tour set TieuDe=?, AnhDaiDien=?, MoTaTongQuan=?, LichTrinh=?, SoNgay=?, SoDem=?, GhiChu=?, MaLoai=? where MaTour=?";
         PreparedStatement stmt = null;
         try {
     		stmt = con.getConnect().prepareStatement(sql);
@@ -230,12 +227,11 @@ public class DLTourDAO {
 			stmt.setString(2, tour.getHinhAnh());
 			stmt.setString(3, tour.getMoTaTongQuan());
 			stmt.setString(4, tour.getLichTrinh());
-			stmt.setString(5, tour.getDiaDiemKhoiHanh());
-			stmt.setInt(6, tour.getSoNgay());
-			stmt.setInt(7, tour.getSoDem());
-			stmt.setString(8, tour.getGhiChu());
-			stmt.setString(9, tour.getMaLoai());
-			stmt.setString(10, tour.getMaTour());
+			stmt.setInt(5, tour.getSoNgay());
+			stmt.setInt(6, tour.getSoDem());
+			stmt.setString(7, tour.getGhiChu());
+			stmt.setString(8, tour.getMaLoai());
+			stmt.setString(9, tour.getMaTour());
 			if(stmt.executeUpdate() > 0){
 				return true;
 			}
@@ -246,5 +242,61 @@ public class DLTourDAO {
         } finally {
             con.closeConnection();
         }
+	}
+
+	public boolean deleteListTour(List<String> listMaTour) {
+		ConnectDB connectDB = new ConnectDB();
+		String str = "('";
+		for (int i = 0; i < listMaTour.size() - 1; i++) {
+			str += listMaTour.get(i) + "','";
+		}
+		str += listMaTour.get(listMaTour.size() - 1) + "')";
+		String sql = "delete from Tour where MaTour in " + str;
+		PreparedStatement stmt = null;
+		connectDB.openConnection();
+		try {
+			stmt = connectDB.getConnect().prepareStatement(sql);
+			if (stmt.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			connectDB.closeConnection();
+		}
+		return false;
+	}
+
+	public List<DLTour> getAll() {
+		List<DLTour> list = new ArrayList<DLTour>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaTour,TieuDe,AnhDaiDien,MoTaTongQuan,LichTrinh,SoNgay,SoDem,GhiChu,MaLoai from Tour";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		ResultSet rs = stmt.executeQuery();
+    		DLTour mt;
+    		while(rs.next()){
+    			mt = new DLTour();
+    			mt.setMaTour(rs.getString(1));
+    			mt.setTieuDe(rs.getString(2));
+    			mt.setHinhAnh(rs.getString(3));
+    			mt.setMoTaTongQuan(rs.getString(4));
+    			mt.setLichTrinh(rs.getString(5));
+    			mt.setSoNgay(rs.getInt(6));
+    			mt.setSoDem(rs.getInt(7));
+    			mt.setGhiChu(rs.getString(8));
+    			mt.setMaLoai(rs.getString(9));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
 	}
 }

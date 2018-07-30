@@ -1,14 +1,23 @@
 package model.bo;
 
 import java.util.HashMap;
+import java.util.List;
 
 import model.bean.DLKhachSan;
 import model.dao.KhachSanDAO;
 
 public class KhachSanBO {
+	
+	public String getMaxRecord() {
+		return new KhachSanDAO().getMaxRecord();
+	}
 
 	public HashMap<String, String> getAllSelect() {
 		return new KhachSanDAO().getAllSelect();
+	}
+	
+	public List<DLKhachSan> getAll() {
+		return new KhachSanDAO().getAll();
 	}
 	
 	public HashMap<String, String> getAllByMaTinh(String maTinh) {
@@ -27,8 +36,8 @@ public class KhachSanBO {
 		return new KhachSanDAO().updateKhachSan(ks);
 	}
 	
-	public boolean deleteKhachSan(String maKS) {
-		return new KhachSanDAO().deleteKhachSan(maKS);
+	public boolean deleteKhachSan(List<String> listMaKS) {
+		return new KhachSanDAO().deleteKhachSan(listMaKS);
 	}
 	
 	public boolean deleteListKhachSan(String[] listKS, String maTinh) {
