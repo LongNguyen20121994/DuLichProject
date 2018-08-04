@@ -3,11 +3,13 @@ package model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import model.bean.DLTour;
+import model.bean.DLTourTrangChu;
 import model.dao.khoi.ConnectDB;
 
 public class DLTourDAO {
@@ -67,22 +69,37 @@ public class DLTourDAO {
 		return false;
 	}
 	
-	public List<DLTour> getTop() {
-		List<DLTour> list = new ArrayList<DLTour>();
+	public List<DLTourTrangChu> getTop(String maLt) throws ParseException {
+		List<DLTourTrangChu> list = new ArrayList<DLTourTrangChu>();
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
-		String sql = "SELECT top 4 MaTour,TieuDe,AnhDaiDien,SoNgay FROM Tour ORDER BY MaTour DESC";	
+		String sql = "SELECT top 4 t.MaTour,TieuDe,AnhDaiDien,SoNgay,SoDem FROM Tour t, LoaiTour lt"
+						+ " Where t.MaLoai = lt.MaLoai and"
+						+ " lt.MaLoai = ?"
+						+ " ORDER BY MaTour DESC";	
         PreparedStatement stmt = null;
         try {
-    		stmt = con.getConnect().prepareStatement(sql);		
+    		stmt = con.getConnect().prepareStatement(sql);	
+    		stmt.setString(1, maLt);
     		ResultSet rs = stmt.executeQuery();
-    		DLTour tur;
+    		DLTourTrangChu tur;
+    		int soNgayDem=0;
+    		String tongNgayDem = "";
     		while(rs.next()){
-    			tur = new DLTour();
+    			tur = new DLTourTrangChu();
     			tur.setMaTour(rs.getString(1));
     			tur.setTieuDe(rs.getString(2));
     			tur.setHinhAnh(rs.getString(3));
-    			tur.setSoNgay(rs.getInt(4));
+    			soNgayDem = rs.getInt(4);
+    			if(soNgayDem > 0) {
+    				tongNgayDem = soNgayDem + " ngày ";
+    			}
+    			soNgayDem = rs.getInt(5);
+    			if(soNgayDem > 0) {
+    				tongNgayDem += soNgayDem + " đêm";
+    			}
+    			tur.setSoNgayDem(tongNgayDem);
+    			getLichTrinh(tur);
     			list.add(tur);
     		} 
         	stmt.close();
@@ -93,6 +110,33 @@ public class DLTourDAO {
             con.closeConnection();
         }
 		return list;
+	}
+	
+	public void getLichTrinh(DLTourTrangChu tur) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "SELECT top 1 GiaVeNguoiLon, NgayKhoiHanh FROM ChiTietTour"
+						+ " Where MaTour = ?"
+						+ " and NgayKhoiHanh > ?"
+						+ " ORDER BY NgayKhoiHanh ASC";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);	
+    		stmt.setString(1, tur.getMaTour());
+    		long millis=System.currentTimeMillis();  
+    		java.sql.Date date=new java.sql.Date(millis);
+    		stmt.setDate(2, date);
+    		ResultSet rs = stmt.executeQuery();
+    		if(rs.next()){
+    			tur.setGiaVe(rs.getString(1) + " VND");
+    			tur.setNgayKhoiHanh(rs.getString(2).substring(0, 10));
+    		} 
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            con.closeConnection();
+        }
 	}
 	
 	public List<DLTour> getAllByMaLoaiObject(String maLoai) {
@@ -288,6 +332,33 @@ public class DLTourDAO {
     			mt.setSoDem(rs.getInt(7));
     			mt.setGhiChu(rs.getString(8));
     			mt.setMaLoai(rs.getString(9));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
+	}
+	
+	public List<DLTour> getAllLikeName(String name) {
+		List<DLTour> list = new ArrayList<DLTour>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaTour,TieuDe from Tour where TieuDe like '%?%'";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, name);
+    		ResultSet rs = stmt.executeQuery();
+    		DLTour mt;
+    		while(rs.next()){
+    			mt = new DLTour();
+    			mt.setMaTour(rs.getString(1));
+    			mt.setTieuDe(rs.getString(2));
     			list.add(mt);
     		}
         	stmt.close();

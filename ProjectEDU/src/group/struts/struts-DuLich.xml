@@ -73,7 +73,7 @@
 	
 	<!-- Bắt đầu đăng ký Tour-->		
 		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
-	        <result name="success">dulich/dangKyTour.jsp</result> 
+	        <result name="success">index.jsp</result>
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
         </action>
@@ -86,6 +86,9 @@
             <result name="success" type="chain">showDangKyTour</result>
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
+        </action>
+        <action name="getListTour" class="controller.dulich.DangKyTourAction" method="ajaxGetListTour">
+            <result name="success" type="chain">index.jsp</result>
         </action>
 	
 	<!-- Lên lịch Tour -->

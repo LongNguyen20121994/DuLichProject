@@ -10,7 +10,6 @@ import controller.khoi.LoginAction;
 import model.bean.DLPhuongTien;
 import model.bean.Info;
 import model.bo.DLTinhBO;
-import model.bo.KhachSanBO;
 import model.bo.PhuongTienBO;
 
 @SuppressWarnings("serial")

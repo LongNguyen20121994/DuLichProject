@@ -204,7 +204,7 @@
 							        <tbody>
 							 			<s:iterator value="list" >
 							       			<tr>
-								                <td align="center"><s:property value="maChiTietTour"/></td>
+								                <td align="center"><s:property value="maTour"/></td>
 								                <td><s:property value="ngayKhoiHanh"/></td>
 								                <td><s:property value="giaVeNguoiLon"/></td>
 								                <td><s:property value="soCho"/></td>

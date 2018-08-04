@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/css/style.html=UTF-8
+encoding//WebContent/dulich/dlDanhSachTour.jsp=UTF-8
 encoding//src/common/Library.java=UTF-8
 encoding//src/common/SendEmail.java=UTF-8
 encoding//src/controller/dulich/AjaxKhachSanAction.java=UTF-8
@@ -13,6 +14,7 @@ encoding//src/controller/dulich/ShowInfoTourAction.java=UTF-8
 encoding//src/controller/khoi/CapNhatCumThiAction.java=UTF-8
 encoding//src/controller/khoi/DangKyQuanTriVienAction.java=UTF-8
 encoding//src/controller/khoi/LoginAction.java=UTF-8
+encoding//src/model/dao/DLTourDAO.java=UTF-8
 encoding//src/model/dao/khoi/GiangVienDAO.java=UTF-8
 encoding//src/model/dao/khoi/GiaoVienDAO.java=UTF-8
 encoding//src/model/dao/khoi/QuanLyCumThiDAO.java=UTF-8

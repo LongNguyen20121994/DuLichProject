@@ -21,6 +21,8 @@ public class DangKyTourAction extends ActionSupport {
 	private int maxTour;
 	private HashMap<String, String> listLoaiTour;
 	private Info info;
+	private List<DLTour> listGetName;
+	private String name;
 
 	private List<DLTour> list;
 	private List<String> listMaTour;
@@ -33,105 +35,92 @@ public class DangKyTourAction extends ActionSupport {
 	public DLTour getTour() {
 		return tour;
 	}
-
 	public void setTour(DLTour tour) {
 		this.tour = tour;
 	}
-
 	public String getMaTour() {
 		return maTour;
 	}
-
 	public void setMaTour(String maTour) {
 		this.maTour = maTour;
 	}
-
 	public String getHinhAnh() {
 		return hinhAnh;
 	}
-
 	public void setHinhAnh(String hinhAnh) {
 		this.hinhAnh = hinhAnh;
 	}
-
 	public int getMaxTour() {
 		return maxTour;
 	}
-
 	public void setMaxTour(int maxTour) {
 		this.maxTour = maxTour;
 	}
-	
 	public HashMap<String, String> getListLoaiTour() {
 		return listLoaiTour;
 	}
-
 	public void setListLoaiTour(HashMap<String, String> listLoaiTour) {
 		this.listLoaiTour = listLoaiTour;
 	}
-
 	public Info getInfo() {
 		return info;
 	}
-
 	public void setInfo(Info info) {
 		this.info = info;
 	}
-
 	public List<DLTour> getList() {
 		return list;
 	}
-
 	public void setList(List<DLTour> list) {
 		this.list = list;
 	}
-
 	public List<String> getListMaTour() {
 		return listMaTour;
 	}
-
 	public void setListMaTour(List<String> listMaTour) {
 		this.listMaTour = listMaTour;
 	}
-
 	public String getClassInput() {
 		return classInput;
 	}
-
 	public void setClassInput(String classInput) {
 		this.classInput = classInput;
 	}
-
 	public String getClassList() {
 		return classList;
 	}
-
 	public void setClassList(String classList) {
 		this.classList = classList;
 	}
-
 	public String getBtnAddNew() {
 		return btnAddNew;
 	}
-
 	public void setBtnAddNew(String btnAddNew) {
 		this.btnAddNew = btnAddNew;
 	}
-
 	public String getBtnUpdate() {
 		return btnUpdate;
 	}
-
 	public void setBtnUpdate(String btnUpdate) {
 		this.btnUpdate = btnUpdate;
 	}
-
 	public String getBtnDelete() {
 		return btnDelete;
 	}
-
 	public void setBtnDelete(String btnDelete) {
 		this.btnDelete = btnDelete;
+	}
+	public List<DLTour> getListGetName() {
+		return listGetName;
+	}
+	public void setListGetName(List<DLTour> listGetName) {
+		this.listGetName = listGetName;
+	}	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -184,7 +173,7 @@ public class DangKyTourAction extends ActionSupport {
 
 	public String taoMa(int max) {
 		int i, n = max;
-		for (i = 1; n > 10; i++)
+		for (i = 1; n >= 10; i++)
 			n /= 10;
 		StringBuilder ma = new StringBuilder();
 		for (int j = 0; j < 7 - i; j++)
@@ -223,19 +212,10 @@ public class DangKyTourAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	/*public String showCapNhatTour() {
-		info = new LoginAction().checkLogin("6");
-		if (info != null) {
-			if (info.getTieuDe() == null) {
-				return "login";
-			} else {
-				return "info";
-			}
-		}
-		tour = new DLTourBO().getInfo(maTour);
-		listLoaiTour = new LoaiTourBO().getAllSelect();
+	public String ajaxGetListTour() {
+		listGetName = new DLTourBO().getAllLikeName(name);
 		return SUCCESS;
-	}*/
+	}
 
 	public String capNhatListTour() {
 		info = new LoginAction().checkLogin("6");

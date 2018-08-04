@@ -75,7 +75,7 @@
 </div>
 
 <nav class="navbar navbar-static-top"
-	style="background-color: #1f3136 !important; margin-bottom: 40px;">
+	style="background-color: #075d77 !important; margin-bottom: 40px;">
 	<div class="container" style="position: relative;">
 		<div class="navbar-header">
 			<span class="navbar-toggle collapsed glyphicon glyphicon-th"
@@ -140,7 +140,7 @@
 <!-- 					</ul> -->
 				</li>
 				<li class="dropdown"><s:a href="#" cssClass="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-expanded="false">Thông tin tuyển sinh<span class="caret"></span></s:a>
+					data-toggle="dropdown" role="button" aria-expanded="false">Thông tin du lịch<span class="caret"></span></s:a>
 					<ul class="dropdown-menu" role="menu">
 						<li><s:a action="showListDaiHocCaoDang.trip">Danh sách các trường ĐH-CĐ</s:a></li>
 						<li><s:a href="#">Quy chế tuyển sinh</s:a></li>
@@ -154,7 +154,11 @@
 <%-- 						<li><s:a href="#">Xem thông tin dự thi</s:a></li> --%>
 <%-- 						<li><s:a href="#">Nhận giấy báo dự thi</s:a></li> --%>
 					</ul></li>
-				<li><s:a href="#">Liên hệ</s:a></li>
+					<%-- <li>
+	        			<div class="input-group" style="width: 300px; margin-top: 6px">
+							<s:select list="listTinh" name="pt.maTinh" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Tìm kiếm ..."/>
+						</div>
+        			</li> --%>
 			</ul>
 		</div>
 	</div>

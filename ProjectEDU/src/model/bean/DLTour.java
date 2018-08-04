@@ -10,6 +10,7 @@ public class DLTour {
 	private int soDem;
 	private String ghiChu;
 	private String maLoai;
+	private String soNgayDem;
 	
 	public String getMaTour() {
 		return maTour;
@@ -64,5 +65,11 @@ public class DLTour {
 	}
 	public void setMaLoai(String maLoai) {
 		this.maLoai = maLoai;
+	}
+	public String getSoNgayDem() {
+		return soNgayDem;
+	}
+	public void setSoNgayDem(String soNgayDem) {
+		this.soNgayDem = soNgayDem;
 	}
 }

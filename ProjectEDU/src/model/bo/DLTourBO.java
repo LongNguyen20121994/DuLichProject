@@ -1,9 +1,11 @@
 package model.bo;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
 import model.bean.DLTour;
+import model.bean.DLTourTrangChu;
 import model.dao.DLTourDAO;
 
 public class DLTourBO {
@@ -22,8 +24,8 @@ public class DLTourBO {
 		return new DLTourDAO().updateTour(tour);
 	}
 	
-	public List<DLTour> getTop() {
-		return new DLTourDAO().getTop();
+	public List<DLTourTrangChu> getTop(String maLt) throws ParseException {
+		return new DLTourDAO().getTop(maLt);
 	}
 	
 	public List<DLTour> getAllByMaLoaiObject(String maLoai) {
@@ -47,5 +49,9 @@ public class DLTourBO {
 	
 	public List<DLTour> getAll() {
 		return new DLTourDAO().getAll();
+	}
+	
+	public List<DLTour> getAllLikeName(String name) {
+		return new DLTourDAO().getAllLikeName(name);
 	}
 }
