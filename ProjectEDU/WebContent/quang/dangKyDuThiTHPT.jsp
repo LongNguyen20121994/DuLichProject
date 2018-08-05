@@ -10,7 +10,7 @@
 	var cumThi;
 
 	function checkCumThiDKDT(){
-		$.post("checkCumThiDKDT.edu",
+		$.post("checkCumThiDKDT.trip",
 	    {
 			namTS: $("#namTS").val(),
 			maCumThi: $("#cumThi").val(),
@@ -28,7 +28,7 @@
 	}
 	
 	function checkMonThiDKDT(){
-		$.post("checkMonThiDKDT.edu",
+		$.post("checkMonThiDKDT.trip",
 	    {
 			namTS: $("#namTS").val(),
 	    	maMon: $("#maMon").val(),
@@ -47,7 +47,7 @@
 	}
 	
 	function showMonThi(){
-        $.post("showListMonDKDT.edu",
+        $.post("showListMonDKDT.trip",
 	    {
 			namTS: $("#namTS").val(),
 			soCMNDUpdate: $("#soCMNDUpdate").val()
@@ -114,7 +114,7 @@
 				    <h2 style="margin-bottom:0px;">Đăng ký môn thi</h2>
 <%-- 		            <s:a href=""><small><small><i>Bấm vào đây để tải về danh sách ngành đã có để cập nhật.</i></small></small></s:a> --%>
 		            <br><br>
-					<s:form action="dangKyDuThiTHPT.edu" method="post">
+					<s:form action="dangKyDuThiTHPT.trip" method="post">
 						<s:hidden name="soCMNDUpdate" id="soCMNDUpdate"></s:hidden>
 						<table class="table">
                            <tr>

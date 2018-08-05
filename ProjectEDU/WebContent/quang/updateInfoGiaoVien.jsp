@@ -8,7 +8,7 @@
 <script src="js/validateQuang.js"></script>
 <script lang="Javascript">
 	function changeTinh(){
-		$.post("showHuyen.edu",
+		$.post("showHuyen.trip",
 	    {
 	    	maTinh: $("#maTinh").val()
 	    },
@@ -18,7 +18,7 @@
 	}
 	
 	function changeTinhTHPT(){
-		$.post("showTHPT.edu",
+		$.post("showTHPT.trip",
 	    {
 	    	maTinh: $("#maTinhTHPT").val()
 	    },
@@ -28,7 +28,7 @@
 	}
 	
 	function changeHuyen(){
-		$.post("showXa.edu",
+		$.post("showXa.trip",
 	    {
 			maTinh: $("#maTinh").val(),
 	    	maHuyen: $("#maHuyen").val()
@@ -40,7 +40,7 @@
 	
     $(document).ready(function() {
         $('input[type=file]').ajaxfileupload({
-            'action' : 'uploadHinhAnh.edu',
+            'action' : 'uploadHinhAnh.trip',
             'onComplete' : function(response) {
                 $('#upload').hide();
                 
@@ -80,7 +80,7 @@
 				    <h2 style="margin-bottom:0px;">Cập nhật thông tin giáo viên</h2>
 		            <s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
 		            <br><br>
-			        <s:form method="post" action="updateInfoGiaoVien.edu">
+			        <s:form method="post" action="updateInfoGiaoVien.trip">
 				        <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
 				        	<img src="${gv.hinhAnh}" class="img-thumbnail" width="100%" />
 				        </div>

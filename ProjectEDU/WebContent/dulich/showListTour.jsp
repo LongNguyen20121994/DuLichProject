@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cập nhật tài khoản Admin</title>
+<title>Danh sách Tour</title>
 <jsp:include page="../css/style.html"/>
 
 <!-- table css + js-->

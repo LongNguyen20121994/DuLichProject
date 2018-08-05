@@ -33,7 +33,7 @@
 						<div id="menu1" class="tab-pane fade" style="width:100%;">
 							<h2 style="margin-bottom:0px;">Upload danh sách điểm thi </h2>
 							<s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
-							<s:form action="uploadDiemThiExcel.edu" method="post" enctype="multipart/form-data">
+							<s:form action="uploadDiemThiExcel.trip" method="post" enctype="multipart/form-data">
 								<div class="input-group" style="margin-top:20px ">
 									<table class="table">
                                         <tr>

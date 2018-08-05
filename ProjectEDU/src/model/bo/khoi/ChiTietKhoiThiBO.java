@@ -21,6 +21,7 @@ public class ChiTietKhoiThiBO {
 	}
 
 	public boolean insertChiTietKhoiThi(ChiTietKhoiThi ct) {
+		// TODO Auto-generated method stub
 		return new ChiTietKhoiThiDAO().insertChiTietKhoiThi(ct);
 	}
 

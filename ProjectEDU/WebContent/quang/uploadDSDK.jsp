@@ -11,7 +11,7 @@
 
 	function changeSoCMND(){
 		if($("#soCMND").val() > 8 ){
-			$.post("checkThiSinh.edu",
+			$.post("checkThiSinh.trip",
 		    {
 		    	SoCMND: $("#soCMND").val()
 		    },
@@ -28,7 +28,7 @@
 	}
 	
 	function changeTinh(){
-		$.post("showHuyen.edu",
+		$.post("showHuyen.trip",
 	    {
 	    	maTinh: $("#maTinh").val()
 	    },
@@ -38,7 +38,7 @@
 	}
 
 	function changeHuyen(){
-		$.post("showXa.edu",
+		$.post("showXa.trip",
 	    {
 			maTinh: $("#maTinh").val(),
 	    	maHuyen: $("#maHuyen").val()
@@ -49,7 +49,7 @@
 	}
 	
 	function changeTinhTHPT10(){
-		$.post("showTHPT.edu",
+		$.post("showTHPT.trip",
 	    {
 	    	maTinh: $("#maTinhTHPT10").val()
 	    },
@@ -58,7 +58,7 @@
 	    });
 	}
 	function changeTinhTHPT11(){
-		$.post("showTHPT.edu",
+		$.post("showTHPT.trip",
 	    {
 	    	maTinh: $("#maTinhTHPT11").val()
 	    },
@@ -68,7 +68,7 @@
 	}
 	
 	function changeTinhTHPT12(){
-		$.post("showTHPT.edu",
+		$.post("showTHPT.trip",
 	    {
 	    	maTinh: $("#maTinhTHPT12").val()
 	    },
@@ -79,7 +79,7 @@
 	
     $(document).ready(function() {
         $('input[type=file]').ajaxfileupload({
-            'action' : 'uploadHinhAnh.edu',
+            'action' : 'uploadHinhAnh.trip',
             'onComplete' : function(response) {
                 $('#upload').hide();
                 
@@ -136,7 +136,7 @@
 							<h2 style="margin-bottom:0px;">Thông tin thí sinh</h2>
 				            <s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
 				            <br><br>
-					        <s:form method="post" action="dangKyTSTuDo.edu">
+					        <s:form method="post" action="dangKyTSTuDo.trip">
 					        	<s:hidden name="ts.nguoiDK" value="#session.soCMND"></s:hidden>
 						        <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
 						        	<img src="images/addImage.jpg" class="img-thumbnail" width="100%" />
@@ -360,7 +360,7 @@
 						<div id="menu1" class="tab-pane fade" style="width:100%;">
 							<h2 style="margin-bottom:0px;">Upload danh sách thí sinh </h2>
 							<s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
-							<s:form action="uploadDSDK.edu" method="post" enctype="multipart/form-data">
+							<s:form action="uploadDSDK.trip" method="post" enctype="multipart/form-data">
 								<div class="input-group" style="margin-top:20px ">
 								
 									<div id="errorDK" style="color:red;"></div>

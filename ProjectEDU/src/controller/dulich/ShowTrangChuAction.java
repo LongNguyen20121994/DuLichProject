@@ -39,9 +39,4 @@ public class ShowTrangChuAction extends ActionSupport {
 		listToursMN = new DLTourBO().getTop("3");
 		return SUCCESS;
 	}
-
-	/*public String ajaxShowListTour() {
-		listTours = new DLTourBO().getTop();
-		return SUCCESS;
-	}*/
 }

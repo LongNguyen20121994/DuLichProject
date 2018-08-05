@@ -148,4 +148,102 @@ public class ChiTietTourDAO {
         }
 		return list;
 	}
+	
+	public List<DLChiTietTour> getTheoMaTour(String maTour) {
+		List<DLChiTietTour> list = new ArrayList<DLChiTietTour>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaChiTietTour,MaTour,MaKS,NgayKhoiHanh,DacDiem,GiaVeNguoiLon,SoCho from ChiTietTour where MaTour = ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, maTour);
+    		ResultSet rs = stmt.executeQuery();
+    		DLChiTietTour mt;
+    		while(rs.next()){
+    			mt = new DLChiTietTour();
+    			mt.setMaChiTietTour(rs.getString(1));
+    			mt.setMaTour(rs.getString(2));
+    			mt.setMaKS(rs.getString(3));
+    			mt.setNgayKhoiHanh(rs.getDate(4));
+    			mt.setDacDiem(rs.getString(5));
+    			mt.setGiaVeNguoiLon(rs.getDouble(6));
+    			mt.setSoCho(rs.getInt(7));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
+	}
+	
+	public DLChiTietTour getInfo(String maTour) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaChiTietTour,MaTour,MaKS,NgayKhoiHanh,DacDiem,GiaVeNguoiLon,SoCho,SoChoDaDat "
+				+ "from ChiTietTour where MaTour=?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, maTour);
+    		ResultSet rs = stmt.executeQuery();
+            DLChiTietTour tur = null;
+    		if(rs.next()){
+    			tur = new DLChiTietTour();
+    			tur.setMaChiTietTour(rs.getString(1));
+    			tur.setMaTour(rs.getString(2));
+    			tur.setMaKS(rs.getString(3));
+    			tur.setNgayKhoiHanh(rs.getDate(4));
+    			tur.setDacDiem(rs.getString(5));
+    			tur.setGiaVeNguoiLon(rs.getDouble(6));
+    			tur.setSoCho(rs.getInt(7));
+    			tur.setSoChoDaDat(rs.getInt(8));
+    		}
+        	stmt.close();
+            return tur;
+        } catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		} finally {
+			con.closeConnection();
+		}
+	}
+	public DLChiTietTour getInfoGanNhat(String maTour) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select top 1 MaChiTietTour,MaTour,MaKS,NgayKhoiHanh,DacDiem,GiaVeNguoiLon,SoCho,SoChoDaDat "
+				+ "from ChiTietTour where MaTour=? and NgayKhoiHanh > ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, maTour);
+    		long millis=System.currentTimeMillis();  
+    		java.sql.Date date=new java.sql.Date(millis);
+    		stmt.setDate(2, date);
+    		ResultSet rs = stmt.executeQuery();
+            DLChiTietTour tur = null;
+    		if(rs.next()){
+    			tur = new DLChiTietTour();
+    			tur.setMaChiTietTour(rs.getString(1));
+    			tur.setMaTour(rs.getString(2));
+    			tur.setMaKS(rs.getString(3));
+    			tur.setNgayKhoiHanh(rs.getDate(4));
+    			tur.setDacDiem(rs.getString(5));
+    			tur.setGiaVeNguoiLon(rs.getDouble(6));
+    			tur.setSoCho(rs.getInt(7));
+    			tur.setSoChoDaDat(rs.getInt(8));
+    		}
+        	stmt.close();
+            return tur;
+        } catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		} finally {
+			con.closeConnection();
+		}
+	}
 }

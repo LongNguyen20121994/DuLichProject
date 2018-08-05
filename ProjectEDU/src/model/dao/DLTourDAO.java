@@ -138,6 +138,27 @@ public class DLTourDAO {
             con.closeConnection();
         }
 	}
+	public void getNameKhachSan(DLTourTrangChu tur) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "SELECT top 1 TenKS FROM KhachSan k, ChiTietTour c"
+						+ " Where k.MaKS = c.MaKS"
+						+ " and MaTour = ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);	
+    		stmt.setString(1, tur.getMaTour());
+    		ResultSet rs = stmt.executeQuery();
+    		if(rs.next()){
+    			tur.setKhachSan(rs.getString(1));
+    		} 
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            con.closeConnection();
+        }
+	}
 	
 	public List<DLTour> getAllByMaLoaiObject(String maLoai) {
 		List<DLTour> list = new ArrayList<DLTour>();
@@ -249,6 +270,44 @@ public class DLTourDAO {
     			tur.setSoDem(rs.getInt(7));
     			tur.setGhiChu(rs.getString(8));
     			tur.setMaLoai(rs.getString(9));
+    		}
+        	stmt.close();
+            return tur;
+        } catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		} finally {
+			con.closeConnection();
+		}
+	}
+	public DLTourTrangChu getInfoTtTour(String maTour) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "SELECT t.MaTour,SoNgay,SoDem FROM Tour t, LoaiTour lt"
+				+ " Where t.MaLoai = lt.MaLoai and" 
+				+ " t.MaTour = ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, maTour);
+    		ResultSet rs = stmt.executeQuery();
+    		DLTourTrangChu tur = null;
+    		int soNgayDem=0;
+    		String tongNgayDem = "";
+    		if(rs.next()){
+    			tur = new DLTourTrangChu();
+    			tur.setMaTour(rs.getString(1));
+    			soNgayDem = rs.getInt(2);
+    			if(soNgayDem > 0) {
+    				tongNgayDem = soNgayDem + " ngày ";
+    			}
+    			soNgayDem = rs.getInt(3);
+    			if(soNgayDem > 0) {
+    				tongNgayDem += soNgayDem + " đêm";
+    			}
+    			tur.setSoNgayDem(tongNgayDem);
+    			getLichTrinh(tur);
+    			getNameKhachSan(tur);
     		}
         	stmt.close();
             return tur;

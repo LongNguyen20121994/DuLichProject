@@ -65,15 +65,19 @@
 	<!-- Kết thúc hiển thị -->
 	
 	<!-- Bắt đầu hiển thị danh sách Tour trang chủ -->
-			<action name="showTrangChu" class="controller.dulich.ShowTrangChuAction" method="execute">
-		        <result name="success">dulich/dlDanhSachTour.jsp</result>
-		        <result name="info" type="chain">info</result>
-	        </action>
+		<action name="showTrangChu" class="controller.dulich.ShowTrangChuAction" method="execute">
+	        <result name="success">dulich/dlDanhSachTour.jsp</result>
+	        <result name="info" type="chain">info</result>
+        </action>
+        <action name="showInfoTour" class="controller.dulich.ShowInfoTourAction" >
+            <result name="error" type="chain">info</result>
+            <result name="success">dulich/showInfoTour.jsp</result>
+        </action>
 	<!-- Kết thúc hiển thị -->
 	
 	<!-- Bắt đầu đăng ký Tour-->		
 		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">
-	        <result name="success">index.jsp</result>
+	        <result name="success">dulich/dangKyTour.jsp</result>
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
         </action>
@@ -86,9 +90,6 @@
             <result name="success" type="chain">showDangKyTour</result>
             <result name="info" type="chain">info</result>
             <result name="login" type="chain">showLogin</result>
-        </action>
-        <action name="getListTour" class="controller.dulich.DangKyTourAction" method="ajaxGetListTour">
-            <result name="success" type="chain">index.jsp</result>
         </action>
 	
 	<!-- Lên lịch Tour -->

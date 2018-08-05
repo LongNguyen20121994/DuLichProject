@@ -27,4 +27,14 @@ public class ChiTietTourBO {
 	public List<DLChiTietTour> getAll() {
 		return new ChiTietTourDAO().getAll();
 	}
+	public List<DLChiTietTour> getTheoMaTour(String maTour) {
+		return new ChiTietTourDAO().getTheoMaTour(maTour);
+	}
+	
+	public DLChiTietTour getInfo(String maTour) {
+		return new ChiTietTourDAO().getInfo(maTour);
+	}
+	public DLChiTietTour getInfoGanNhat(String maTour) {
+		return new ChiTietTourDAO().getInfoGanNhat(maTour);
+	}
 }

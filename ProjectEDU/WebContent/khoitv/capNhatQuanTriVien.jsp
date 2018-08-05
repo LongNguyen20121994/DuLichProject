@@ -61,7 +61,7 @@
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-8">
-				    <h2 style="margin-bottom:0px;">Cập nhật thông tin Quản trị viên</h2>
+				    <h2 style="margin-bottom:0px;">Cập nhật thông tin giảng viên</h2>
 		            <s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
 		            <br><br>
 			        <s:form method="post" action="capNhatQuanTriVien.trip">

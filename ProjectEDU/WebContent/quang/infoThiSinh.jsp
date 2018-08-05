@@ -115,7 +115,7 @@
 		        		</tr>
 		        		<tr>
 		        			<td colspan="2" style="text-align:center;">
-		        				<s:a action="showUpdateInfoThiSinh.edu" cssClass="btn btn-primary pull" cssStyle="margin-right:15px;">Cập nhật</s:a>
+		        				<s:a action="showUpdateInfoThiSinh.trip" cssClass="btn btn-primary pull" cssStyle="margin-right:15px;">Cập nhật</s:a>
 		        			</td>
 		        		</tr>
 		        	</table>

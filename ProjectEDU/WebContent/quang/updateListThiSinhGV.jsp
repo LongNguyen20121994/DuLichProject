@@ -69,7 +69,7 @@
 						<h2 style="margin-bottom:0px;">Danh sách thí sinh đã đăng ký</h2>
 			            <s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
 			            <br><br>
-				        <s:form method="post" action="updateListThiSinhGV.edu">
+				        <s:form method="post" action="updateListThiSinhGV.trip">
 				        	<s:hidden name="namTS"></s:hidden>
 			        		<s:if test="%{info !=null}">
 								<s:label cssStyle="color:red;" value="%{info.noiDung}"/>
@@ -130,7 +130,7 @@
 					<div id="menu1" class="tab-pane fade" style="width:100%;">
 						<h2 style="margin-bottom:0px;">Upload danh sách cập nhật</h2>
 						<s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
-						<s:form action="updateListThiSinhExcel.edu" method="post" enctype="multipart/form-data">
+						<s:form action="updateListThiSinhExcel.trip" method="post" enctype="multipart/form-data">
 							<div class="input-group" style="margin-top:20px ">
 							
 								<div id="errorCN" style="color:red;"></div>

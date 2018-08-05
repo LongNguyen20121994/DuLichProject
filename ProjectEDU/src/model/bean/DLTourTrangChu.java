@@ -8,6 +8,8 @@ public class DLTourTrangChu {
 	private String soNgayDem;
 	private String giaVe;
 	private String ngayKhoiHanh;
+	private String vanChuyen;
+	private String khachSan;
 	
 	public String getMaTour() {
 		return maTour;
@@ -50,5 +52,17 @@ public class DLTourTrangChu {
 	}
 	public void setNgayKhoiHanh(String ngayKhoiHanh) {
 		this.ngayKhoiHanh = ngayKhoiHanh;
+	}
+	public String getVanChuyen() {
+		return vanChuyen;
+	}
+	public void setVanChuyen(String vanChuyen) {
+		this.vanChuyen = vanChuyen;
+	}
+	public String getKhachSan() {
+		return khachSan;
+	}
+	public void setKhachSan(String khachSan) {
+		this.khachSan = khachSan;
 	}
 }

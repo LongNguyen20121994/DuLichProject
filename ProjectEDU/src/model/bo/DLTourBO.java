@@ -42,6 +42,9 @@ public class DLTourBO {
 	public DLTour getInfo(String maTour) {
 		return new DLTourDAO().getInfo(maTour);
 	}
+	public DLTourTrangChu getInfoTtTour(String maTour) {
+		return new DLTourDAO().getInfoTtTour(maTour);
+	}
 	
 	public boolean deleteListTour(List<String> listMaTour) {
 		return new DLTourDAO().deleteListTour(listMaTour);

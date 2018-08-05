@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Hiển thị danh sách tour</title>
+<title>Du lịch Việt</title>
 <jsp:include page="../css/style.html"/>
 
 <script lang="Javascript">

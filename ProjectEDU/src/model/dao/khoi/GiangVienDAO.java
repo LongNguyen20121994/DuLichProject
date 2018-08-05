@@ -166,34 +166,34 @@ public class GiangVienDAO {
 	    			stmtEmail.setString(1, tmp);
 	    			ResultSet rsEmail = stmtEmail.executeQuery();
 	    			if(rsEmail.next()){
-	    				String tieuDe = (trangThai && !logined?"KiÌ�ch hoaÌ£t" : trangThai && logined?"Má»Ÿ khÃ³a" : "KhÃ³a") + " taÌ€i khoaÌ‰n giaÌ‰ng viÃªn trÆ°Æ¡Ì€ng Ä�aÌ£i hoÌ£c - Cao Ä‘ÄƒÌ‰ng";
+	    				String tieuDe = (trangThai && !logined?"Kích hoạt" : trangThai && logined?"Mở khóa" : "Khóa") + " tài khoản giảng viên trường Đại học - Cao đẳng";
 	    				StringBuilder noiDung = new StringBuilder("<div style='border:5px inset #CCC;'>");
-	    				noiDung.append("<h2 style='background-color:#4d90fe;padding:1.5% 3%; margin:2px;'>Xin chÃ o " + rsEmail.getString(1) + "</h2>");
+	    				noiDung.append("<h2 style='background-color:#4d90fe;padding:1.5% 3%; margin:2px;'>Xin chào " + rsEmail.getString(1) + "</h2>");
 	    				if(trangThai && !logined) {
-		    				noiDung.append("<div style='padding:2% 3.5%;'><p>BaÌ£n Ä‘aÌƒ thÆ°Ì£c hiÃªÌ£n Ä‘Äƒng kyÌ� taÌ€i khoaÌ‰n giaÌ‰ng viÃªn trÆ°Æ¡Ì€ng \""+rsEmail.getString(4));
-		    				noiDung.append("\", thÃ´ng tin baÌ£n cung cÃ¢Ì�p Ä‘aÌƒ Ä‘Æ°Æ¡Ì£c xaÌ�c thÆ°Ì£c.");
-		    				noiDung.append(" HiÃªÌ£n taÌ£i tÃ i khoáº£n cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c kÃ­ch hoáº¡t. </p><p>BaÌ£n coÌ� thÃªÌ‰ sÆ°Ì‰ duÌ£ng taÌ€i khoaÌ‰n cuÌ‰a miÌ€nh Ä‘ÃªÌ‰ : </p>");
-		    				noiDung.append("<ul><li>CÃ¢Ì£p nhÃ¢Ì£t chi tiÃªÌ�t caÌ�c ngaÌ€nh Ä‘aÌ€o taÌ£o cuÌ‰a trÆ°Æ¡Ì€ng</li><li>CÃ¢Ì£p nhÃ¢Ì£t khÃ´Ì�i thi cuÌ‰a caÌ�c ngaÌ€nh vaÌ€ hÃªÌ£ sÃ´Ì� mÃ´n thi</li>");
-		    				noiDung.append("<li>CÃ¢Ì£p nhÃ¢Ì£t Ä‘iÃªÌ‰m chuÃ¢Ì‰n vaÌ€o caÌ�c ngaÌ€nh</li></ul>");
-		    				noiDung.append("<p>BaÌ£n coÌ� traÌ�ch nhiÃªÌ£m baÌ‰o vÃªÌ£ taÌ€i khoaÌ‰n vaÌ€ chiÌ£u hoaÌ€n toaÌ€n traÌ�ch nhiÃªÌ£m vÃªÌ€ caÌ�c taÌ�c vuÌ£ xÆ°Ì‰ lyÌ� khi sÆ°Ì‰ duÌ£ng taÌ€i khoaÌ‰n.<br/>");
-		    				noiDung.append("ThÃ´ng tin kÃ­ch hoáº¡t tÃ i khoáº£n</p>");
+		    				noiDung.append("<div style='padding:2% 3.5%;'><p>Bạn đã thực hiện đăng ký tài khoản giảng viên trường \""+rsEmail.getString(4));
+		    				noiDung.append("\", thông tin bạn cung cấp đã được xác thực.");
+		    				noiDung.append(" Hiện tại tài khoản của bạn đã được kích hoạt. </p><p>Bạn có thể sử dụng tài khoản của mình để : </p>");
+		    				noiDung.append("<ul><li>Cập nhật chi tiết các ngành đào tạo của trường</li><li>Cập nhật khối thi của các ngành và hệ số môn thi</li>");
+		    				noiDung.append("<li>Cập nhật điểm chuẩn vào các ngành</li></ul>");
+		    				noiDung.append("<p>Bạn có trách nhiệm bảo vệ tài khoản và chịu hoàn toàn trách nhiệm về các tác vụ xử lý khi sử dụng tài khoản.<br/>");
+		    				noiDung.append("Thông tin kích hoạt tài khoản</p>");
 		    				noiDung.append("<table align='center' style='background-color:#c7dcfc;padding:3%;'>");
-		    				noiDung.append("<tr><td>Sá»‘ chá»©ng minh </td>");
+		    				noiDung.append("<tr><td>Số chứng minh </td>");
 		    				noiDung.append("<td> : <b>" + tmp + "</b></td><tr>");
-		    				noiDung.append("<tr><td>Máº­t kháº©u </td>");
+		    				noiDung.append("<tr><td>Mật khẩu </td>");
 		    				noiDung.append("<td> : <b><em>" + rsEmail.getString(3) + "</em></b></td><tr></table>");
-		    				noiDung.append("<p>BaÌ£n vui loÌ€ng thÆ°Ì£c hiÃªÌ£n Ä‘Äƒng nhÃ¢Ì£p vaÌ€ Ä‘Ã´Ì‰i mÃ¢Ì£t khÃ¢Ì‰u Ä‘ÃªÌ‰ kiÌ�ch hoaÌ£t taÌ€i khoaÌ‰n cuÌ‰a baÌ£n.</p>");
-			    			noiDung.append("<p>Click vÃ o <a href='http://localhost:8080/ProjectEDU/login.trip?soCMND="+tmp);
+		    				noiDung.append("<p>Bạn vui lòng thực hiện đăng nhập và đổi mật khẩu để kích hoạt tài khoản của bạn.</p>");
+			    			noiDung.append("<p>Click vào <a href='http://localhost:8080/ProjectEDU/login.trip?soCMND="+tmp);
 			    			noiDung.append("&&account=3&&matKhau=");
 			    			noiDung.append(rsEmail.getString(3));
-			    			noiDung.append("'>Ä‘Ã¢y</a> Ä‘á»ƒ Ä‘á»•i máº­t kháº©u cá»§a báº¡n.<br/>");
-		    				noiDung.append("HoÄƒÌ£c click vÃ o <a href='http://localhost:8080/ProjectEDU/showLogin.trip'>Ä‘Ã¢y</a> ");
-							noiDung.append("Ä‘á»ƒ Ä‘Äƒng nhÃ¢Ì£p.</p></div></div>");
+			    			noiDung.append("'>đây</a> để đổi mật khẩu của bạn.<br/>");
+		    				noiDung.append("Hoặc click vào <a href='http://localhost:8080/ProjectEDU/showLogin.trip'>đây</a> ");
+							noiDung.append("để đăng nhập.</p></div></div>");
 	    				} else {
 	    					if(trangThai && logined) {
-	    						noiDung.append("<div style='padding:2% 3.5%;'><p>TÃ i khoáº£n cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c má»Ÿ khÃ³a. Báº¡n cÃ³ thá»ƒ Ä‘Äƒng nháº­p Ä‘á»ƒ thá»±c hiá»‡n cÃ¡c tÃ¡c vá»¥ báº±ng máº­t kháº©u cÅ© cá»§a báº¡n.</p></div></div>");
+	    						noiDung.append("<div style='padding:2% 3.5%;'><p>Tài khoản của bạn đã được mở khóa. Bạn có thể đăng nhập để thực hiện các tác vụ bằng mật khẩu cũ của bạn.</p></div></div>");
 	    					} else {
-	    						noiDung.append("<div style='padding:2% 3.5%;'><p>TÃ i khoáº£n cá»§a báº¡n Ä‘Ã£ bá»‹ khÃ³a. Vui lÃ²ng liÃªn há»‡ quáº£n trá»‹ viÃªn Ä‘á»ƒ biáº¿t thÃªm chi tiáº¿t.</p></div></div>");
+	    						noiDung.append("<div style='padding:2% 3.5%;'><p>Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên để biết thêm chi tiết.</p></div></div>");
 	    					}
 	    				}
 						String email = Library.xoaDau(rsEmail.getString(1)) + "<" + rsEmail.getString(2) + ">";
@@ -257,16 +257,16 @@ public class GiangVienDAO {
         	stmtEmail.setString(2, email);
     		ResultSet rsEmail = stmtEmail.executeQuery();
     		if(rsEmail.next()){
-				String tieuDe = "QuÃªn máº­t kháº©u tÃ i khoáº£n giáº£ng viÃªn";
+				String tieuDe = "Quên mật khẩu tài khoản giảng viên";
 				StringBuilder noiDung = new StringBuilder("<div style='border:5px inset #CCC;'>");
-				noiDung.append("<h2 style='background-color:#4d90fe;padding:1.5% 3%; margin:2px;'>Xin chÃ o " + rsEmail.getString(1) + "</h2>");
-				noiDung.append("<div style='padding:2% 3.5%;'><p>BaÌ£n Ä‘aÌƒ gá»­i má»™t yÃªu cáº§u khÃ´i phá»¥c máº­t kháº©u cá»§a báº¡n. Náº¿u khÃ´ng báº¡n gá»­i yÃªu cáº§u báº¡n cÃ³ thá»ƒ bá»� qua email nÃ y!</p>");
-				noiDung.append("<p>Ä�á»ƒ hoÃ n thÃ nh thao tÃ¡c nÃ y báº¡n vui lÃ²ng ");
-				noiDung.append("click vÃ o <a href='http://localhost:8080/ProjectEDU/showDoiMatKhau.trip?soCMND=");
+				noiDung.append("<h2 style='background-color:#4d90fe;padding:1.5% 3%; margin:2px;'>Xin chào " + rsEmail.getString(1) + "</h2>");
+				noiDung.append("<div style='padding:2% 3.5%;'><p>Bạn đã gửi một yêu cầu khôi phục mật khẩu của bạn. Nếu không bạn gửi yêu cầu bạn có thể bỏ qua email này!</p>");
+				noiDung.append("<p>Để hoàn thành thao tác này bạn vui lòng ");
+				noiDung.append("click vào <a href='http://localhost:8080/ProjectEDU/showDoiMatKhau.trip?soCMND=");
     			noiDung.append(soCMND);
     			noiDung.append("&&account=3&&matKhau=");
     			noiDung.append(rsEmail.getString(3));
-    			noiDung.append("&&logined=true'>Ä‘Ã¢y</a> Ä‘á»ƒ Ä‘á»•i máº­t kháº©u cá»§a báº¡n.</div>");
+    			noiDung.append("&&logined=true'>đây</a> để đổi mật khẩu của bạn.</div>");
 				email = Library.xoaDau(rsEmail.getString(1)) + "<" + rsEmail.getString(2) + ">";
 				new SendEmail(email, tieuDe, noiDung.toString()).start();
 	        	return true;

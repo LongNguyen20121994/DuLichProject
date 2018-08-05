@@ -1,29 +1,42 @@
 package controller.dulich;
 
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import model.bean.DLChiTietTour;
 import model.bean.DLTour;
+import model.bean.DLTourTrangChu;
 import model.bean.Info;
+import model.bo.ChiTietTourBO;
 import model.bo.DLTourBO;
 
 @SuppressWarnings("serial")
 public class ShowInfoTourAction extends ActionSupport {
-	private String maTour;
+	private DLTourTrangChu tourTrangChu;
 	private DLTour tour;
+	private DLChiTietTour ctTour;
+	private List<DLChiTietTour> listCtTour;
+	private String maTour;
 	private Info info;
-
-	public String getMaTour() {
-		return maTour;
-	}
-	public void setMaTour(String maTour) {
-		this.maTour = maTour;
-	}
+	
 	public DLTour getTour() {
 		return tour;
 	}
 	public void setTour(DLTour tour) {
 		this.tour = tour;
+	}
+	public DLChiTietTour getCtTour() {
+		return ctTour;
+	}
+	public void setCtTour(DLChiTietTour ctTour) {
+		this.ctTour = ctTour;
+	}	
+	public String getMaTour() {
+		return maTour;
+	}
+	public void setMaTour(String maTour) {
+		this.maTour = maTour;
 	}
 	public Info getInfo() {
 		return info;
@@ -31,26 +44,34 @@ public class ShowInfoTourAction extends ActionSupport {
 	public void setInfo(Info info) {
 		this.info = info;
 	}
-
+	public DLTourTrangChu getTourTrangChu() {
+		return tourTrangChu;
+	}
+	public void setTourTrangChu(DLTourTrangChu tourTrangChu) {
+		this.tourTrangChu = tourTrangChu;
+	}
+	public List<DLChiTietTour> getListCtTour() {
+		return listCtTour;
+	}
+	public void setListCtTour(List<DLChiTietTour> listCtTour) {
+		this.listCtTour = listCtTour;
+	}
 	@Override
 	public String execute() throws Exception {
-		tour = new DLTourBO().getInfo(maTour);
-		if (tour == null) {
-			info = new Info("Lỗi load thông tin", "Lấy thông tin Tour không thành công!");
-			return ERROR;
+		if (maTour != null && !maTour.isEmpty()) {
+			tourTrangChu = new DLTourBO().getInfoTtTour(maTour);
+			tour = new DLTourBO().getInfo(maTour);
+			ctTour = new ChiTietTourBO().getInfoGanNhat(maTour);
+			listCtTour = new ChiTietTourBO().getTheoMaTour(maTour);
+			if (tour == null || ctTour == null) {
+				info = new Info("Lỗi hệ thống", "Chưa có lịch Tour!");
+				return ERROR;
+			} else {
+				return SUCCESS;
+			}
 		} else {
-			return SUCCESS;
+			info = new Info("Lỗi hệ thống", "Không thể đặt Tour này!");
+			return ERROR;
 		}
 	}
-	
-	/*public String capNhatTour(){
-		tour = new DLTourBO().getInfo(maTour);
-		if (tour == null) {
-			info = new Info("Lỗi load thông tin", "Lấy thông tin Tour không thành công!");
-			return ERROR;
-		} else {
-			return SUCCESS;
-		}
-	}*/
-	
 }

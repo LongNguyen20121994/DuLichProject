@@ -10,7 +10,7 @@
 	//ajax
 	function changeSoCMND(){
 		if($("#soCMND").val() > 8 ){
-			$.post("checkGiaoVien.edu",
+			$.post("checkGiaoVien.trip",
 		    {
 		    	SoCMND: $("#soCMND").val()
 		    },
@@ -27,7 +27,7 @@
 	}
 	
 	function changeTinh(){
-		$.post("showHuyen.edu",
+		$.post("showHuyen.trip",
 	    {
 	    	maTinh: $("#maTinh").val()
 	    },
@@ -37,7 +37,7 @@
 	}
 	
 	function changeTinhTHPT(){
-		$.post("showTHPT.edu",
+		$.post("showTHPT.trip",
 	    {
 	    	maTinh: $("#maTinhTHPT").val()
 	    },
@@ -47,7 +47,7 @@
 	}
 	
 	function changeHuyen(){
-		$.post("showXa.edu",
+		$.post("showXa.trip",
 	    {
 			maTinh: $("#maTinh").val(),
 	    	maHuyen: $("#maHuyen").val()
@@ -59,7 +59,7 @@
 	
     $(document).ready(function() {
         $('input[type=file]').ajaxfileupload({
-            'action' : 'uploadHinhAnh.edu',
+            'action' : 'uploadHinhAnh.trip',
             'onComplete' : function(response) {
                 $('#upload').hide();
                 
@@ -91,7 +91,7 @@
        	
         $( "#guiMa" ).click(function() {
         	$("#ketQua").html("Thông tin đang được xác nhận. vui lòng chờ ít phút");
-        	$.post("sendMailXacNhan.edu",
+        	$.post("sendMailXacNhan.trip",
    		    {
    		    	email: $("#email").val()
    		    },
@@ -111,7 +111,7 @@
 				    <h2 style="margin-bottom:0px;">Đăng ký thông tin giáo viên</h2>
 		            <s:a href=""><small><small><i>Bạn phải chịu tất cả trách nhiệm về thông tin cung cấp.</i></small></small></s:a>
 		            <br><br>
-			        <s:form method="post" action="dangKyGiaoVien.edu">
+			        <s:form method="post" action="dangKyGiaoVien.trip">
 				        <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
 				        	<img src="images/addImage.jpg" class="img-thumbnail" width="100%" />
 				        </div>

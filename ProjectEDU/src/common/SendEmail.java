@@ -51,14 +51,14 @@ public class SendEmail extends Thread {
 
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("dct.edu.2015@gmail.com", "sieungoc");
+				return new PasswordAuthentication("dct.trip.2015@gmail.com", "sieungoc");
 			}
 		});
 
 		// compose message
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("dct.edu.2015@gmail.com","High School Exam"));// change
+			message.setFrom(new InternetAddress("dct.trip.2015@gmail.com","High School Exam"));// change
 																			// accordingly
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(subject);
