@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Quản lý Khách Sạn</title>
+<title>Thông tin chi tiết</title>
 <jsp:include page="../css/style.html"/>
 	
 	<link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -49,11 +49,11 @@
 		        		<table id="table" class="table table-striped table-bordered"  style="width:100%;">
 					        <thead>
 					            <tr>
-					                <th style="text-align: center; width:100px;">Ngày khởi hành</th>
+					                <th style="text-align: center;width:100px;">Ngày khởi hành</th>
 					                <th style="text-align: center;">Đặc điểm</th>
-					                <th style="text-align: center;">Giá từ</th>
-					                <th style="text-align: center;">Số chỗ</th>
-					                <th style="text-align: center;width:65px;">Book tour</th>
+					                <th style="text-align: center;width:100px;">Giá từ</th>
+					                <th style="text-align: center;width:50px;">Số chỗ</th>
+					                <th style="text-align: center;width:120px;">Book tour</th>
 					            </tr>
 					        </thead>
 					        <tbody>
@@ -62,9 +62,12 @@
 						                <td align="center"><s:property value="ngayKhoiHanh"/></td>
 						                <td><s:property value="dacDiem"/></td>
 						                <td><s:property value="giaVeNguoiLon"/></td>
-						                <td><s:property value="soCho"/></td>
-						                <td><s:submit value="Book" name="btnUpdate" cssClass="btn btn-primary"/>
-						                	<s:submit value="Chi tiết" name="btnUpdate" cssClass="btn btn-primary"/>
+						                <td style="text-align: center;"><s:property value="soCho"/></td>
+						                <td style="text-align: center;">
+						                	<s:a action="bookingTour.trip?maTour=%{maTour}" target="_blank">
+						                		<button style="color: #fff;background-color:#d2322d;border: 1px solid #ac2925;padding: 5px 10px;border-radius: 10px;">Book</button>
+									        </s:a>
+						                	<%-- <s:submit value="Chi tiết" name="btnUpdate" cssClass="btn button-chitiet"/> --%>
 						                </td>
 					           		 </tr>
 					       		</s:iterator>

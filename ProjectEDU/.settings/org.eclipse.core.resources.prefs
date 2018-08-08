@@ -6,6 +6,7 @@ encoding//src/common/Library.java=UTF-8
 encoding//src/common/SendEmail.java=UTF-8
 encoding//src/controller/dulich/AjaxKhachSanAction.java=UTF-8
 encoding//src/controller/dulich/AjaxTourAction.java=UTF-8
+encoding//src/controller/dulich/BookingTourAction.java=UTF-8
 encoding//src/controller/dulich/DangKyKhachSanAction.java=UTF-8
 encoding//src/controller/dulich/DangKyNhanVienAction.java=UTF-8
 encoding//src/controller/dulich/DangKyTourAction.java=UTF-8

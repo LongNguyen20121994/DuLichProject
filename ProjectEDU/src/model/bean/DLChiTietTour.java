@@ -54,19 +54,22 @@ public class DLChiTietTour {
 	public void setMaKS(String maKS) {
 		this.maKS = maKS;
 	}
-	public double getGiaVeNguoiLon() {
-		return giaVeNguoiLon;
+	public String getGiaVeNguoiLon() {
+		String stringGiaVe = giaVeNguoiLon + "";
+		return stringGiaVe.substring(0,stringGiaVe.length()-2) + " VND";
 	}
 	public void setGiaVeNguoiLon(double giaVeNguoiLon) {
 		this.giaVeNguoiLon = giaVeNguoiLon;
 	}
-	public double getGiaVeTreEm() {
-		return this.giaVeNguoiLon * 0.7;
+	public String getGiaVeTreEm() {
+		String stringGiaVe = this.giaVeNguoiLon * 0.7 + "";
+		return stringGiaVe.substring(0,stringGiaVe.length()-2) + " VND";
 	}
-	public double getGiaVeTreNho() {
-		return this.giaVeNguoiLon * 0.5;
+	public String getGiaVeTreNho() {
+		String stringGiaVe = this.giaVeNguoiLon * 0.5 + "";
+		return stringGiaVe.substring(0,stringGiaVe.length()-2) + " VND";
 	}
-	public double getGiaVeSoSinh() {
-		return 200;
+	public String getGiaVeSoSinh() {
+		return "200000" + " VND";
 	}
 }

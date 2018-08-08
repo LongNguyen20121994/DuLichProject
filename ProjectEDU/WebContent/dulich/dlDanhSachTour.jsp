@@ -43,9 +43,9 @@
 			<s:iterator value="listToursMB">
 				<div class="col-md-3" style="padding: 0px 2px 0px 0px">
 			      <div style="background: #e3e3e3">
-			        <a href="images/w3images/lights.jpg" target="_blank">
+			        <s:a action="showInfoTour.trip?maTour=%{maTour}" target="_blank">
 			          <img src='${hinhAnh }' alt="Lights" style="width:100%;height: 220px">
-			        </a>
+			        </s:a>
 			        <div style="margin: 3px">
 			        	<div style="font-weight: bold; font-size: 16px; ">
 				        <s:a action="showInfoTour.trip?maTour=%{maTour}"><s:property value="tieuDe"/></s:a></div>
@@ -74,9 +74,9 @@
 			<s:iterator value="listToursMT">
 				<div class="col-md-3" style="padding: 0px 2px 0px 0px">
 			      <div style="background: #e3e3e3">
-			        <a href="images/w3images/lights.jpg" target="_blank">
-			          <img src='${hinhAnh }' alt="Lights" style="width:100%">
-			        </a>
+			        <s:a action="showInfoTour.trip?maTour=%{maTour}" target="_blank">
+			          <img src='${hinhAnh }' alt="Lights" style="width:100%;height: 220px">
+			        </s:a>
 			        <div style="margin: 3px">
 			        	<div style="font-weight: bold; font-size: 16px; ">
 				        <s:a action="showInfoTour.trip?maTour=%{maTour}"><s:property value="tieuDe"/></s:a></div>
@@ -105,9 +105,9 @@
 			<s:iterator value="listToursMN">
 				<div class="col-md-3" style="padding: 0px 2px 0px 0px">
 			      <div style="background: #e3e3e3">
-			        <a href="images/w3images/lights.jpg" target="_blank">
-			          <img src='${hinhAnh }' alt="Lights" style="width:100%">
-			        </a>
+			        <s:a action="showInfoTour.trip?maTour=%{maTour}" target="_blank">
+			          <img src='${hinhAnh }' alt="Lights" style="width:100%;height: 220px">
+			        </s:a>
 			        <div style="margin: 3px">
 			        	<div style="font-weight: bold; font-size: 16px; ">
 				        <s:a action="showInfoTour.trip?maTour=%{maTour}"><s:property value="tieuDe"/></s:a></div>

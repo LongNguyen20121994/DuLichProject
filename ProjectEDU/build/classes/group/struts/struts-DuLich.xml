@@ -73,6 +73,10 @@
             <result name="error" type="chain">info</result>
             <result name="success">dulich/showInfoTour.jsp</result>
         </action>
+        <action name="bookingTour" class="controller.dulich.BookingTourAction" >
+            <result name="error" type="chain">info</result>
+            <result name="success">dulich/bookingTour.jsp</result>
+        </action>
 	<!-- Kết thúc hiển thị -->
 	
 	<!-- Bắt đầu đăng ký Tour-->		

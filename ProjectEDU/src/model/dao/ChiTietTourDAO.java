@@ -24,7 +24,7 @@ public class ChiTietTourDAO {
 			stmt.setString(3, ctTour.getMaKS());
 			stmt.setDate(4, ctTour.getNgayKhoiHanh());
 			stmt.setString(5, ctTour.getDacDiem());
-			stmt.setDouble(6, ctTour.getGiaVeNguoiLon());
+			stmt.setString(6, ctTour.getGiaVeNguoiLon());
 			stmt.setInt(7, ctTour.getSoCho());
 			stmt.setInt(8, ctTour.getSoCho());
 			if (stmt.executeUpdate() > 0) {
@@ -77,7 +77,7 @@ public class ChiTietTourDAO {
 			stmt.setString(2, ctTour.getMaKS());
 			stmt.setDate(3, ctTour.getNgayKhoiHanh());
 			stmt.setString(4, ctTour.getDacDiem());
-			stmt.setDouble(5, ctTour.getGiaVeNguoiLon());
+			stmt.setString(5, ctTour.getGiaVeNguoiLon());
 			stmt.setInt(6, ctTour.getSoCho());
 			stmt.setInt(7, ctTour.getSoCho());
 			stmt.setString(8, ctTour.getMaChiTietTour());

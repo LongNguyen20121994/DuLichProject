@@ -29,7 +29,9 @@
 .button-chitiet{
   padding: 5px 10px;
   font-size: 10px;
-
+  color: #fff;
+  background-color:#d2322d;
+  border-color:#ac2925;
 }
 .content{
   margin-bottom: 30px;

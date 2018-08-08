@@ -12,13 +12,14 @@ import model.bo.ChiTietTourBO;
 import model.bo.DLTourBO;
 
 @SuppressWarnings("serial")
-public class ShowInfoTourAction extends ActionSupport {
+public class BookingTourAction extends ActionSupport  {
 	private DLTourTrangChu tourTrangChu;
 	private DLTour tour;
 	private DLChiTietTour ctTour;
 	private List<DLChiTietTour> listCtTour;
 	private String maTour;
 	private Info info;
+	private String hinhAnh;
 	
 	public DLTour getTour() {
 		return tour;
@@ -55,6 +56,12 @@ public class ShowInfoTourAction extends ActionSupport {
 	}
 	public void setListCtTour(List<DLChiTietTour> listCtTour) {
 		this.listCtTour = listCtTour;
+	}
+	public String getHinhAnh() {
+		return hinhAnh;
+	}
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
 	}
 	@Override
 	public String execute() throws Exception {
