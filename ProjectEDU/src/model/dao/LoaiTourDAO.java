@@ -30,7 +30,6 @@ public class LoaiTourDAO {
         }
 		return list;
 	}
-
 	/*public boolean addListTinh(List<DLTinh> listTinh) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();

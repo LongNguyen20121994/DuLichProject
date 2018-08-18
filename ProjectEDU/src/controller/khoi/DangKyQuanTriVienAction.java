@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
+import controller.dulich.LoginAction;
 import common.Library;
 import model.bean.Info;
 import model.bean.QuanTriVien;

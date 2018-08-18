@@ -32,6 +32,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import common.ReadExcelFile;
+import controller.dulich.LoginAction;
 import model.bean.Info;
 import model.bean.KhoiThiNganhDHCD;
 import model.bo.khoi.ChiTietHoSoBO;
@@ -283,11 +284,11 @@ public class CapNhatDiemChuanAction extends ActionSupport implements ServletRequ
 				inputStream = new FileInputStream(f);
 				return SUCCESS;
 			} else {
-				info = new Info("Lỗi download", "Không tìm thấy file !");
+				info = new Info("Lá»—i download", "KhÃ´ng tÃ¬m tháº¥y file !");
 				return ERROR;
 			}
 		} else {
-			info = new Info("Lỗi download", "Không tìm thấy file !");
+			info = new Info("Lá»—i download", "KhÃ´ng tÃ¬m tháº¥y file !");
 			return ERROR;
 		}
 	}
@@ -298,11 +299,11 @@ public class CapNhatDiemChuanAction extends ActionSupport implements ServletRequ
 		HSSFWorkbook workbook = new HSSFWorkbook();
 
 		// Create a blank sheet
-		HSSFSheet sheet = workbook.createSheet("Danh sách thí sinh đăng ký");
+		HSSFSheet sheet = workbook.createSheet("Danh sÃ¡ch thÃ­ sinh Ä‘Äƒng kÃ½");
 
 		// This data needs to be written (Object[])
 		Map<String, Object[]> data = new TreeMap<String, Object[]>();
-		data.put("00001", new Object[] { "STT", "Mã Ngành", "Tên ngành", "Hệ đào tạo", "Mã Khối", "Năm tuyển sinh", "Điểm chuẩn"});
+		data.put("00001", new Object[] { "STT", "MÃ£ NgÃ nh", "TÃªn ngÃ nh", "Há»‡ Ä‘Ã o táº¡o", "MÃ£ Khá»‘i", "NÄƒm tuyá»ƒn sinh", "Ä�iá»ƒm chuáº©n"});
 		int stt = 1, i = 2;
 		for (KhoiThiNganhDHCD ktn : listKTN) {
 			String key;

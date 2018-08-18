@@ -67,14 +67,16 @@ Create table KhachHang(
 	HoTen nvarchar(100) not null,
 	Email varchar(40)check (Email  like '%@%.%'),
 	SoDT varchar(20)Check(SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+	DiaChi nvarchar(500),
+	GhiChu nvarchar(max),
+	MatKhau varchar(max),
+	MaChiTietTour varchar(10) foreign key references ChiTietTour(MaChiTietTour)
 )
 -- Chi Tiet Dat Tour
-Create table ChiTietDatTour(
+Create table ChiTietKhachHang(
 	MaChiTietDatTour varchar(10) primary key,
-	MaChiTietTour varchar(10) foreign key references ChiTietTour(MaChiTietTour),
 	MaKH varchar(10) foreign key references KhachHang(MaKH),
 	HoTen nvarchar(100),
 	NgaySinh date,
-	GioiTinh bit default ('false'),
-	DiaChi nvarchar(500)
+	GioiTinh bit default ('false')
 )

@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import controller.khoi.LoginAction;
 import model.bean.DLPhuongTien;
 import model.bean.Info;
 import model.bo.DLTinhBO;
@@ -94,7 +93,7 @@ public class QuanLyPhuongTienAction extends ActionSupport {
 	}
 	@Override
 	public String execute() throws Exception {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -132,7 +131,7 @@ public class QuanLyPhuongTienAction extends ActionSupport {
 		return SUCCESS;
 	}
 	public String quanLyPhuongTien(){
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -158,7 +157,7 @@ public class QuanLyPhuongTienAction extends ActionSupport {
 	}
 	
 	public String capNhatListPhuongTien(){
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";

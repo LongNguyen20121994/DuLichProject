@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import controller.dulich.LoginAction;
 import model.bean.Info;
 import model.bean.NamTuyenSinh;
 import model.bo.khoi.NamTuyenSinhBO;

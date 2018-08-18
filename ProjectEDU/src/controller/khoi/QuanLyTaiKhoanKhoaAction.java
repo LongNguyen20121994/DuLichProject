@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
-
+import controller.dulich.LoginAction;
 import model.bean.GiangVien;
 import model.bean.GiaoVien;
 import model.bean.Info;
@@ -199,11 +199,11 @@ public class QuanLyTaiKhoanKhoaAction extends ActionSupport {
 			listQuanTriVien = new QuanTriVienBO().getListQuanTriVienByTrangThai(false,true);
 		}
 		list = new HashMap<String,String>();
-		list.put("1", "Thí sinh đăng ký dự thi");
-		list.put("2", "Trường trung học phổ thông");
-		list.put("3", "Trường đại học - cao đẳng");
-		list.put("4", "Cụm thi - Địa điểm thi");
-		list.put("5", "Quản trị viên");
+		list.put("1", "ThÃ­ sinh Ä‘Äƒng kÃ½ dá»± thi");
+		list.put("2", "TrÆ°á»�ng trung há»�c phá»• thÃ´ng");
+		list.put("3", "TrÆ°á»�ng Ä‘áº¡i há»�c - cao Ä‘áº³ng");
+		list.put("4", "Cá»¥m thi - Ä�á»‹a Ä‘iá»ƒm thi");
+		list.put("5", "Quáº£n trá»‹ viÃªn");
 		return SUCCESS;
 	}
 	

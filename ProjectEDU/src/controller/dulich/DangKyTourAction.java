@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import com.opensymphony.xwork2.ActionSupport;
 
 import common.Library;
-import controller.khoi.LoginAction;
 import model.bean.DLTour;
 import model.bean.Info;
 import model.bo.DLTourBO;
@@ -125,7 +124,7 @@ public class DangKyTourAction extends ActionSupport {
 
 	@Override
 	public String execute() {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if (info != null) {
 			if (info.getTieuDe() == null) {
 				return "login";
@@ -187,7 +186,7 @@ public class DangKyTourAction extends ActionSupport {
 	}
 
 	public String showDangKyTour() {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -218,7 +217,7 @@ public class DangKyTourAction extends ActionSupport {
 	}
 
 	public String capNhatListTour() {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if (info != null) {
 			if (info.getTieuDe() == null) {
 				return "login";

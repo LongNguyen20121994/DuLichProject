@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import controller.khoi.LoginAction;
 import model.bean.DLChiTietTour;
 import model.bean.Info;
 import model.bo.ChiTietTourBO;
@@ -173,7 +172,7 @@ public class LenLichTourAction extends ActionSupport {
 
 	@Override
 	public String execute() {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if (info != null) {
 			if (info.getTieuDe() == null) {
 				return "login";
@@ -226,7 +225,7 @@ public class LenLichTourAction extends ActionSupport {
 	}
 
 	public String showLenLichTour() {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -255,7 +254,7 @@ public class LenLichTourAction extends ActionSupport {
 	}
 	
 	public String capNhatListLichTour(){
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";

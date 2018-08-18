@@ -37,7 +37,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<%@include file="../frame/header.jsp"%>﻿
-	<div class="container content">
+	<div class="content" style="margin: 0px 0px 0px 30px">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="col-md-12">
@@ -92,7 +92,7 @@ $(document).ready(function() {
 							        </thead>
 							       	<tfoot>
 							       		 <tr>
-							                <th style="text-align: center;"><s:property value="ctTour.giaVeNguoiLon"/></th>
+							                <th style="text-align: center;"><s:property value="ctTour.giaVeNguoiLon" /></th>
 							                <th style="text-align: center;"><s:property value="ctTour.getGiaVeTreEm()"/></th>
 							                <th style="text-align: center;"><s:property value="ctTour.getGiaVeTreNho()"/></th>
 							                <th style="text-align: center;"><s:property value="ctTour.getGiaVeSoSinh()"/></th>
@@ -102,52 +102,70 @@ $(document).ready(function() {
 							</div>
 						</div>
 						<div style="color:#e30050 !important;font-size:2em;"><h3>Thông tin liên hệ</h3></div>
-						<div class="col-md-6">
-							<div style="font-weight: bold;">Họ tên *:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-							<div style="font-weight: bold; margin-top: 10px">Số điện thoại *:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
+						<div>
+							<s:form method="post" action="">
+								<div class="col-md-6">
+									<div style="font-weight: bold;">Họ tên *:</div>
+									<div>
+										<s:textfield name="kh.hoTen" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+									<div style="font-weight: bold; margin-top: 10px">Số điện thoại *:</div>
+									<div>
+										<s:textfield name="kh.soDT" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div style="font-weight: bold;">Email*:</div>
+									<div>
+										<s:textfield name="kh.email" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+									<div style="font-weight: bold; margin-top: 10px">Địa chỉ *:</div>
+									<div>
+										<s:textfield name="kh.diaChi" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div style="font-weight: bold; margin-top: 10px">Ghi chú:</div>
+									<div>
+										<s:textfield name="ks.ghiChu" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div style="font-weight: bold; margin-top: 10px">Người lớn:</div>
+									<div>
+										<s:textfield name="tourTrangChu.soNguoiLon" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+									<div style="font-weight: bold; margin-top: 10px">Trẻ nhỏ( 2 - < 5 tuổi):</div>
+									<div>
+										<s:textfield name="soTreNho" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div style="font-weight: bold; margin-top: 10px">Trẻ em(5 - 11 tuổi)	:</div>
+									<div>
+										<s:textfield name="soTreEm" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+									<div style="font-weight: bold; margin-top: 10px">Sơ sinh(nhỏ hơn 2 tuổi):</div>
+									<div>
+										<s:textfield name="soTreSoSinh" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+									</div>
+								</div>
+								<div class="col-md-10"></div>
+								<div class="col-md-2" style="margin-top: 10px">
+									<%-- <s:a action="bookingTourTiep.trip?maChiTietTour=%{ctTour.maChiTietTour}" target="_blank">
+				                		<button class="btn btn-info">Thanh toán</button>
+							        </s:a> --%>
+									<s:submit cssClass="btn btn-info" name="btnTiep" value="Thanh toán" ></s:submit>
+								</div>
+							</s:form>
 						</div>
-						<div class="col-md-6">
-							<div style="font-weight: bold;">Email*:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-							<div style="font-weight: bold; margin-top: 10px">Địa chỉ *:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div style="font-weight: bold; margin-top: 10px">Ghi chú:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div style="font-weight: bold; margin-top: 10px">Người lớn:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-							<div style="font-weight: bold; margin-top: 10px">Trẻ nhỏ( 2 - < 5 tuổi):</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div style="font-weight: bold; margin-top: 10px">Trẻ em(5 - 11 tuổi)	:</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-							<div style="font-weight: bold; margin-top: 10px">Sơ sinh(nhỏ hơn 2 tuổi):</div>
-							<div>
-								<s:textfield name="gv.soCMND" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
-							</div>
-						</div>			
+						<%-- <div style="width:100%;" align="right">
+                        	<s:if test="tourTrangChu.soNguoiLon > 1">
+	                        	<s:iterator value="listChiTietDatTour" >
+	                        		<div>â</div>
+	                        	</s:iterator>
+	                        </s:if>
+	                    </div> --%>
 					</div>
 				</div>
 			</div>

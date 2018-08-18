@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
+import controller.dulich.LoginAction;
 import model.bean.HoSoXetTuyen;
 import model.bean.Info;
 import model.bo.khoi.ChiTietHoSoBO;
@@ -90,14 +90,14 @@ public class DangKyXetTuyenAction extends ActionSupport {
 			for(String tmp : ktNganh){
 				String khoiThi = tmp.split("-")[2];
 				if(!hoSoBO.isValidKhoiThi((String) session.get("soCMND"),khoiThi)){
-					info = new Info("Khối thi không hợp lệ.", "Không tồn tại tổ hợp môn thi của khối trong danh sách môn đăng ký dự thi!");
+					info = new Info("Khá»‘i thi khÃ´ng há»£p lá»‡.", "KhÃ´ng tá»“n táº¡i tá»• há»£p mÃ´n thi cá»§a khá»‘i trong danh sÃ¡ch mÃ´n Ä‘Äƒng kÃ½ dá»± thi!");
 					return "info";
 				}
 			}
 			if (hoSoBO.insertHoSoXetTuyen(hs)) {
 				ChiTietHoSoBO chiTietBO = new ChiTietHoSoBO();
 				if (chiTietBO.updateChiTietHoSo(hs, ktNganh)) {
-					info = new Info("Thông báo", "Cập nhật thành công. Kết quả xét tuyển sẽ được gửi đến email của bạn!");
+					info = new Info("ThÃ´ng bÃ¡o", "Cáº­p nháº­t thÃ nh cÃ´ng. Káº¿t quáº£ xÃ©t tuyá»ƒn sáº½ Ä‘Æ°á»£c gá»­i Ä‘áº¿n email cá»§a báº¡n!");
 					return "info";
 				} else {
 					return "info";
@@ -107,10 +107,10 @@ public class DangKyXetTuyenAction extends ActionSupport {
 			ChiTietHoSoBO chiTietBO = new ChiTietHoSoBO();
 			if (chiTietBO.updateChiTietHoSo(hs, ktNganh)) {
 				if(hoSoBO.deleteHoSoXetTuyen(hs)){
-					info = new Info("Thông báo", "Đã xóa thông tin đăng ký xét tuyển của trường " + hs.getMaTruong());
+					info = new Info("ThÃ´ng bÃ¡o", "Ä�Ã£ xÃ³a thÃ´ng tin Ä‘Äƒng kÃ½ xÃ©t tuyá»ƒn cá»§a trÆ°á»�ng " + hs.getMaTruong());
 					return "info";
 				} else {
-					info = new Info("Thông báo", "Vui lòng chọn ngành đăng ký!");
+					info = new Info("ThÃ´ng bÃ¡o", "Vui lÃ²ng chá»�n ngÃ nh Ä‘Äƒng kÃ½!");
 					return "info";
 				}
 			} else {
@@ -140,8 +140,8 @@ public class DangKyXetTuyenAction extends ActionSupport {
 			listTinh = new TinhThanhPhoBO().getAllSelect();
 			listDHCD = new TruongDHCDBO().getAllSelect();
 		} else {
-			info = new Info("Thông báo", "Hệ thống xét tuyển chưa được mở. <br/>"
-					+ "Vui lòng thử lại sau hoặc liên hệ với ban quản trị để được trợ giúp!");
+			info = new Info("ThÃ´ng bÃ¡o", "Há»‡ thá»‘ng xÃ©t tuyá»ƒn chÆ°a Ä‘Æ°á»£c má»Ÿ. <br/>"
+					+ "Vui lÃ²ng thá»­ láº¡i sau hoáº·c liÃªn há»‡ vá»›i ban quáº£n trá»‹ Ä‘á»ƒ Ä‘Æ°á»£c trá»£ giÃºp!");
 			return "info";
 		}
 		return SUCCESS;

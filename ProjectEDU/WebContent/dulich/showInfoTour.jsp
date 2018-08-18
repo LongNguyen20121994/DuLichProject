@@ -18,7 +18,7 @@
 </head>
 <body>
 	<%@include file="../frame/header.jsp"%>﻿
-	<div class="container content">
+	<div class="content" style="margin: 0px 0px 0px 30px">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="col-md-12">

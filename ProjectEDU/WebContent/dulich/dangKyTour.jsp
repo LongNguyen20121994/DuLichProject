@@ -180,7 +180,7 @@
 	                                       </td>
 	                                     </tr>
 						        	</table>
-						        </div>			        
+						        </div>
 					        </s:form>
 						</div>
 						<div id="listds" class="tab-pane fade in ${classList}" style="width:100%;">

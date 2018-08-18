@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import controller.dulich.LoginAction;
 import model.bean.Info;
 import model.bean.KhuVucUT;
 import model.bo.khoi.KhuVucUTBO;
@@ -138,24 +139,24 @@ public class CapNhatKhuVucUTAction extends ActionSupport {
 		try{
 			if(btnUpdate != null){
 				if(new KhuVucUTBO().updateKhuVucUT(kv)){
-					info = new Info("","<font style='color:blue;'>"+ kv.getTenKhuVuc() +" đã được cập nhật!</font><br/>");
+					info = new Info("","<font style='color:blue;'>"+ kv.getTenKhuVuc() +" Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t!</font><br/>");
 				} else {
-					info = new Info("","<font style='color:red;'>"+ kv.getTenKhuVuc() +" cập nhật không thành công!</font><br/>");
+					info = new Info("","<font style='color:red;'>"+ kv.getTenKhuVuc() +" cáº­p nháº­t khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 				}
 				classList = "active";
 			} else {
 				if(btnAddNew != null){
 					if(new KhuVucUTBO().insertKhuVucUT(kv)){
-						info = new Info("","<font style='color:blue;'>"+ kv.getTenKhuVuc() +" đã thêm thành công!</font><br/>");
+						info = new Info("","<font style='color:blue;'>"+ kv.getTenKhuVuc() +" Ä‘Ã£ thÃªm thÃ nh cÃ´ng!</font><br/>");
 						classList = "active";
 					} else {
-						info = new Info("","<font style='color:red;'>"+ kv.getTenKhuVuc() +" thêm không thành công!</font><br/>");
+						info = new Info("","<font style='color:red;'>"+ kv.getTenKhuVuc() +" thÃªm khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 						classInput = "active";
 					}
 				}
 			}
 		} catch (Exception e) {
-			info = new Info("","<font style='color:red;'>Lỗi : "+ e.getMessage() +"</font>");
+			info = new Info("","<font style='color:red;'>Lá»—i : "+ e.getMessage() +"</font>");
 		}
 		return SUCCESS;
 	}
@@ -172,7 +173,7 @@ public class CapNhatKhuVucUTAction extends ActionSupport {
 		
 		if(btnAddNew == null){
 			if(listMaKV == null || listMaKV.size() == 0) {
-				info = new Info("","<font style='color:red;'>Vui lòng chọn khu vực ưu tiên trước khi thao tác!</font><br/>");
+				info = new Info("","<font style='color:red;'>Vui lÃ²ng chá»�n khu vá»±c Æ°u tiÃªn trÆ°á»›c khi thao tÃ¡c!</font><br/>");
 				classList = "active";
 			} else {
 				if(btnUpdate != null){
@@ -180,13 +181,13 @@ public class CapNhatKhuVucUTAction extends ActionSupport {
 						maKV = listMaKV.get(0);
 						classInput = "active";
 					} else {
-						info = new Info("","<font style='color:red;'>Chức năng sửa chỉ áp dụng cho 1 khu vực!</font><br/>");
+						info = new Info("","<font style='color:red;'>Chá»©c nÄƒng sá»­a chá»‰ Ã¡p dá»¥ng cho 1 khu vá»±c!</font><br/>");
 						classList = "active";
 					}
 				} else {
 					if(btnDelete != null) {
 						if(new KhuVucUTBO().deleteListKhuVucUT(listMaKV)){
-							info = new Info("","<font style='color:red;'>Đã xóa thành công!</font><br/>");
+							info = new Info("","<font style='color:red;'>Ä�Ã£ xÃ³a thÃ nh cÃ´ng!</font><br/>");
 						}
 						classList = "active";
 					}

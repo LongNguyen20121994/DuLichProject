@@ -11,13 +11,12 @@ public class DLNhanVien {
 	private String soDT;
 	private String email;
 	private String hinhAnh;
-	private boolean isAdmin;
-	
+	private boolean admin;
 	public boolean isAdmin() {
-		return isAdmin;
+		return admin;
 	}
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 	public String getSoCMND() {
 		return soCMND;

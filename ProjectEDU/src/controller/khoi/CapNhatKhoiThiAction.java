@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import controller.dulich.LoginAction;
 import model.bean.Info;
 import model.bean.KhoiThi;
 import model.bo.khoi.KhoiThiBO;
@@ -114,18 +115,18 @@ public class CapNhatKhoiThiAction extends ActionSupport {
 		}
 		if(btnUpdate != null){
 			if(new KhoiThiBO().updateKhoiThi(kt)){
-				info = new Info("","<font style='color:blue;'>"+ kt.getTenKhoi() +" đã được cập nhật!</font><br/>");
+				info = new Info("","<font style='color:blue;'>"+ kt.getTenKhoi() +" Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t!</font><br/>");
 			} else {
-				info = new Info("","<font style='color:red;'>"+ kt.getTenKhoi() +" cập nhật không thành công!</font><br/>");
+				info = new Info("","<font style='color:red;'>"+ kt.getTenKhoi() +" cáº­p nháº­t khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 			}
 			classList = "active";
 		} else {
 			if(btnAddNew != null){
 				if(new KhoiThiBO().insertKhoiThi(kt)){
-					info = new Info("","<font style='color:blue;'>"+ kt.getTenKhoi() +" đã thêm thành công!</font><br/>");
+					info = new Info("","<font style='color:blue;'>"+ kt.getTenKhoi() +" Ä‘Ã£ thÃªm thÃ nh cÃ´ng!</font><br/>");
 					classList = "active";
 				} else {
-					info = new Info("","<font style='color:red;'>"+ kt.getTenKhoi() +" thêm không thành công!</font><br/>");
+					info = new Info("","<font style='color:red;'>"+ kt.getTenKhoi() +" thÃªm khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 					classInput = "active";
 				}
 			}
@@ -169,7 +170,7 @@ public class CapNhatKhoiThiAction extends ActionSupport {
 		}
 		if(btnAddNew == null){
 			if(listMaKT == null || listMaKT.size() == 0) {
-				info = new Info("","<font style='color:red;'>Vui lòng chọn cụm thi trước khi thao tác!</font><br/>");
+				info = new Info("","<font style='color:red;'>Vui lÃ²ng chá»�n cá»¥m thi trÆ°á»›c khi thao tÃ¡c!</font><br/>");
 				classList = "active";
 			} else {
 				if(btnUpdate != null){
@@ -177,13 +178,13 @@ public class CapNhatKhoiThiAction extends ActionSupport {
 						maKT = listMaKT.get(0);
 						classInput = "active";
 					} else {
-						info = new Info("","<font style='color:red;'>Chức năng sửa chỉ áp dụng cho 1 cụm thi!</font><br/>");
+						info = new Info("","<font style='color:red;'>Chá»©c nÄƒng sá»­a chá»‰ Ã¡p dá»¥ng cho 1 cá»¥m thi!</font><br/>");
 						classList = "active";
 					}
 				} else {
 					if(btnDelete != null) {
 						if(new KhoiThiBO().deleteListKhoiThi(listMaKT)){
-							info = new Info("","<font style='color:red;'>Đã xóa thành công!</font><br/>");
+							info = new Info("","<font style='color:red;'>Ä�Ã£ xÃ³a thÃ nh cÃ´ng!</font><br/>");
 						}
 						classList = "active";
 					}

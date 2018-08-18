@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import controller.dulich.LoginAction;
 import model.bean.DotXetTuyen;
 import model.bean.Info;
 import model.bo.khoi.DotXetTuyenBO;

@@ -22,14 +22,12 @@
 </head>
 <body>
 	<%@include file="../frame/header.jsp"%>﻿
-	<div class="container content">
+	<div class="content" style="margin: 0px 0px 0px 30px">
 		<div class="row">
 			﻿﻿<div class="col-md-8 left">
 				<div class="col-md-12">
-				    <h2 style="margin-bottom:0px;">Thông tin Phương Tiện</h2>
-		            <br><br>
 					<ul class="nav nav-tabs">
-						<li class="${classInput}"><a data-toggle="tab" href="#input">Nhập thông tin</a></li>
+						<li class="${classInput}"><a data-toggle="tab" href="#input">Thông tin Phương Tiện</a></li>
 						<li class="${classList}"><a data-toggle="tab" href="#excel">Danh sách Phương Tiện</a></li>
 					</ul>
 					<div class="tab-content">
@@ -100,7 +98,6 @@
 							</s:form>
 						</div>
 						<div id="excel" class="tab-pane fade in ${classList}" style="width:100%;">
-							<h3>Danh sách Phương Tiện</h3>
 							<s:form action="capNhatListPhuongTien.trip" method="post" enctype="multipart/form-data">
 								<table id="table" class="table table-striped table-bordered"  style="width:100%;">
 							        <thead>

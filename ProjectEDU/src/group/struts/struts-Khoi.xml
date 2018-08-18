@@ -253,40 +253,40 @@
 <!-- Kết thúc thêm khối thi ngành ĐH-CĐ -->
 
 <!-- Bắt đầu đăng nhập tài khoản ok-->
-		<action name="showLogin" class="controller.khoi.LoginAction" method="showLogin">
+		<action name="showLogin" class="controller.dulich.LoginAction" method="showLogin">
             <result name="success">khoitv/login.jsp</result>
             <result name="error" type="chain">info</result>
         </action>
         
-        <action name="login" class="controller.khoi.LoginAction">
+        <action name="login" class="controller.dulich.LoginAction">
 	        <result name="input">khoitv/login.jsp</result>
 	        <result name="success">index.jsp</result>
 	        <result name="doiMK" type="chain">showDoiMatKhau</result>
             <result name="info" type="chain">info</result>
         </action>
         
-        <action name="logout" class="controller.khoi.LogoutAction">
+        <action name="logout" class="controller.dulich.LogoutAction">
             <result name="success">index.jsp</result>
         </action>
 <!-- Kết thúc đăng nhập tài khoản -->
 
 <!-- Bắt đầu đổi mật khẩu ok-->
-		<action name="showDoiMatKhau" class="controller.khoi.DoiMatKhauAction" method="showDoiMatKhau">
+		<action name="showDoiMatKhau" class="controller.dulich.DoiMatKhauAction" method="showDoiMatKhau">
 	        <result name="error" type="chain">info</result>  
             <result name="success">khoitv/doiMatKhau.jsp</result>
         </action>
-        <action name="doiMatKhau" class="controller.khoi.DoiMatKhauAction">
+        <action name="doiMatKhau" class="controller.dulich.DoiMatKhauAction">
 	        <result name="success" type="chain">info</result>
         </action>
 <!-- Kết thúc đổi mật khẩu -->
 
 <!-- Bắt đầu upload ảnh ok-->
-        <action name="uploadHinhAnh" class="controller.khoi.UploadHinhAnhAction">
+        <action name="uploadHinhAnh" class="controller.dulich.UploadHinhAnhAction">
 	        <interceptor-ref name="exception"/>
 	        <interceptor-ref name="i18n"/>
 	        <interceptor-ref name="fileUpload">
 	        	<param name="allowedTypes">*/*</param>
-<!-- 	            <param name="allowedTypes">application/excel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param> -->
+	            <param name="allowedTypes">application/excel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
 	            <param name="maximumSize">5000000</param>
 	        </interceptor-ref> 
 	        <interceptor-ref name="params">
@@ -435,11 +435,11 @@
 <!-- Kết thúc kích hoạt tài khoản -->
 
 <!-- Bắt đầu quên mật khẩu OK-->
-		<action name="quenMatKhau" class="controller.khoi.QuenMatKhauAction">
+		<action name="quenMatKhau" class="controller.dulich.QuenMatKhauAction">
             <result name="info" type="chain">info</result>
             <result name="input" type="chain">showQuenMatKhau</result>
         </action>
-        <action name="showQuenMatKhau" class="controller.khoi.QuenMatKhauAction" method="showQuenMatKhau">
+        <action name="showQuenMatKhau" class="controller.dulich.QuenMatKhauAction" method="showQuenMatKhau">
 	        <result name="success">khoitv/quenMatKhau.jsp</result>
         </action>
 <!-- Kết thúc quên mật khẩu -->

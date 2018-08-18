@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
+import controller.dulich.LoginAction;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -145,10 +145,10 @@ public class CapNhatTruongTHPTAction extends ActionSupport implements ServletReq
 			return "input";
 		} else {
 			if (new TruongTHPTBO().addListTruongTHPT(list)) {
-				info = new Info("Thông báo", "Danh sách đã được cập nhật thành công!");
+				info = new Info("ThÃ´ng bÃ¡o", "Danh sÃ¡ch Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t thÃ nh cÃ´ng!");
 				return "info";
 			} else {
-				info = new Info("Thông báo", "Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+				info = new Info("ThÃ´ng bÃ¡o", "CÃ³ lá»—i trong quÃ¡ trÃ¬nh thá»±c hiá»‡n. Vui lÃ²ng kiá»ƒm tra láº¡i!");
 				return "info";
 			}
 		}
@@ -164,9 +164,9 @@ public class CapNhatTruongTHPTAction extends ActionSupport implements ServletReq
 			}
 		}
 		if (new TruongTHPTBO().insertTruongTHPT(truong)) {
-			info = new Info("Thông báo", "Đã thêm thành công!");
+			info = new Info("ThÃ´ng bÃ¡o", "Ä�Ã£ thÃªm thÃ nh cÃ´ng!");
 		} else {
-			info = new Info("Thông báo", "Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+			info = new Info("ThÃ´ng bÃ¡o", "CÃ³ lá»—i trong quÃ¡ trÃ¬nh thá»±c hiá»‡n. Vui lÃ²ng kiá»ƒm tra láº¡i!");
 		}
 		return "info";
 	}

@@ -10,6 +10,7 @@ public class DLTourTrangChu {
 	private String ngayKhoiHanh;
 	private String vanChuyen;
 	private String khachSan;
+	private int soNguoiLon;
 	
 	public String getMaTour() {
 		return maTour;
@@ -64,5 +65,11 @@ public class DLTourTrangChu {
 	}
 	public void setKhachSan(String khachSan) {
 		this.khachSan = khachSan;
+	}
+	public int getSoNguoiLon() {
+		return soNguoiLon;
+	}
+	public void setSoNguoiLon(int soNguoiLon) {
+		this.soNguoiLon = soNguoiLon;
 	}
 }

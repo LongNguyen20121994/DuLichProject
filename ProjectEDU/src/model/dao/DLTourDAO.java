@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import model.bean.DLThongKe;
 import model.bean.DLTour;
 import model.bean.DLTourTrangChu;
 import model.dao.khoi.ConnectDB;
@@ -402,7 +404,98 @@ public class DLTourDAO {
         }
 		return list;
 	}
-	
+	public List<DLThongKe> getAllDaDat(Date from, Date to) {
+		List<DLThongKe> list = new ArrayList<DLThongKe>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select t.MaTour,TieuDe,NgayKhoiHanh from Tour t, ChiTietTour ct, KhachHang kh"
+				+ " where t.MaTour = ct.MaTour"
+				+ " and ct.MaChiTietTour = kh.MaChiTietTour"
+				+ " and NgayKhoiHanh >= ?"
+				+ " and NgayKhoiHanh <= ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setDate(1, from);
+    		stmt.setDate(2, to);
+    		ResultSet rs = stmt.executeQuery();
+    		DLThongKe mt;
+    		while(rs.next()){
+    			mt = new DLThongKe();
+    			mt.setMaTour(rs.getString(1));
+    			mt.setTieuDe(rs.getString(2));
+    			mt.setNgayKhoiHanh(rs.getDate(3));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
+	}
+	public List<DLThongKe> getAllChuaDat(Date from, Date to) {
+		List<DLThongKe> list = new ArrayList<DLThongKe>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select t.MaTour,TieuDe,NgayKhoiHanh from Tour t, ChiTietTour ct, KhachHang kh"
+				+ " where t.MaTour = ct.MaTour"
+				+ " and ct.MaChiTietTour = kh.MaChiTietTour"
+				+ " and NgayKhoiHanh >= ?"
+				+ " and NgayKhoiHanh <= ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setDate(1, from);
+    		stmt.setDate(2, to);
+    		ResultSet rs = stmt.executeQuery();
+    		DLThongKe mt;
+    		while(rs.next()){
+    			mt = new DLThongKe();
+    			mt.setMaTour(rs.getString(1));
+    			mt.setTieuDe(rs.getString(2));
+    			mt.setNgayKhoiHanh(rs.getDate(3));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
+	}
+	public List<DLThongKe> getAllThongKe() {
+		List<DLThongKe> list = new ArrayList<DLThongKe>();
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select t.MaTour,TieuDe,NgayKhoiHanh from Tour t, ChiTietTour ct, KhachHang kh"
+				+ " where t.MaTour = ct.MaTour"
+				+ " and ct.MaChiTietTour = kh.MaChiTietTour";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		ResultSet rs = stmt.executeQuery();
+    		DLThongKe mt;
+    		while(rs.next()){
+    			mt = new DLThongKe();
+    			mt.setMaTour(rs.getString(1));
+    			mt.setTieuDe(rs.getString(2));
+    			mt.setNgayKhoiHanh(rs.getDate(3));
+    			list.add(mt);
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+		return list;
+	}
 	public List<DLTour> getAllLikeName(String name) {
 		List<DLTour> list = new ArrayList<DLTour>();
 		ConnectDB con = new ConnectDB();

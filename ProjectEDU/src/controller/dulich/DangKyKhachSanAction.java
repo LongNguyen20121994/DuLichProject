@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import com.opensymphony.xwork2.ActionSupport;
 
 import common.Library;
-import controller.khoi.LoginAction;
 import model.bean.DLKhachSan;
 import model.bean.Info;
 import model.bo.DLTinhBO;
@@ -104,7 +103,7 @@ public class DangKyKhachSanAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if (info != null) {
 			if (info.getTieuDe() == null) {
 				return "login";
@@ -153,7 +152,7 @@ public class DangKyKhachSanAction extends ActionSupport {
 	}
 
 	public String showDangKyKhachSan(){
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -184,7 +183,7 @@ public class DangKyKhachSanAction extends ActionSupport {
 		return SUCCESS;
 	}*/
 	public String capNhatKhachSan(){
-		info = new LoginAction().checkLogin("6");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";

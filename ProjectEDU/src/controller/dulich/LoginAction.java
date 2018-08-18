@@ -1,4 +1,4 @@
-package controller.khoi;
+package controller.dulich;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,7 +80,7 @@ public class LoginAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		if (account.equals("1")) {
+		/*if (account.equals("1")) {
 			return loginThiSinh();
 		}
 		if (account.equals("2")) {
@@ -94,8 +94,8 @@ public class LoginAction extends ActionSupport {
 		}
 		if (account.equals("5")) {
 			return loginQuanTriVien();
-		}
-		if (account.equals("6")) {
+		}*/
+		if (account.equals("1")) {
 			return loginAdminTrip();
 		}
 		return INPUT;
@@ -104,12 +104,14 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if(session.get("soCMND") == null){
 			list = new HashMap<String,String>();
-			list.put("1", "Thí sinh đăng ký dự thi");
+			/*list.put("1", "Thí sinh đăng ký dự thi");
 			list.put("2", "Trường trung học phổ thông");
 			list.put("3", "Trường đại học - cao đẳng");
 			list.put("4", "Cụm thi - Địa điểm thi");
-			list.put("5", "Quản trị viên");
-			list.put("6", "Admin trip");
+			list.put("5", "Quản trị viên");*/
+			list.put("1", "Admin trip");
+			list.put("2", "Nhân viên");
+			list.put("3", "Khách hàng");
 			return SUCCESS;
 		} else {
 			info = new Info("Thông báo","Tài khoản của bạn đã được đăng nhập!.");
@@ -325,7 +327,7 @@ public class LoginAction extends ActionSupport {
 						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
 						return "info";
 					}
-				/*} else {
+					/*} else {
 					if(tmp.getMatKhau().equals(matKhau)){
 						logined = true;
 						return "doiMK";
@@ -333,8 +335,8 @@ public class LoginAction extends ActionSupport {
 						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
 						return "info";
 					}
-				}*/
-			/*} else {
+				}
+			} else {
 				if(tmp.getMatKhau().equals(matKhau)){
 					info = new Info("Đăng nhập","Tài khoản của bạn chưa được kích hoạt."
 							+ " Liên hệ với quản trị viên để biết thêm thông tin!");
@@ -369,7 +371,7 @@ public class LoginAction extends ActionSupport {
 						session.put("soCMND", tmp.getSoCMND());
 						session.put("hoTen", tmp.getHoTen());
 						session.put("hinhAnh", tmp.getHinhAnh());
-						session.put("account","6");
+						session.put("account","1");
 						return "success";
 					} else {
 						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
@@ -410,8 +412,7 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if (session.get("soCMND") != null) {
 			if(!acc.equals(session.get("account"))){
-				String str = "6".equals(acc)?"Admin trip":"5".equals(acc)?"quản trị viên":"4".equals(acc)?"quản lý cụm thi":"3".equals(acc)
-						?"giảng viên":"2".equals(acc)?"giáo viên":"1".equals(acc)?"thí sinh":"";
+				String str = "3".equals(acc)?"Khách hàng":"2".equals(acc)?"Nhân viên":"1".equals(acc)?"Admin trip":"";
 				i = new Info("Yêu cầu cấp quyền", "Thao tác chỉ dành cho " + str + ". Vui lòng chọn thao tác khác!");
 				return i;
 			} else {

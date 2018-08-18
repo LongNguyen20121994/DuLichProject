@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
+import controller.dulich.LoginAction;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -207,15 +207,15 @@ public class CapNhatNganhDHCDAction extends ActionSupport implements ServletRequ
 				if (new NganhDHCDBO().addListNganhDHCD(list)) {
 					if (new KhoiThiNganhDHCDBO().addListKhoiThiNganhDHCD(listKTN)) {
 						if(new XetTuyenBO().addListXetTuyen(listKTN)){
-							info = new Info("Thông báo", "Danh sách đã được cập nhật thành công!");
+							info = new Info("ThÃ´ng bÃ¡o", "Danh sÃ¡ch Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t thÃ nh cÃ´ng!");
 						} else {
-							info = new Info("Thông báo","Danh sách đã được cập nhật. <br/><small>Có lỗi trong quá trình cập nhật hệ số xét tuyển! vui lòng kiểm tra lại.</small>");
+							info = new Info("ThÃ´ng bÃ¡o","Danh sÃ¡ch Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t. <br/><small>CÃ³ lá»—i trong quÃ¡ trÃ¬nh cáº­p nháº­t há»‡ sá»‘ xÃ©t tuyá»ƒn! vui lÃ²ng kiá»ƒm tra láº¡i.</small>");
 						}
 					} else {
-						info = new Info("Thông báo", "Danh sách ngành đã cập nhật thành công!<br/>Có lỗi trong quá trình cập nhật khối thi cho ngành!");
+						info = new Info("ThÃ´ng bÃ¡o", "Danh sÃ¡ch ngÃ nh Ä‘Ã£ cáº­p nháº­t thÃ nh cÃ´ng!<br/>CÃ³ lá»—i trong quÃ¡ trÃ¬nh cáº­p nháº­t khá»‘i thi cho ngÃ nh!");
 					}
 				} else {
-					info = new Info("Thông báo", "Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+					info = new Info("ThÃ´ng bÃ¡o", "CÃ³ lá»—i trong quÃ¡ trÃ¬nh thá»±c hiá»‡n. Vui lÃ²ng kiá»ƒm tra láº¡i!");
 				}
 				return "info";
 			}
@@ -238,12 +238,12 @@ public class CapNhatNganhDHCDAction extends ActionSupport implements ServletRequ
 			nganh.setMaTruong(new GiangVienBO().getInfo((String)session.get("soCMND")).getMaTruong());
 			System.out.println(nganh);
 			if (new NganhDHCDBO().insertNganhDHCD(nganh)) {
-				//info = new Info("Thông báo", "Đã thêm thành công!");
+				//info = new Info("ThÃ´ng bÃ¡o", "Ä�Ã£ thÃªm thÃ nh cÃ´ng!");
 				HttpServletRequest request = ServletActionContext.getRequest();
 				request.setAttribute("ktn",nganh.getMaNganh()+"-"+nganh.getDaoTao());
 				return SUCCESS;
 			} else {
-				info = new Info("Thông báo", "Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+				info = new Info("ThÃ´ng bÃ¡o", "CÃ³ lá»—i trong quÃ¡ trÃ¬nh thá»±c hiá»‡n. Vui lÃ²ng kiá»ƒm tra láº¡i!");
 			}
 		} else {
 			return "inputerror";
@@ -262,11 +262,11 @@ public class CapNhatNganhDHCDAction extends ActionSupport implements ServletRequ
 		}
 		listNganh = new NganhBO().getAllSelect();
 		listDaoTao = new HashMap<String,String>();
-		listDaoTao.put("DHCQ", "Đại học chính quy");
-		listDaoTao.put("DHLT", "Đại học liên thông");
-		listDaoTao.put("CDCQ", "Cao đẳng chính quy");
-		listDaoTao.put("CDLT", "Cao đẳng liên thông");
-		listDaoTao.put("TCCN", "Trung cấp chuyên nghiệp");
+		listDaoTao.put("DHCQ", "Ä�áº¡i há»�c chÃ­nh quy");
+		listDaoTao.put("DHLT", "Ä�áº¡i há»�c liÃªn thÃ´ng");
+		listDaoTao.put("CDCQ", "Cao Ä‘áº³ng chÃ­nh quy");
+		listDaoTao.put("CDLT", "Cao Ä‘áº³ng liÃªn thÃ´ng");
+		listDaoTao.put("TCCN", "Trung cáº¥p chuyÃªn nghiá»‡p");
 		return SUCCESS;
 	}
 	
@@ -299,9 +299,9 @@ public class CapNhatNganhDHCDAction extends ActionSupport implements ServletRequ
 				return "updateKhoi";
 			} else {
 				if(listMaNganh == null || (listMaNganh != null && listMaNganh.length == 0)){
-					info = new Info("","<font style='color:red'>Vui lòng chọn ngành cần thao tác</font>");
+					info = new Info("","<font style='color:red'>Vui lÃ²ng chá»�n ngÃ nh cáº§n thao tÃ¡c</font>");
 				} else {
-					info = new Info("","<font style='color:red'>Chức năng chỉ áp dụng cho một ngành</font>");
+					info = new Info("","<font style='color:red'>Chá»©c nÄƒng chá»‰ Ã¡p dá»¥ng cho má»™t ngÃ nh</font>");
 				}
 				return SUCCESS;
 			}
@@ -312,9 +312,9 @@ public class CapNhatNganhDHCDAction extends ActionSupport implements ServletRequ
 					return "updateHS";
 				} else {
 					if(listMaNganh == null || (listMaNganh != null && listMaNganh.length == 0)){
-						info = new Info("","<font style='color:red'>Vui lòng chọn ngành cần thao tác</font>");
+						info = new Info("","<font style='color:red'>Vui lÃ²ng chá»�n ngÃ nh cáº§n thao tÃ¡c</font>");
 					} else {
-						info = new Info("","<font style='color:red'>Chức năng chỉ áp dụng cho một ngành</font>");
+						info = new Info("","<font style='color:red'>Chá»©c nÄƒng chá»‰ Ã¡p dá»¥ng cho má»™t ngÃ nh</font>");
 					}
 					return SUCCESS;
 				}
@@ -325,19 +325,19 @@ public class CapNhatNganhDHCDAction extends ActionSupport implements ServletRequ
 						return "updateDiem";
 					} else {
 						if(listMaNganh == null || (listMaNganh != null && listMaNganh.length == 0)){
-							info = new Info("","<font style='color:red'>Vui lòng chọn ngành cần thao tác</font>");
+							info = new Info("","<font style='color:red'>Vui lÃ²ng chá»�n ngÃ nh cáº§n thao tÃ¡c</font>");
 						} else {
-							info = new Info("","<font style='color:red'>Chức năng chỉ áp dụng cho một ngành</font>");
+							info = new Info("","<font style='color:red'>Chá»©c nÄƒng chá»‰ Ã¡p dá»¥ng cho má»™t ngÃ nh</font>");
 						}
 						return SUCCESS;
 					}
 				} else {
 					if(listMaNganh != null && listMaNganh.length > 0){
 						new NganhDHCDBO().deleteListNganhByMa(listMaNganh,new GiangVienBO().getInfo((String)session.get("soCMND")).getMaTruong());
-						info = new Info("","<font style='color:blue'>Đã xóa các ngành vừa chọn</font>");
+						info = new Info("","<font style='color:blue'>Ä�Ã£ xÃ³a cÃ¡c ngÃ nh vá»«a chá»�n</font>");
 						return SUCCESS;
 					} else {
-						info = new Info("","<font style='color:red'>Vui lòng chọn ngành cần thao tác</font>");
+						info = new Info("","<font style='color:red'>Vui lÃ²ng chá»�n ngÃ nh cáº§n thao tÃ¡c</font>");
 						return SUCCESS;
 					}
 				}

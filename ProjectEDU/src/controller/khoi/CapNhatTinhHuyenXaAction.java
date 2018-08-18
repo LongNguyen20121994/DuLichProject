@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+import controller.dulich.LoginAction;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -79,7 +79,7 @@ public class CapNhatTinhHuyenXaAction extends ActionSupport implements ServletRe
 		org.apache.poi.ss.usermodel.Workbook workbook;
 		try {
 			workbook = WorkbookFactory.create(file);
-//	Đọc danh sách tỉnh
+//	Ä�á»�c danh sÃ¡ch tá»‰nh
 			org.apache.poi.ss.usermodel.Sheet firstSheet = workbook.getSheetAt(0);
 			Iterator<Row> iterator = firstSheet.iterator();
 			iterator.next();
@@ -102,7 +102,7 @@ public class CapNhatTinhHuyenXaAction extends ActionSupport implements ServletRe
 				}
 				listTinh.add(ttp);
 			}
-//		Đọc danh sách huyện
+//		Ä�á»�c danh sÃ¡ch huyá»‡n
 			//Sheet secondSheet = workbook.getSheetAt(1);
 			org.apache.poi.ss.usermodel.Sheet secondSheet = workbook.getSheetAt(1);
 			iterator = secondSheet.iterator();
@@ -130,7 +130,7 @@ public class CapNhatTinhHuyenXaAction extends ActionSupport implements ServletRe
 				listHuyen.add(hq);
 			}
 			
-//		Đọc xã phường
+//		Ä�á»�c xÃ£ phÆ°á»�ng
 			//Sheet thirdSheet = workbook.getSheetAt(2);
 			org.apache.poi.ss.usermodel.Sheet thirdSheet = workbook.getSheetAt(2);
 			iterator = thirdSheet.iterator();
@@ -189,7 +189,7 @@ public class CapNhatTinhHuyenXaAction extends ActionSupport implements ServletRe
 			new HuyenQuanBO().addListHuyenQuan(listHuyen);
 			new XaPhuongBO().addListXaPhuong(listXa);
 		}
-		info = new Info("Thông báo", "Danh sách đã được cập nhật thành công!");
+		info = new Info("ThÃ´ng bÃ¡o", "Danh sÃ¡ch Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t thÃ nh cÃ´ng!");
 		return "info";
 	}
 

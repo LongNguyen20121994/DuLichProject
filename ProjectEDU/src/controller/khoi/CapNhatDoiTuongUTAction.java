@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import controller.dulich.LoginAction;
 import model.bean.DoiTuongUT;
 import model.bean.Info;
 import model.bo.khoi.DoiTuongUTBO;
@@ -138,24 +139,24 @@ public class CapNhatDoiTuongUTAction extends ActionSupport {
 		try{
 			if(btnUpdate != null){
 				if(new DoiTuongUTBO().updateDoiTuongUT(dt)){
-					info = new Info("","<font style='color:blue;'>"+ dt.getTenDT() +" đã được cập nhật!</font><br/>");
+					info = new Info("","<font style='color:blue;'>"+ dt.getTenDT() +" Ä‘Ã£ Ä‘Æ°á»£c cáº­p nháº­t!</font><br/>");
 				} else {
-					info = new Info("","<font style='color:red;'>"+ dt.getTenDT() +" cập nhật không thành công!</font><br/>");
+					info = new Info("","<font style='color:red;'>"+ dt.getTenDT() +" cáº­p nháº­t khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 				}
 				classList = "active";
 			} else {
 				if(btnAddNew != null){
 					if(new DoiTuongUTBO().insertDoiTuongUT(dt)){
-						info = new Info("","<font style='color:blue;'>"+ dt.getTenDT() +" đã thêm thành công!</font><br/>");
+						info = new Info("","<font style='color:blue;'>"+ dt.getTenDT() +" Ä‘Ã£ thÃªm thÃ nh cÃ´ng!</font><br/>");
 						classList = "active";
 					} else {
-						info = new Info("","<font style='color:red;'>"+ dt.getTenDT() +" thêm không thành công!</font><br/>");
+						info = new Info("","<font style='color:red;'>"+ dt.getTenDT() +" thÃªm khÃ´ng thÃ nh cÃ´ng!</font><br/>");
 						classInput = "active";
 					}
 				}
 			}
 		} catch (Exception e) {
-			info = new Info("","<font style='color:red;'>Lỗi : "+ e.getMessage() +"</font>");
+			info = new Info("","<font style='color:red;'>Lá»—i : "+ e.getMessage() +"</font>");
 		}
 		return SUCCESS;
 	}
@@ -171,7 +172,7 @@ public class CapNhatDoiTuongUTAction extends ActionSupport {
 		}
 		if(btnAddNew == null){
 			if(listMaDT == null || listMaDT.size() == 0) {
-				info = new Info("","<font style='color:red;'>Vui lòng chọn khu vực ưu tiên trước khi thao tác!</font><br/>");
+				info = new Info("","<font style='color:red;'>Vui lÃ²ng chá»�n khu vá»±c Æ°u tiÃªn trÆ°á»›c khi thao tÃ¡c!</font><br/>");
 				classList = "active";
 			} else {
 				if(btnUpdate != null){
@@ -179,13 +180,13 @@ public class CapNhatDoiTuongUTAction extends ActionSupport {
 						maDT = listMaDT.get(0);
 						classInput = "active";
 					} else {
-						info = new Info("","<font style='color:red;'>Chức năng sửa chỉ áp dụng cho 1 khu vực!</font><br/>");
+						info = new Info("","<font style='color:red;'>Chá»©c nÄƒng sá»­a chá»‰ Ã¡p dá»¥ng cho 1 khu vá»±c!</font><br/>");
 						classList = "active";
 					}
 				} else {
 					if(btnDelete != null) {
 						if(new DoiTuongUTBO().deleteListDoiTuongUT(listMaDT)){
-							info = new Info("","<font style='color:red;'>Đã xóa thành công!</font><br/>");
+							info = new Info("","<font style='color:red;'>Ä�Ã£ xÃ³a thÃ nh cÃ´ng!</font><br/>");
 						}
 						classList = "active";
 					}

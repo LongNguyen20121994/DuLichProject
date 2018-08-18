@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
+import controller.dulich.LoginAction;
 import common.Library;
 import model.bean.GiangVien;
 import model.bean.Info;
@@ -96,7 +96,7 @@ public class DangKyGiangVienAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if(session.get("email") == null || xacNhan == null || gv == null || gv.getEmail() == null || 
 														(!session.get("email").equals(gv.getEmail().trim() + "-" + xacNhan.trim()))) {
-			info = new Info("Đăng ký Quản trị viên","Bạn chưa nhập mã xác nhận hoặc mã xác nhận không đúng. vui lòng kiểm tra lại!");
+			info = new Info("Ä�Äƒng kÃ½ Quáº£n trá»‹ viÃªn","Báº¡n chÆ°a nháº­p mÃ£ xÃ¡c nháº­n hoáº·c mÃ£ xÃ¡c nháº­n khÃ´ng Ä‘Ãºng. vui lÃ²ng kiá»ƒm tra láº¡i!");
 			return "info";
 		}
 		session.remove("email");
@@ -112,10 +112,10 @@ public class DangKyGiangVienAction extends ActionSupport {
 		}
 		GiangVienBO gvbo = new GiangVienBO();
 		if(gvbo.insertGiangVien(gv)){
-			info = new Info("Đăng ký tài khoản Quản lý ĐH-CĐ","Đăng ký thông tin thành công.<br/>Mọi thông tin cần thiết sẽ được gửi về email của bạn trong thời gian sớm nhất!");
+			info = new Info("Ä�Äƒng kÃ½ tÃ i khoáº£n Quáº£n lÃ½ Ä�H-CÄ�","Ä�Äƒng kÃ½ thÃ´ng tin thÃ nh cÃ´ng.<br/>Má»�i thÃ´ng tin cáº§n thiáº¿t sáº½ Ä‘Æ°á»£c gá»­i vá»� email cá»§a báº¡n trong thá»�i gian sá»›m nháº¥t!");
 			return "info";
 		} else {
-			info = new Info("Đăng ký tài khoản Quản lý ĐH-CĐ","Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+			info = new Info("Ä�Äƒng kÃ½ tÃ i khoáº£n Quáº£n lÃ½ Ä�H-CÄ�","CÃ³ lá»—i trong quÃ¡ trÃ¬nh thá»±c hiá»‡n. Vui lÃ²ng kiá»ƒm tra láº¡i!");
 			return "info";
 		}
 	}
@@ -127,7 +127,7 @@ public class DangKyGiangVienAction extends ActionSupport {
 	
 	public String showCapNhatGiangVien(){
 		Map<String, Object> session = ActionContext.getContext().getSession();
-		info = new LoginAction().checkLogin("3");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -144,7 +144,7 @@ public class DangKyGiangVienAction extends ActionSupport {
 	}
 	public String capNhatGiangVien(){
 		Map<String, Object> session = ActionContext.getContext().getSession();
-		info = new LoginAction().checkLogin("3");
+		info = new LoginAction().checkLogin("1");
 		if(info != null) {
 			if(info.getTieuDe() == null){
 				return "login";
@@ -164,10 +164,10 @@ public class DangKyGiangVienAction extends ActionSupport {
 		if(gvbo.updateGiangVien(gv)){
 			session.replace("hoTen", gv.getHoTen());
 			session.replace("hinhAnh", gv.getHinhAnh());
-			info = new Info("Cập nhật tài khoản Quản lý ĐH-CĐ","Cập nhật thành công!");
+			info = new Info("Cáº­p nháº­t tÃ i khoáº£n Quáº£n lÃ½ Ä�H-CÄ�","Cáº­p nháº­t thÃ nh cÃ´ng!");
 			return "info";
 		} else {
-			info = new Info("Cập nhật tài khoản Quản lý ĐH-CĐ","Có lỗi trong quá trình thực hiện. Vui lòng kiểm tra lại!");
+			info = new Info("Cáº­p nháº­t tÃ i khoáº£n Quáº£n lÃ½ Ä�H-CÄ�","CÃ³ lá»—i trong quÃ¡ trÃ¬nh thá»±c hiá»‡n. Vui lÃ²ng kiá»ƒm tra láº¡i!");
 			return "info";
 		}
 	}

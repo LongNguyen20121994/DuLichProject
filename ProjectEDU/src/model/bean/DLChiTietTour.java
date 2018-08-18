@@ -62,12 +62,10 @@ public class DLChiTietTour {
 		this.giaVeNguoiLon = giaVeNguoiLon;
 	}
 	public String getGiaVeTreEm() {
-		String stringGiaVe = this.giaVeNguoiLon * 0.7 + "";
-		return stringGiaVe.substring(0,stringGiaVe.length()-2) + " VND";
+		return Math.round((this.giaVeNguoiLon * 0.7)*10)/10 + " VND";
 	}
 	public String getGiaVeTreNho() {
-		String stringGiaVe = this.giaVeNguoiLon * 0.5 + "";
-		return stringGiaVe.substring(0,stringGiaVe.length()-2) + " VND";
+		return Math.round((this.giaVeNguoiLon * 0.5)*10)/10 + " VND";
 	}
 	public String getGiaVeSoSinh() {
 		return "200000" + " VND";

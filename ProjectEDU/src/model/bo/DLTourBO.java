@@ -1,9 +1,11 @@
 package model.bo;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
+import model.bean.DLThongKe;
 import model.bean.DLTour;
 import model.bean.DLTourTrangChu;
 import model.dao.DLTourDAO;
@@ -53,7 +55,15 @@ public class DLTourBO {
 	public List<DLTour> getAll() {
 		return new DLTourDAO().getAll();
 	}
-	
+	public List<DLThongKe> getAllDaDat(Date from, Date to) {
+		return new DLTourDAO().getAllDaDat(from, to);
+	}
+	public List<DLThongKe> getAllChuaDat(Date from, Date to) {
+		return new DLTourDAO().getAllChuaDat(from, to);
+	}
+	public List<DLThongKe> getAllThongKe() {
+		return new DLTourDAO().getAllThongKe();
+	}
 	public List<DLTour> getAllLikeName(String name) {
 		return new DLTourDAO().getAllLikeName(name);
 	}
