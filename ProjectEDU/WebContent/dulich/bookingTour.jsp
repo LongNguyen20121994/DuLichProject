@@ -42,8 +42,8 @@ $(document).ready(function() {
 			<div class="col-md-8">
 				<div class="col-md-12">
 		            <div class="tab-content">
-			            <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
-				        	<img src='${hinhAnh }' class="img-thumbnail" width="100%" />
+			            <div class="col-md-4" id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;">
+				        	<img src='${tourTrangChu.hinhAnh}' class="img-thumbnail" width="100%" />
 				        </div>
 				        <s:file name="hinhAnh" cssStyle="display:none;" accept="image/*"></s:file>
 				        <div class="col-md-8">
@@ -67,7 +67,7 @@ $(document).ready(function() {
 				        		</tr>
 			        		</table>
 			        	</div>
-						<ul>
+						<ul style="clear: both;">
 							<li style="color:#FF0000">Các khoản phí phát sinh (nếu có) như: phụ thu dành cho khách nước ngoài, việt kiều; phụ thu phòng đơn; phụ thu chênh lệch giá tour… Nhân viên Du Lịch Việt sẽ gọi điện thoại tư vấn cho quý khách ngay sau khi có phiếu xác nhận booking. (Trong giờ hành chính)</li>
 							<li style="color:#FF0000">Trường hợp quý khách không đồng ý các khoản phát sinh, phiếu xác nhận booking của quý khách sẽ không có hiệu lực.</li>
 						</ul>
@@ -78,7 +78,7 @@ $(document).ready(function() {
 						<br/>
 						<div class="tab-content">
 							<div id="input" class="tab-pane fade in active">
-								<s:property value="tour.lichTrinh"/>
+								${tour.lichTrinh}
 							</div>
 							<div id="listds" class="tab-pane fade" style="width:100%;">
 								<table id="table" class="table table-striped table-bordered"  style="width:100%;">
@@ -103,7 +103,26 @@ $(document).ready(function() {
 						</div>
 						<div style="color:#e30050 !important;font-size:2em;"><h3>Thông tin liên hệ</h3></div>
 						<div>
-							<s:form method="post" action="">
+							<s:form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+								<!-- Nhập địa chỉ email người nhận tiền (người bán) -->
+				            <input type="hidden" name="business" value="testnhan@test.com">
+				
+				            <!-- tham số cmd có giá trị _xclick chỉ rõ cho paypal biết là người dùng nhất nút thanh toán -->
+				            <input type="hidden" name="cmd" value="_xclick">
+				
+				            <!-- Thông tin mua hàng. -->
+				            <input type="hidden" name="item_name" value="HoaDonMuaHang">
+							<!--Trị giá của giỏ hàng, vì paypal không hỗ trợ tiền việt nên phải đổi ra tiền $-->
+				            Nhập số tiền hóa đơn : <input type="number" name="amount" placeholder="Nhập số tiền vào" value="">
+							<!--Loại tiền-->
+				            <input type="hidden" name="currency_code" value="USD">
+							<!--Đường link mình cung cấp cho Paypal biết để sau khi xử lí thành công nó sẽ chuyển về theo đường link này-->
+				            <input type="hidden" name="return" value="http://localhost/demothanhtoanonline/thanhcong.html">
+							<!--Đường link mình cung cấp cho Paypal biết để nếu  xử lí KHÔNG thành công nó sẽ chuyển về theo đường link này-->
+				            <input type="hidden" name="cancel_return" value="http://localhost/demothanhtoanonline/loi.html">
+				            <!-- Nút bấm. -->
+				            <input type="submit" name="submit" value="Thanh toán quay Paypal">
+				            
 								<div class="col-md-6">
 									<div style="font-weight: bold;">Họ tên *:</div>
 									<div>

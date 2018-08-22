@@ -42,9 +42,9 @@
 			        			<td style="border-style:hidden;padding:0px"><s:property value="tourTrangChu.khachSan"></s:property></td>
 			        		</tr>
 		        		</table>
-		        		<s:property value="tour.moTaTongQuan"/>
+		        		${tour.moTaTongQuan}
 		        		<div style="color:#e30050 !important;font-size:2em;"><h3>LỊCH TRÌNH TOUR</h3></div>
-		        		<s:property value="tour.lichTrinh"/>
+		        		${tour.lichTrinh}
 		        		<div style="color:#e30050 !important;font-size:2em;"><h3>LỊCH KHỞI HÀNH</h3></div>
 		        		<table id="table" class="table table-striped table-bordered"  style="width:100%;">
 					        <thead>

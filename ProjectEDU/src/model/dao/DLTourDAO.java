@@ -285,7 +285,7 @@ public class DLTourDAO {
 	public DLTourTrangChu getInfoTtTour(String maTour) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
-		String sql = "SELECT t.MaTour,SoNgay,SoDem FROM Tour t, LoaiTour lt"
+		String sql = "SELECT t.MaTour,SoNgay,SoDem,AnhDaiDien FROM Tour t, LoaiTour lt"
 				+ " Where t.MaLoai = lt.MaLoai and" 
 				+ " t.MaTour = ?";
         PreparedStatement stmt = null;
@@ -308,6 +308,7 @@ public class DLTourDAO {
     				tongNgayDem += soNgayDem + " đêm";
     			}
     			tur.setSoNgayDem(tongNgayDem);
+    			tur.setHinhAnh(rs.getString(4));
     			getLichTrinh(tur);
     			getNameKhachSan(tur);
     		}

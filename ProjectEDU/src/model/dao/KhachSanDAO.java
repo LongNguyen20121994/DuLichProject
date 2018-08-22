@@ -193,6 +193,7 @@ public class KhachSanDAO {
 			stmt.setString(4, ks.getDiaChi());
 			stmt.setInt(5, ks.getSao());
 			stmt.setString(6, ks.getMoTa());
+			stmt.setString(7, ks.getMaKS());
 			if(stmt.executeUpdate() > 0){
 				return true;
 			}

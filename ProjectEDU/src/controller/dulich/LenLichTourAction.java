@@ -10,6 +10,7 @@ import model.bean.DLChiTietTour;
 import model.bean.Info;
 import model.bo.ChiTietTourBO;
 import model.bo.DLTinhBO;
+import model.bo.DLTourBO;
 import model.bo.LoaiTourBO;
 
 @SuppressWarnings("serial")
@@ -19,10 +20,10 @@ public class LenLichTourAction extends ActionSupport {
 	private int maxTour;
 	private HashMap<String, String> listLoaiTour;
 	private String maLoai;
-	/*private HashMap<String, String> listTour;*/
+	private HashMap<String, String> listTour;
 	private HashMap<String, String> listTinh;
 	private String maTinh;
-	/*private HashMap<String, String> listKS;*/
+	private HashMap<String, String> listKS;
 	private Info info;
 	
 	private List<DLChiTietTour> list;
@@ -32,6 +33,22 @@ public class LenLichTourAction extends ActionSupport {
 	private String btnAddNew;
 	private String btnUpdate;
 	private String btnDelete;
+
+	public HashMap<String, String> getListTour() {
+		return listTour;
+	}
+
+	public void setListTour(HashMap<String, String> listTour) {
+		this.listTour = listTour;
+	}
+
+	public HashMap<String, String> getListKS() {
+		return listKS;
+	}
+
+	public void setListKS(HashMap<String, String> listKS) {
+		this.listKS = listKS;
+	}
 
 	public DLChiTietTour getCt() {
 		return ct;
@@ -174,10 +191,13 @@ public class LenLichTourAction extends ActionSupport {
 	public String execute() {
 		info = new LoginAction().checkLogin("1");
 		if (info != null) {
-			if (info.getTieuDe() == null) {
-				return "login";
-			} else {
-				return "info";
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(btnUpdate != null){
@@ -226,11 +246,14 @@ public class LenLichTourAction extends ActionSupport {
 
 	public String showLenLichTour() {
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(classList == null) {
@@ -238,8 +261,9 @@ public class LenLichTourAction extends ActionSupport {
 		}
 		listLoaiTour = new LoaiTourBO().getAllSelect();
 		listTinh = new DLTinhBO().getAllSelect();
-		/*listTour = new DLTourBO().getAllByMaLoaiTour(maLoai);
-		listKS = new KhachSanBO().getAllByMaTinh(maTinh);*/
+		//maLoai = ""+1;
+		listTour = new DLTourBO().getAllByMaLoaiTour(maLoai);
+		/*listKS = new KhachSanBO().getAllByMaTinh(maTinh);*/
 		list = new ChiTietTourBO().getAll();
 		if(maCt != null) {
 			List<DLChiTietTour> listCT = list.stream().filter(p -> p.getMaChiTietTour().equals(maCt)).collect(Collectors.toList());
@@ -255,11 +279,14 @@ public class LenLichTourAction extends ActionSupport {
 	
 	public String capNhatListLichTour(){
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(btnAddNew == null){

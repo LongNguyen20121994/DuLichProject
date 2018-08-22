@@ -98,6 +98,9 @@ public class LoginAction extends ActionSupport {
 		if (account.equals("1")) {
 			return loginAdminTrip();
 		}
+		if (account.equals("2")) {
+			return loginNhanVienTrip();
+		}
 		return INPUT;
 	}
 	public String showLogin(){
@@ -361,7 +364,7 @@ public class LoginAction extends ActionSupport {
 	public String loginAdminTrip() {
 		DLNhanVienBO login = new DLNhanVienBO();
 		//QuanTriVienBO login = new QuanTriVienBO();
-		DLNhanVien tmp = login.getInfo(soCMND);
+		DLNhanVien tmp = login.getInfo(soCMND, 1);
 		//QuanTriVien tmp = login.getInfo(soCMND);
 		if(tmp != null){
 			//if(tmp.isTrangThai()){
@@ -372,6 +375,55 @@ public class LoginAction extends ActionSupport {
 						session.put("hoTen", tmp.getHoTen());
 						session.put("hinhAnh", tmp.getHinhAnh());
 						session.put("account","1");
+						return "success";
+					} else {
+						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
+						return "info";
+					}
+				/*} else {
+					if(tmp.getMatKhau().equals(matKhau)){
+						logined = true;
+						return "doiMK";
+					} else {
+						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
+						return "info";
+					}
+				}*/
+			/*} else {
+				if(tmp.getMatKhau().equals(matKhau)){
+					info = new Info("Đăng nhập","Tài khoản của bạn chưa được kích hoạt."
+							+ " Liên hệ với quản trị viên để biết thêm thông tin!");
+					return "info";
+				} else {
+					if(tmp.getMatKhau().equals(Library.md5(matKhau))){
+						info = new Info("Đăng nhập","Tài khoản của bạn đang bị khóa."
+								+ " Liên hệ với quản trị viên để biết thêm thông tin!");
+						return "info";
+					} else {
+						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
+						return "info";
+					}
+				}
+			}*/
+		} else {
+			info = new Info("Đăng nhập","Tài khoản không tồn tại. Vui lòng kiểm tra lại!");
+			return "info";
+		}
+	}
+	public String loginNhanVienTrip() {
+		DLNhanVienBO login = new DLNhanVienBO();
+		//QuanTriVienBO login = new QuanTriVienBO();
+		DLNhanVien tmp = login.getInfo(soCMND, 0);
+		//QuanTriVien tmp = login.getInfo(soCMND);
+		if(tmp != null){
+			//if(tmp.isTrangThai()){
+				//if(tmp.isLogined()){
+					if(tmp.getMatKhau().equals(matKhau)){
+						Map<String, Object> session = ActionContext.getContext().getSession();
+						session.put("soCMND", tmp.getSoCMND());
+						session.put("hoTen", tmp.getHoTen());
+						session.put("hinhAnh", tmp.getHinhAnh());
+						session.put("account","2");
 						return "success";
 					} else {
 						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");

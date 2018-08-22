@@ -105,12 +105,16 @@ public class DangKyKhachSanAction extends ActionSupport {
 	public String execute() throws Exception {
 		info = new LoginAction().checkLogin("1");
 		if (info != null) {
-			if (info.getTieuDe() == null) {
-				return "login";
-			} else {
-				return "info";
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
-		}if(btnUpdate != null){
+		}
+		if(btnUpdate != null){
 			if(hinhAnh != null){
 				ks.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, ks.getMaKS()));
 			}
@@ -153,11 +157,14 @@ public class DangKyKhachSanAction extends ActionSupport {
 
 	public String showDangKyKhachSan(){
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(classList == null) {
@@ -184,11 +191,14 @@ public class DangKyKhachSanAction extends ActionSupport {
 	}*/
 	public String capNhatKhachSan(){
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		list = new KhachSanBO().getAll();

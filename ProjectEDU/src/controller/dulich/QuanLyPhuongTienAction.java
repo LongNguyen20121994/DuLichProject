@@ -94,11 +94,14 @@ public class QuanLyPhuongTienAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(btnUpdate != null){
@@ -132,11 +135,14 @@ public class QuanLyPhuongTienAction extends ActionSupport {
 	}
 	public String quanLyPhuongTien(){
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(classList == null) {
@@ -158,11 +164,14 @@ public class QuanLyPhuongTienAction extends ActionSupport {
 	
 	public String capNhatListPhuongTien(){
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(btnAddNew == null){

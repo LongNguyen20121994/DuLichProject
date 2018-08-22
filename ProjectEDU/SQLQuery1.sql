@@ -1,4 +1,7 @@
-﻿-- Khách hàng
+﻿Create Database DuLichViet
+go
+use DuLichViet
+-- Khách hàng
 Create table NhanVien(
 	SoCMND varchar(9) primary key CHECK(SoCMND LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
 	HoTen nvarchar(100) not null,
@@ -54,6 +57,7 @@ Create table ChiTietTour(
 	MaChiTietTour varchar(10) primary key,
 	MaTour varchar(10) foreign key references Tour(MaTour),
 	MaKS varchar(10) foreign key references KhachSan(MaKS),
+	MaPT varchar(10) foreign key references PhuongTien(MaPT),
 	NgayKhoiHanh datetime,
 	DiaDiemKhoiHanh nvarchar(500),
 	DacDiem nvarchar(500),
@@ -65,8 +69,8 @@ Create table ChiTietTour(
 Create table KhachHang(
 	MaKH varchar(10) primary key,
 	HoTen nvarchar(100) not null,
-	Email varchar(40)check (Email  like '%@%.%'),
-	SoDT varchar(20)Check(SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+	Email varchar(40) check (Email  like '%@%.%'),
+	SoDT varchar(20) Check(SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
 	DiaChi nvarchar(500),
 	GhiChu nvarchar(max),
 	MatKhau varchar(max),
@@ -79,4 +83,15 @@ Create table ChiTietKhachHang(
 	HoTen nvarchar(100),
 	NgaySinh date,
 	GioiTinh bit default ('false')
+)
+Create table HopDong(
+	MaHopDong varchar(10) primary key,
+	TenHopDong nvarchar(500) not null,
+	NgayKy datetime,
+	MaKH varchar(10) foreign key references KhachHang(MaKH),
+	MaNV varchar(9) foreign key references NhanVien(SoCMND),
+	MaChiTietTour varchar(10) foreign key references ChiTietTour(MaChiTietTour),
+	GiaTien decimal,
+	SoTienDatCoc decimal,
+	DieuKhoan nvarchar(max)
 )

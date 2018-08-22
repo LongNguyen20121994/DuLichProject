@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import common.Library;
 import model.bean.DLNhanVien;
 import model.bean.Info;
 import model.bo.DLNhanVienBO;
@@ -21,6 +22,7 @@ public class QuanLyNhanVienAction extends ActionSupport {
 	private String btnAddNew;
 	private String btnUpdate;
 	private String btnDelete;
+	private String hinhAnh;
 	public DLNhanVien getNv() {
 		return nv;
 	}
@@ -81,6 +83,12 @@ public class QuanLyNhanVienAction extends ActionSupport {
 	public void setBtnDelete(String btnDelete) {
 		this.btnDelete = btnDelete;
 	}
+	public String getHinhAnh() {
+		return hinhAnh;
+	}
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
+	}
 	@Override
 	public String execute() throws Exception {
 		info = new LoginAction().checkLogin("1");
@@ -92,6 +100,9 @@ public class QuanLyNhanVienAction extends ActionSupport {
 			}
 		}
 		if(btnUpdate != null){
+			if (hinhAnh != null) {
+				nv.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, nv.getSoCMND()));
+			}
 			if(new DLNhanVienBO().updateNhanVien(nv)){
 				info = new Info("","<font style='color:blue;'>"+ nv.getHoTen() +" Đã được cập nhật!</font><br/>");
 			} else {
@@ -100,6 +111,9 @@ public class QuanLyNhanVienAction extends ActionSupport {
 			classList = "active";
 		} else {
 			if(btnAddNew != null){
+				if (hinhAnh != null) {
+					nv.setHinhAnh("anhThanhVien/" + Library.renameFile("/anhThanhVien", hinhAnh, nv.getSoCMND()));
+				}
 				if(new DLNhanVienBO().insertNhanVien(nv)){
 					info = new Info("","<font style='color:blue;'>"+ nv.getHoTen() +" Đã thêm thành công!</font><br/>");
 					classList = "active";

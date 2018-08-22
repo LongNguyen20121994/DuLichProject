@@ -67,10 +67,16 @@ public class DLNhanVienDAO {
 		return list;
 	}
 	
-	public DLNhanVien getInfo(String soCMND) {
+	public DLNhanVien getInfo(String soCMND, int so) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
 		String sql = "select SoCMND,HoTen,MatKhau,NgaySinh,GioiTinh,SoDT,Email,HinhAnh from NhanVien where SoCMND=?";
+		if(so == 1) {
+			sql += " and isAdmin = 1";
+		}
+		if(so == 0) {
+			sql += " and isAdmin = 0";
+		}
         PreparedStatement stmt = null;
         try {
     		stmt = con.getConnect().prepareStatement(sql);

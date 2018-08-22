@@ -81,7 +81,12 @@
 						        			<td style="width:80px; padding-top:15px;">Ảnh bìa</td>
 						        			<td colspan="2">
 						        				<div id="anhCaNhan" style="margin:0px 0px 10px 0px; cursor: pointer;" onclick="$('input[type=file]').click()">
-										        	<img src="images/addImage.jpg" class="img-thumbnail" width="20%" />
+						        					<s:if test="tour.hinhAnh == null || tour.hinhAnh == ''">
+										        		<img src="images/addImage.jpg" class="img-thumbnail" width="20%" />
+						        					</s:if>
+						        					<s:else>
+										        		<img src="${tour.hinhAnh}" class="img-thumbnail" width="100%" />
+						        					</s:else>
 										        </div>
 										        <s:file name="hinhAnh" cssStyle="display:none;" accept="image/*"></s:file>
 						        			</td>

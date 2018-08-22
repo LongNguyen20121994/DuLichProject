@@ -126,10 +126,13 @@ public class DangKyTourAction extends ActionSupport {
 	public String execute() {
 		info = new LoginAction().checkLogin("1");
 		if (info != null) {
-			if (info.getTieuDe() == null) {
-				return "login";
-			} else {
-				return "info";
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(btnUpdate != null){
@@ -187,11 +190,14 @@ public class DangKyTourAction extends ActionSupport {
 
 	public String showDangKyTour() {
 		info = new LoginAction().checkLogin("1");
-		if(info != null) {
-			if(info.getTieuDe() == null){
-				return "login";
-			} else {
-				return "info";
+		if (info != null) {
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(classList == null) {
@@ -219,10 +225,13 @@ public class DangKyTourAction extends ActionSupport {
 	public String capNhatListTour() {
 		info = new LoginAction().checkLogin("1");
 		if (info != null) {
-			if (info.getTieuDe() == null) {
-				return "login";
-			} else {
-				return "info";
+			info = new LoginAction().checkLogin("2");
+			if (info != null) {
+				if (info.getTieuDe() == null) {
+					return "login";
+				} else {
+					return "info";
+				}
 			}
 		}
 		if(btnAddNew == null){
@@ -250,12 +259,4 @@ public class DangKyTourAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
-	
-	/*public void validate() {
-		if(tour != null) {
-			if(StringUtils.isEmpty(tour.getTieuDe())) {
-				addActionError("Tiêu đề tour không được bỏ trống!");
-			}
-		}
-	}*/
 }

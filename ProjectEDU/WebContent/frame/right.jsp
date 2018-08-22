@@ -21,7 +21,7 @@
     		<%@include file="rightAdmin.jsp"%>
     	</s:if>
     	<s:elseif test='#session.account=="2"'>
-    		<%@include file="rightAdmin.jsp"%>
+    		<%@include file="rightNhanVien.jsp"%>
     	</s:elseif>
     	<s:elseif test='#session.account=="3"'>
     		<%@include file="rightAdmin.jsp"%>

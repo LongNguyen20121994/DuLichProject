@@ -7,9 +7,9 @@ import model.dao.DLNhanVienDAO;
 
 public class DLNhanVienBO {
 	
-	public DLNhanVien getInfo(String soCMND) {
+	public DLNhanVien getInfo(String soCMND, int so) {
 		// TODO Auto-generated method stub
-		return new DLNhanVienDAO().getInfo(soCMND);
+		return new DLNhanVienDAO().getInfo(soCMND, so);
 	}
 	
 	public boolean insertNhanVien(DLNhanVien nv) {

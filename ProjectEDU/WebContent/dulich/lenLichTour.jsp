@@ -77,7 +77,7 @@
 						        			<td>
 							        			<div class="input-group">
 													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-													<s:select list="listLoaiTour" name="maLoai" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn loai Tour"/>
+													<s:select list="listLoaiTour" name="ct.maLoai" id="maLoai" cssClass="form-control" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn loai Tour"/>
 												</div>
 						        			</td>
 						        		</tr>
@@ -86,7 +86,7 @@
 						        			<td>
 							        			<div class="input-group">
 													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-													<s:select name="ct.maTour" id="maTour" cssClass="form-control" list="{}" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn Tour" />
+													<s:select name="ct.maTour" id="maTour" cssClass="form-control" list="listTour" aria-describedby="basic-addon1" headerKey="-1" headerValue="Chọn Tour" />
 												</div>
 						        			</td>
 						        		</tr>

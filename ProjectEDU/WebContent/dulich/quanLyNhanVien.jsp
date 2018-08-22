@@ -15,6 +15,27 @@
 </head>
 
 <script type="text/javascript">
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
+	function checkForm(){
+		var name=document.getElementById("soCMND");
+		var na=/^[0-9]+$/;
+		var mess="";
+		if(!na.test(name.value))
+		{
+			mess += "Số CMND phải là kiểu số!";
+		}
+
+		if(isBlank(document.getElementById("hoTen").value)) {
+			alert("blank");
+		}
+		if(mess != ""){
+			alert(mess);
+			name.focus();
+			return(false);			
+		}
+	}
 	$(document).ready(function() {
 	    $('input[type=file]').ajaxfileupload({
 	        'action' : 'uploadHinhAnh.trip',
@@ -37,8 +58,6 @@
 	        }
 	    });
 	});
-</script>
-<script type="text/javascript">
 	$(document).ready(function() {
 	    $('#table').DataTable();
 	});
@@ -69,7 +88,7 @@
 						        			<td>
 							        			<div class="input-group">
 													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-													<s:textfield name="nv.soCMND" cssClass="form-control" placeholder="Số chứng minh thư" aria-describedby="basic-addon1" />
+													<s:textfield id="soCMND" name="nv.soCMND" cssClass="form-control" placeholder="Số chứng minh thư" aria-describedby="basic-addon1" />
 												</div>
 						        			</td>
 						        		</tr>
@@ -77,8 +96,8 @@
 						        			<td style="padding-top:15px;">Họ tên</td>
 						        			<td>
 							        			<div class="input-group">
-													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-													<s:textfield name="nv.hoTen" cssClass="form-control" placeholder="Họ và tên" aria-describedby="basic-addon1" />
+													<span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:textfield name="nv.hoTen" id="hoTen" cssClass="form-control" placeholder="Họ và tên" aria-describedby="basic-addon2" />
 												</div>
 						        			</td>
 						        		</tr>
@@ -86,8 +105,8 @@
 				        					<td style="padding-top:15px;">Ngày sinh</td>
 						        			<td>
 							        			<div class="input-group">
-													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-													<s:textfield name="nv.ngaySinh" id="datepicker" cssClass="form-control" placeholder="Ngày sinh" aria-describedby="basic-addon1" />
+													<span class="input-group-addon" id="basic-addon3"><span class="glyphicon glyphicon-calendar"></span></span>
+													<s:textfield name="nv.ngaySinh" id="datepicker" cssClass="form-control" aria-describedby="0" placeholder="Ngày sinh"/>
 												</div>
 												<script src="js/bootstrap-datepicker.js"></script>
 									            <script type="text/javascript">
@@ -110,8 +129,8 @@
 						        			<td style="padding-top:15px;">Số ĐT</td>
 						        			<td>
 							        			<div class="input-group">
-													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-													<s:textfield name="nv.soDT" cssClass="form-control" placeholder="Số điện thoại" aria-describedby="basic-addon1" />
+													<span class="input-group-addon" id="basic-addon4"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:textfield name="nv.soDT" cssClass="form-control" placeholder="Số điện thoại" aria-describedby="basic-addon4" />
 												</div>
 						        			</td>
 						        		</tr>
@@ -119,8 +138,8 @@
 						        			<td style="padding-top:15px;">Email</td>
 						        			<td>
 							        			<div class="input-group">
-													<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-transfer"></span></span>
-													<s:textfield name="nv.email" cssClass="form-control" placeholder="Địa chỉ email" aria-describedby="basic-addon1" />
+													<span class="input-group-addon" id="basic-addon5"><span class="glyphicon glyphicon-transfer"></span></span>
+													<s:textfield name="nv.email" cssClass="form-control" placeholder="Địa chỉ email" aria-describedby="basic-addon5" />
 												</div>
 						        			</td>
 						        		</tr>
@@ -128,7 +147,7 @@
 						        			<td style="padding-top:15px;">Cấp quyền</td>
 						        			<td>
 							        			<div class="input-group">
-													<s:checkbox name="nv.isAdmin" cssStyle="margin-top:5px;margin-right:5px;" value="false" /><span >Admin</span>
+													<s:checkbox name="nv.admin" cssStyle="margin-top:5px;margin-right:5px;" /><span >Admin</span>
 												</div>
 						        			</td>
 						        		</tr>
@@ -140,10 +159,10 @@
 						                            </s:if>
 	                                           		<s:reset cssClass="btn btn-info" value="Làm mới"></s:reset>
 	                                           		<s:if test="soCMND != null">
-	                                               		<s:submit cssClass="btn btn-info" name="btnUpdate" value="Cập nhật"></s:submit>
+	                                               		<s:submit cssClass="btn btn-info" name="btnUpdate" onclick="return checkForm();" value="Cập nhật"></s:submit>
 	                                           		</s:if>
 	                                           		<s:else>
-	                                               		<s:submit cssClass="btn btn-info" name="btnAddNew" value="Thêm"></s:submit>
+	                                               		<s:submit cssClass="btn btn-info" name="btnAddNew" onclick="return checkForm();" value="Thêm"></s:submit>
 	                                           		</s:else>
 	                                           </div>
 	                                       </td>
@@ -159,6 +178,7 @@
 							            <tr>
 							                <th style="text-align: center; width:100px;">Số CMND</th>
 							                <th style="text-align: center;">Họ tên</th>
+							                <th style="text-align: center;width:100px;">Quyền</th>
 							                <th style="text-align: center;width:65px;">Cập nhật</th>
 							            </tr>
 							        </thead>
@@ -166,6 +186,7 @@
 							       		 <tr>
 							                <th style="text-align: center; width:100px;">Số CMND</th>
 							                <th style="text-align: center;">Họ tên</th>
+							                <th style="text-align: center;">Quyền</th>
 							                <th style="text-align: center;width:65px;">Cập nhật</th>
 							            </tr>
 							        </tfoot>
@@ -174,6 +195,7 @@
 							       			<tr>
 								                <td align="center"><s:property value="soCMND"/></td>
 								                <td><s:property value="hoTen"/></td>
+								                <td style="text-align: center;"><s:if test="admin == true">Admin</s:if><s:else>Nhân Viên</s:else></td>
 								                <td align="center"><s:checkbox name="listMaNV" fieldValue="%{soCMND}" value="false"/></td>
 							           		 </tr>
 							       		</s:iterator>

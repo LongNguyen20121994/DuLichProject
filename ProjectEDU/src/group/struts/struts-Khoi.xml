@@ -286,7 +286,7 @@
 	        <interceptor-ref name="i18n"/>
 	        <interceptor-ref name="fileUpload">
 	        	<param name="allowedTypes">*/*</param>
-	            <param name="allowedTypes">application/excel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+	            <!-- <param name="allowedTypes">application/excel, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param> -->
 	            <param name="maximumSize">5000000</param>
 	        </interceptor-ref> 
 	        <interceptor-ref name="params">
