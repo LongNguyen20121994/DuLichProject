@@ -182,27 +182,7 @@
 						</div>
 						<div style="color:#e30050 !important;font-size:2em;"><h3>Thông tin liên hệ</h3></div>
 						<div>
-							<%-- <s:form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr"> --%>
 							<s:form method="post" action="bookingTourTiep.trip?maTour=%{maTour}">
-								<!-- Nhập địa chỉ email người nhận tiền (người bán) -->
-				            <input type="hidden" name="business" value="testnhan@test.com">
-				
-				            <!-- tham số cmd có giá trị _xclick chỉ rõ cho paypal biết là người dùng nhất nút thanh toán -->
-				            <input type="hidden" name="cmd" value="_xclick">
-				
-				            <!-- Thông tin mua hàng. -->
-				            <input type="hidden" name="item_name" value="HoaDonMuaHang">
-							<!--Trị giá của giỏ hàng, vì paypal không hỗ trợ tiền việt nên phải đổi ra tiền $-->
-				            Nhập số tiền hóa đơn : <input type="number" name="amount" placeholder="Nhập số tiền vào" value="">
-							<!--Loại tiền-->
-				            <input type="hidden" name="currency_code" value="VND">
-							<!--Đường link mình cung cấp cho Paypal biết để sau khi xử lí thành công nó sẽ chuyển về theo đường link này-->
-				            <input type="hidden" name="return" value="http://localhost:8081/ProjectEDU/thanhcong.html">
-							<!--Đường link mình cung cấp cho Paypal biết để nếu  xử lí KHÔNG thành công nó sẽ chuyển về theo đường link này-->
-				            <input type="hidden" name="cancel_return" value="http://localhost:8081/ProjectEDU/loi.html">
-				            <!-- Nút bấm. -->
-				            <input type="submit" name="submit" value="Thanh toán quay Paypal">
-				            
 								<div class="col-md-6">
 									<div style="font-weight: bold;">Họ tên *:</div>
 									<div>

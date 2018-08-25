@@ -39,7 +39,7 @@
 	         <td align="center"><s:property value="diaChi"/></td>
 	         <td align="center"><s:property value="ghiChu"/></td>
 	         <td align="center">
-	         	<s:a action="showInfoDHCD.trip?maTruong=%{maTruong}">Xem</s:a> |
+	         	<s:a action="showInfoDHCD.trip?maTruong=%{maTruong}">Xem</s:a>
 	         	<s:a action="showDangKyXetTuyen.trip?hs.maTruong=%{maTruong}">Nộp</s:a>
 	         </td>
 	   		 </tr>

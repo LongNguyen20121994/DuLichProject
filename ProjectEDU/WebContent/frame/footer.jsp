@@ -17,5 +17,5 @@
         <s:a>Trợ giúp</s:a>
     </small>
     <br>
-    <small style="color:white">Copyright © 2018 Website Đồ án Xây dựng hệ thống quản lý Tour Du lịch Việt.<br> All Rights Reserved.</small>
+    <small style="color:white">Copyright © 2018 Website Đồ án Xây dựng hệ thống quản lý Tour Du Lịch Việt.<br> All Rights Reserved.</small>
 </div>

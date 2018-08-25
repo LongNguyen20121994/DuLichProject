@@ -64,7 +64,7 @@ public class DLHopDongChiTiet {
 				"\r\n" + 
 				"<p>Địa chỉ: 95B-97-99 Trần Hưng Đạo, Phường Cầu &Ocirc;ng L&atilde;nh, Quận 1, TP HCM</p>\r\n" + 
 				"\r\n" + 
-				"<p>Người đại diện: &Ocirc;ng Trần Văn Long&nbsp;&ndash; Chức Vụ: Tổng Gi&aacute;m đốc C&ocirc;ng ty Du lịch Việt</p>\r\n" + 
+				"<p>Người đại diện: &Ocirc;ng Trần Văn Long&nbsp;&ndash; Chức Vụ: Tổng Gi&aacute;m đốc C&ocirc;ng ty Du Lịch Việt</p>\r\n" + 
 				"\r\n" + 
 				"<p>Điện thoại: (+84 4) 3512 3388&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &ndash; Fax: (+84 24) 3512 3388&nbsp;</p>\r\n" + 
 				"\r\n" + 

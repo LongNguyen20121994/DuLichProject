@@ -2,7 +2,9 @@ package controller.dulich;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import model.bean.DLChiTietDatTour;
@@ -186,7 +188,19 @@ public class BookingTourAction extends ActionSupport  {
 			}
 			kh.setMaKH("KHH"+taoMa(max));
 			KhachHangBO khbo = new KhachHangBO();
+			DLTourTrangChu tur1 = new DLTourBO().getInfoTtTourBook(maTour);
+			
+			// lấy thông tin tour
+			DLTourBO dlbo = new DLTourBO();
+			tour = dlbo.getInfo(tur1.getMaTour());
+
 			if (khbo.insertKhachHang(kh)) {
+				// Create session cho acc khach hang
+				Map<String, Object> session = ActionContext.getContext().getSession();
+				session.put("email", kh.getEmail());
+				session.put("makh", kh.getMaKH());
+				session.put("tieude", tour.getTieuDe());				
+				
 				HopDongBO hdbo = new HopDongBO();
 				hd = new DLHopDong();
 				timMax = hdbo.getMaxRecord();
@@ -203,7 +217,6 @@ public class BookingTourAction extends ActionSupport  {
 				hd.setTenHopDong("Hợp đồng đặt Tour");
 				hd.setMaKH(kh.getMaKH());
 				hd.setMaCtTour(maChiTietTour);
-				DLTourTrangChu tur1 = new DLTourBO().getInfoTtTourBook(maTour);
 				hd.setGiaTien(tourTrangChu.getSoNguoiLon() * getGiaTien(tur1.getGiaVe()) + tourTrangChu.getSoTreEm()*Math.round((getGiaTien(tur1.getGiaVe()) * 0.7)*10)/10
 						+ tourTrangChu.getSoTreNho()*Math.round((getGiaTien(tur1.getGiaVe()) * 0.5)*10)/10 + tourTrangChu.getSoSoSinh()*200000
 						);
@@ -213,10 +226,6 @@ public class BookingTourAction extends ActionSupport  {
 					hd.setSoTienDc(Math.round((hd.getGiaTien() * 0.3)*10)/10);
 				}
 				tur1.setPtThanhToan(ptThanhToan);
-				
-				// lấy thông tin tour
-				DLTourBO dlbo = new DLTourBO();
-				tour = dlbo.getInfo(tur1.getMaTour());
 
 				// Create thông tin hợp đồng
 				DLHopDongChiTiet hdct= new DLHopDongChiTiet();
@@ -235,7 +244,7 @@ public class BookingTourAction extends ActionSupport  {
 					int i;
 					if(tourTrangChu.getSoNguoiLon() > 1) {
 						listCtkhNL = new ArrayList<DLChiTietKhachHang>(); 
-						for (i = 0; i < tourTrangChu.getSoNguoiLon(); i ++ ) {
+						for (i = 0; i < tourTrangChu.getSoNguoiLon() - 1; i ++ ) {
 							ctkh = new DLChiTietKhachHang();
 							ctkh.setMaChiTiet("CTK"+taoMa(max+i));
 							ctkh.setMaKH(kh.getMaKH());

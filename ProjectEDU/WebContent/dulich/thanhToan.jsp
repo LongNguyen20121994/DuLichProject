@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Thông tin chi tiết</title>
+<title>Thanh toán</title>
 <jsp:include page="../css/style.html"/>
 	
 	<link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -11,12 +11,19 @@
 	<script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="../js/dataTables.bootstrap.min.js"></script>
 <script lang="Javascript">
+window.onload = function()
+{
+	checkForm(true);
+};
 function checkForm(value){
-	alert(value);
-	if(value === false){
-		alert($("#hd.giaTien"));		
+	if(value === "ptThanhToantrue"){
+		name = document.getElementById("giaTien").value * 1;
+		$("#sotientt1").html(name + " VND");
+		document.getElementById("sotientt").value = name;
 	}else{
-		alert($("#hd.giaTien"));
+		name = document.getElementById("giaTien").value * 0.3;
+		$("#sotientt1").html(name + " VND");
+		document.getElementById("sotientt").value = name;
 	}
 }
 </script>
@@ -181,7 +188,7 @@ function checkForm(value){
 						</s:if>
 					</div>
 					<div style="color:#e30050 !important;font-size:2em;"><h3>Thanh toán</h3></div>
-					<s:form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+					<s:form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 						<!-- Địa chỉ email người nhận tiền -->
 				        <input type="hidden" name="business" value="testnhan@test.com">
 				
@@ -191,28 +198,34 @@ function checkForm(value){
 				        <!-- Thông tin mua hàng. -->
 				        <input type="hidden" name="item_name" value="HoaDonMuaHang">
 						<!--Trị giá của giỏ hàng, vì paypal không hỗ trợ tiền việt nên phải đổi ra tiền $-->
-						<h4 style="float: left;">-- Tổng số:<s:property value="hd.giaTien"></s:property> VND</h4>
+						
+						<input type="hidden" id="giaTien" name="hd.giaTien" value="${hd.giaTien}">
+						
+						<h4 style="float: left;">-- Tổng giá trị tour: <s:property value="hd.giaTien"></s:property> VND</h4>
 						<br/>
 						<div><br/></div>
 						<tr>
 		        			<td><h4>-- Phương thức thanh toán: </h4></td>
 		        			<td>
-								<s:radio name="ptThanhToan" id="ptThanhToan" list="#{'true':'&nbsp;Thanh toán online(100% online)','false':'&nbsp;Thanh toán trực tiếp(30% online)'}" value="true" onclick="checkForm(this.id)"/>
+								<s:radio name="ptThanhToan" id="ptThanhToan" list="#{'true':'&nbsp;Thanh toán online(100% online)','false':'&nbsp;Thanh toán trực tiếp(30% online)'}" onclick="checkForm(this.id)"/>
 		        			</td>
-		        		</tr>
+		        		</tr><br>
 						<tr>
-							<td style="width:180px; padding-top:8px;"><strong>Thanh toán online số tiền:</strong></td>
-		        			<td><b>: </b><s:property value="hd.soTienDc"></s:property> VND</td>
+							<td style="width:180px; padding-top:8px;"><strong style="float: left;">Bắt buộc thanh toán Online số tiền: </strong><p id="sotientt1" style="font-weight: bold;font-size: 16px; color: #075d77 !important"></p></td>
 		        		</tr>
-				        <input type="number" name="amount" placeholder="Nhập số tiền vào" value="">
+				        <input type="hidden" id="sotientt" type="number" name="amount" placeholder="Nhập số tiền vào" value="">
+				        
 						<!--Loại tiền-->
-				        <input type="hidden" name="currency_code" value="VND">
+				        <input type="hidden" name="currency_code" value="USD">
+						
 						<!--Đường link mình cung cấp cho Paypal biết để sau khi xử lí thành công nó sẽ chuyển về theo đường link này-->
-				        <input type="hidden" name="return" value="http://localhost:8081/ProjectEDU/thanhcong.html">
+						<input type="hidden" name="return" value="http://localhost:8081/ProjectEDU/sendMailMatKhau.trip">
+						
 						<!--Đường link mình cung cấp cho Paypal biết để nếu  xử lí KHÔNG thành công nó sẽ chuyển về theo đường link này-->
 				        <input type="hidden" name="cancel_return" value="http://localhost:8081/ProjectEDU/loi.html">
+				        
 				        <!-- Nút bấm. -->
-				        <input type="submit" name="submit" value="Thanh toán quay Paypal">
+				        <input type="submit" name="submit" value="Thanh toán qua Paypal">
 					</s:form>
 				</div>
 			</div>

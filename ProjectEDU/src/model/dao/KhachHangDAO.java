@@ -9,6 +9,36 @@ import model.dao.khoi.ConnectDB;
 
 public class KhachHangDAO {
 
+	public DLKhachHang getInfo(String makh) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select MaKH,HoTen,Email,SoDT,DiaChi,GhiChu,MatKhau from KhachHang where MaKH=?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, makh);
+    		ResultSet rs = stmt.executeQuery();
+    		DLKhachHang gv = null;
+    		if(rs.next()){
+    			gv = new DLKhachHang();
+    			gv.setMaKH(rs.getString(1));
+    			gv.setHoTen(rs.getString(2));
+    			gv.setEmail(rs.getString(3));
+    			gv.setSoDT(rs.getString(4));
+    			gv.setDiaChi(rs.getString(5));
+    			gv.setGhiChu(rs.getString(6));
+    			gv.setMatKhau(rs.getString(7));
+    		} 
+        	stmt.close();
+        	return gv;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            con.closeConnection();
+        }
+	}
+	
 	public String getMaxRecord() {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
@@ -48,7 +78,7 @@ public class KhachHangDAO {
 			stmt.setString(4, tour.getSoDT());
 			stmt.setString(5, tour.getDiaChi());
 			stmt.setString(6, tour.getGhiChu());
-			stmt.setString(7, "123456");
+			stmt.setString(7, "");
 			if (stmt.executeUpdate() > 0) {
 				stmt.close();
 				return true;
@@ -62,60 +92,26 @@ public class KhachHangDAO {
 		return false;
 	}
 	
-	/*public HashMap<String, String> getAllSelect() {
-		HashMap<String, String> list = new HashMap<String, String>();
+	public boolean updateKhachHang(String maKh, String pass) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
-		String sql = "select MaTinh,TenTinh from Tinh";
+		String sql = "update KhachHang set MatKhau=? where MaKH=?";
         PreparedStatement stmt = null;
         try {
-    		stmt = con.getConnect().prepareStatement(sql);
-    		ResultSet rs = stmt.executeQuery();
-    		while(rs.next()){
-    			list.put(rs.getString(1), rs.getString(2));
-    		} 
+			stmt = con.getConnect().prepareStatement(sql);
+			stmt.setString(1, pass);
+			stmt.setString(2, maKh);
+			int check = stmt.executeUpdate();
         	stmt.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return null;
-        } finally {
-            con.closeConnection();
-        }
-		return list;
-	}
-
-	public boolean addListTinh(List<DLTinh> listTinh) {
-		ConnectDB con = new ConnectDB();
-		con.openConnection();
-		
-		String sqlInsert = "insert into Tinh(MaTinh,TenTinh) values (?,?)";
-		String sqlUpdate = "update Tinh set TenTinh=? where MaTinh=?";
-		String sqlCheck = "select MaTinh from Tinh where MaTinh=?";
-        PreparedStatement stmtc = null;
-        PreparedStatement stmte = null;
-        try {
-        	for(DLTinh ttp : listTinh){
-        		stmtc = con.getConnect().prepareStatement(sqlCheck);
-        		stmtc.setString(1, ttp.getMaTinh());
-        		if(stmtc.executeQuery().next()){
-        			stmte = con.getConnect().prepareStatement(sqlUpdate);
-        			stmte.setString(1, ttp.getTenTinh());
-        			stmte.setString(2, ttp.getMaTinh());
-        		} else {
-        			stmte = con.getConnect().prepareStatement(sqlInsert);
-        			stmte.setString(1, ttp.getMaTinh());
-        			stmte.setString(2, ttp.getTenTinh());
-        		}
-        		stmte.executeUpdate();
+        	if(check > 0){
+        		return true;
         	}
-        	stmtc.close();
-        	stmte.close();
-        	return true;
+        	return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         } finally {
             con.closeConnection();
         }
-	}*/
+	}
 }

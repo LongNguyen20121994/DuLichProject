@@ -23,6 +23,20 @@
 	        </action>
 		<!-- Kết thúc đăng nhập tài khoản -->
 		
+		<!-- Login Khach Hang -->
+			<action name="showLoginKhachHang" class="controller.dulich.LoginAction" method="showLogin">
+	            <result name="success">dulich/loginKhachHang.jsp</result>
+	            <result name="error" type="chain">info</result>
+	        </action>
+			
+			<action name="loginKhachHang" class="controller.dulich.LoginKhachHangAction">
+		        <result name="input">dulich/loginKhachHang.jsp</result>
+		        <result name="success">index.jsp</result>
+		        <result name="doiMK" type="chain">showDoiMatKhau</result>
+	            <result name="info" type="chain">info</result>
+	        </action>
+		<!-- End login Khach Hang -->
+		
 		<!-- Ajax-->
 				<action name="showKhachSan" class="controller.dulich.AjaxKhachSanAction"></action>
 				<action name="showTour" class="controller.dulich.AjaxTourAction"></action>
@@ -82,6 +96,14 @@
             <result name="success">dulich/thanhToan.jsp</result>
         </action>
 	<!-- Kết thúc hiển thị -->
+	
+	<!-- Bắt đầu gửi mail -->
+		<!-- <action name="sendMailXacNhan" class="controller.khoi.SendMailXacNhanAction" /> -->
+		<action name="sendMailMatKhau" class="controller.dulich.SendMailXacNhanAction" >
+	        <result name="success">dulich/thanhcong.jsp</result>
+	        <!-- <result name="info" type="chain">info</result> -->
+        </action>
+     <!-- Kết thúc gửi mail -->   
 	
 	<!-- Bắt đầu đăng ký Tour-->		
 		<action name="showDangKyTour" class="controller.dulich.DangKyTourAction" method="showDangKyTour">

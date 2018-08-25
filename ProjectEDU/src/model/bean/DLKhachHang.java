@@ -7,6 +7,7 @@ public class DLKhachHang {
 	private String diaChi;
 	private String soDT;
 	private String ghiChu;
+	private String matKhau;
 	public String getMaKH() {
 		return maKH;
 	}
@@ -42,5 +43,11 @@ public class DLKhachHang {
 	}
 	public void setSoDT(String soDT) {
 		this.soDT = soDT;
+	}
+	public String getMatKhau() {
+		return matKhau;
+	}
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
 	}
 }
