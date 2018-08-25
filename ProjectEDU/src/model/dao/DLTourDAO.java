@@ -322,6 +322,50 @@ public class DLTourDAO {
 		}
 	}
 	
+	public DLTourTrangChu getInfoTtTourBook(String maCtTour) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "SELECT t.MaTour,SoNgay,SoDem,AnhDaiDien,GiaVeNguoiLon,NgayKhoiHanh,TenKS,TenPT, ct.DiaDiemKhoiHanh FROM Tour t, ChiTietTour ct, KhachSan ks, PhuongTien pt"
+				+ " Where ct.MaTour = t.MaTour and"
+				+ " ct.MaKS = ks.MaKS and"
+				+ " ct.MaPT = pt.MaPT and"
+				+ " ct.MaChiTietTour = ?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, maCtTour);
+    		ResultSet rs = stmt.executeQuery();
+    		DLTourTrangChu tur = null;
+    		int soNgayDem=0;
+    		String tongNgayDem = "";
+    		if(rs.next()){
+    			tur = new DLTourTrangChu();
+    			tur.setMaTour(rs.getString(1));
+    			soNgayDem = rs.getInt(2);
+    			if(soNgayDem > 0) {
+    				tongNgayDem = soNgayDem + " ngày ";
+    			}
+    			soNgayDem = rs.getInt(3);
+    			if(soNgayDem > 0) {
+    				tongNgayDem += soNgayDem + " đêm";
+    			}
+    			tur.setSoNgayDem(tongNgayDem);
+    			tur.setHinhAnh(rs.getString(4));
+    			tur.setGiaVe(rs.getString(5) + " VND");
+    			tur.setNgayKhoiHanh(rs.getString(6).substring(0, 10));
+    			tur.setKhachSan(rs.getString(7));
+    			tur.setVanChuyen(rs.getString(8));
+    			tur.setDiaDiem(rs.getString(9));
+    		}
+        	stmt.close();
+            return tur;
+        } catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		} finally {
+			con.closeConnection();
+		}
+	}
 	public boolean updateTour(DLTour tour) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();

@@ -11,28 +11,103 @@
 	<script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="../js/dataTables.bootstrap.min.js"></script>
 <script lang="Javascript">
-$(document).ready(function() {
-    $('input[type=file]').ajaxfileupload({
-        'action' : 'uploadHinhAnh.trip',
-        'onComplete' : function(response) {
-            $('#upload').hide();
-            
-            var statusVal = JSON.stringify(response.status);
-
-            if(statusVal == "false")
-            {
-                $("#anhCaNhan").html("<font color='red'>"+ JSON.stringify(response.message) +" </font>");
-            }   
-            if(statusVal == "true")
-            {
-                $("#anhCaNhan").html("<img src='anhThanhVien\\"+$('input[type=file]').val().split('\\').pop()+"' class='img-thumbnail' width='100%'/>");
-            }           
-        },
-        'onStart' : function() {
-            $('#upload').show();
-        }
-    });
-});
+	function isBlank(str) {
+	    return (!str || /^\s*$/.test(str));
+	}
+	function validateEmail(email) {
+	    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(String(email).toLowerCase());
+	}
+	function checkForm(){
+		var name="";
+		var na=/^[0-9]+$/;
+		var mess="";
+		if(isBlank(document.getElementById("hoTen").value)) {
+			mess += "Họ tên không được để trống!";
+		}
+		if(isBlank(document.getElementById("email").value)) {
+			mess += "\nEmail không được để trống!";
+		}else{
+			name=document.getElementById("email");
+			if(!validateEmail(name.value)){
+				mess += "\nĐịa chỉ email không đúng!";
+			}
+		}
+		if(isBlank(document.getElementById("soDT").value)) {
+			mess += "\nSố điện thoại không được để trống!";
+		}else{
+			name=document.getElementById("soDT");
+			if(!na.test(name.value))
+			{
+				mess += "\nSố điện thoại phải là kiểu số!";
+			}
+		}
+		if(isBlank(document.getElementById("diaChi").value)) {
+			mess += "\nĐịa chỉ không được để trống!";
+		}
+		if(isBlank(document.getElementById("nguoiLon").value)) {
+			mess += "\nSố người lớn không được để trống!";
+		}else{
+			name=document.getElementById("nguoiLon");
+			if(!na.test(name.value))
+			{
+				mess += "\nSố lượng người lớn phải là kiểu số!";
+			}else{
+				if(name.value <= 0)
+				{
+					mess += "\nPhải có ít nhất 1 người lớn!";
+				}
+			}
+		}
+		if(!isBlank(document.getElementById("treEm").value)) {
+			name=document.getElementById("treEm");
+			if(!na.test(name.value))
+			{
+				mess += "\nSố lượng trẻ em phải là kiểu số!";
+			}
+		}
+		if(!isBlank(document.getElementById("treNho").value)) {
+			name=document.getElementById("treNho");
+			if(!na.test(name.value))
+			{
+				mess += "\nSố lượng trẻ nhỏ phải là kiểu số!";
+			}
+		}
+		if(!isBlank(document.getElementById("soSinh").value)) {
+			name=document.getElementById("soSinh");
+			if(!na.test(name.value))
+			{
+				mess += "\nSố lượng trẻ sơ sinh phải là kiểu số!";
+			}
+		}
+		if(mess != ""){
+			alert(mess);
+			name.focus();
+			return(false);			
+		}
+	}
+	$(document).ready(function() {
+	    $('input[type=file]').ajaxfileupload({
+	        'action' : 'uploadHinhAnh.trip',
+	        'onComplete' : function(response) {
+	            $('#upload').hide();
+	            
+	            var statusVal = JSON.stringify(response.status);
+	
+	            if(statusVal == "false")
+	            {
+	                $("#anhCaNhan").html("<font color='red'>"+ JSON.stringify(response.message) +" </font>");
+	            }   
+	            if(statusVal == "true")
+	            {
+	                $("#anhCaNhan").html("<img src='anhThanhVien\\"+$('input[type=file]').val().split('\\').pop()+"' class='img-thumbnail' width='100%'/>");
+	            }           
+	        },
+	        'onStart' : function() {
+	            $('#upload').show();
+	        }
+	    });
+	});
 </script>
 </head>
 <body>
@@ -59,7 +134,11 @@ $(document).ready(function() {
 				        		</tr>
 				        		<tr>
 				        			<td style="border-style:hidden;padding:0px">Vận chuyển:</td>
-				        			<td style="border-style:hidden;padding:0px"><s:property value="tourTrangChu.ngayKhoiHanh"></s:property></td>
+				        			<td style="border-style:hidden;padding:0px"><s:property value="tourTrangChu.vanChuyen"></s:property></td>
+				        		</tr>
+				        		<tr>
+				        			<td style="border-style:hidden;padding:0px">Giá vé:</td>
+				        			<td style="border-style:hidden;padding:0px"><s:property value="tourTrangChu.giaVe"></s:property></td>
 				        		</tr>
 				        		<tr>
 				        			<td style="border-style:hidden;padding:0px">Khách sạn:</td>
@@ -87,7 +166,7 @@ $(document).ready(function() {
 							                <th style="text-align: center;">Người lớn(Trên 11 tuổi)</th>
 							                <th style="text-align: center;">Trẻ em(5 - 11 tuổi)</th>
 							                <th style="text-align: center;">Trẻ nhỏ(2 - 5 tuổi)</th>
-							                <th style="text-align: center;;">Sơ sinh( < 2 tuổi)</th>
+							                <th style="text-align: center;;">Sơ sinh(nhỏ hơn 2 tuổi)</th>
 							            </tr>
 							        </thead>
 							       	<tfoot>
@@ -103,7 +182,8 @@ $(document).ready(function() {
 						</div>
 						<div style="color:#e30050 !important;font-size:2em;"><h3>Thông tin liên hệ</h3></div>
 						<div>
-							<s:form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+							<%-- <s:form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr"> --%>
+							<s:form method="post" action="bookingTourTiep.trip?maTour=%{maTour}">
 								<!-- Nhập địa chỉ email người nhận tiền (người bán) -->
 				            <input type="hidden" name="business" value="testnhan@test.com">
 				
@@ -115,32 +195,32 @@ $(document).ready(function() {
 							<!--Trị giá của giỏ hàng, vì paypal không hỗ trợ tiền việt nên phải đổi ra tiền $-->
 				            Nhập số tiền hóa đơn : <input type="number" name="amount" placeholder="Nhập số tiền vào" value="">
 							<!--Loại tiền-->
-				            <input type="hidden" name="currency_code" value="USD">
+				            <input type="hidden" name="currency_code" value="VND">
 							<!--Đường link mình cung cấp cho Paypal biết để sau khi xử lí thành công nó sẽ chuyển về theo đường link này-->
-				            <input type="hidden" name="return" value="http://localhost/demothanhtoanonline/thanhcong.html">
+				            <input type="hidden" name="return" value="http://localhost:8081/ProjectEDU/thanhcong.html">
 							<!--Đường link mình cung cấp cho Paypal biết để nếu  xử lí KHÔNG thành công nó sẽ chuyển về theo đường link này-->
-				            <input type="hidden" name="cancel_return" value="http://localhost/demothanhtoanonline/loi.html">
+				            <input type="hidden" name="cancel_return" value="http://localhost:8081/ProjectEDU/loi.html">
 				            <!-- Nút bấm. -->
 				            <input type="submit" name="submit" value="Thanh toán quay Paypal">
 				            
 								<div class="col-md-6">
 									<div style="font-weight: bold;">Họ tên *:</div>
 									<div>
-										<s:textfield name="kh.hoTen" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="kh.hoTen" id="hoTen" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 									<div style="font-weight: bold; margin-top: 10px">Số điện thoại *:</div>
 									<div>
-										<s:textfield name="kh.soDT" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="kh.soDT" id="soDT" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div style="font-weight: bold;">Email*:</div>
 									<div>
-										<s:textfield name="kh.email" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="kh.email" id="email" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 									<div style="font-weight: bold; margin-top: 10px">Địa chỉ *:</div>
 									<div>
-										<s:textfield name="kh.diaChi" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="kh.diaChi" id="diaChi" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -152,39 +232,30 @@ $(document).ready(function() {
 								<div class="col-md-6">
 									<div style="font-weight: bold; margin-top: 10px">Người lớn:</div>
 									<div>
-										<s:textfield name="tourTrangChu.soNguoiLon" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="tourTrangChu.soNguoiLon" id="nguoiLon" onchange="tinhNum(this)" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon2" value="1"/>
 									</div>
-									<div style="font-weight: bold; margin-top: 10px">Trẻ nhỏ( 2 - < 5 tuổi):</div>
+									<div style="font-weight: bold; margin-top: 10px">Trẻ nhỏ( 2 - 5 tuổi):</div>
 									<div>
-										<s:textfield name="soTreNho" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="tourTrangChu.soTreNho" id="treNho" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div style="font-weight: bold; margin-top: 10px">Trẻ em(5 - 11 tuổi)	:</div>
 									<div>
-										<s:textfield name="soTreEm" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="tourTrangChu.soTreEm" id="treEm" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 									<div style="font-weight: bold; margin-top: 10px">Sơ sinh(nhỏ hơn 2 tuổi):</div>
 									<div>
-										<s:textfield name="soTreSoSinh" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
+										<s:textfield name="tourTrangChu.soSoSinh" id="soSinh" cssClass="form-control" cssStyle="border-radius: 3px" aria-describedby="basic-addon1" />
 									</div>
 								</div>
-								<div class="col-md-10"></div>
+								<div class="col-md-10">
+								</div>
 								<div class="col-md-2" style="margin-top: 10px">
-									<%-- <s:a action="bookingTourTiep.trip?maChiTietTour=%{ctTour.maChiTietTour}" target="_blank">
-				                		<button class="btn btn-info">Thanh toán</button>
-							        </s:a> --%>
-									<s:submit cssClass="btn btn-info" name="btnTiep" value="Thanh toán" ></s:submit>
+									<s:submit cssClass="btn btn-info" name="btnTiep" value="Đi tới Thanh toán" onclick="return checkForm();"></s:submit>
 								</div>
 							</s:form>
 						</div>
-						<%-- <div style="width:100%;" align="right">
-                        	<s:if test="tourTrangChu.soNguoiLon > 1">
-	                        	<s:iterator value="listChiTietDatTour" >
-	                        		<div>â</div>
-	                        	</s:iterator>
-	                        </s:if>
-	                    </div> --%>
 					</div>
 				</div>
 			</div>

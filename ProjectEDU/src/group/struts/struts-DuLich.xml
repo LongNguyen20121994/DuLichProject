@@ -76,8 +76,10 @@
             <result name="error" type="chain">info</result>
             <result name="success">dulich/bookingTour.jsp</result>
         </action>
+        <!-- <action name="bookingTourTiep" class="controller.dulich.BookingTourAction" method="showDatTour"> -->
         <action name="bookingTourTiep" class="controller.dulich.BookingTourAction">
-            <result name="info" type="chain">info</result>
+            <result name="error" type="chain">info</result>
+            <result name="success">dulich/thanhToan.jsp</result>
         </action>
 	<!-- Kết thúc hiển thị -->
 	

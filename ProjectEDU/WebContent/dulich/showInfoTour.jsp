@@ -35,7 +35,7 @@
 			        		</tr>
 			        		<tr>
 			        			<td style="border-style:hidden;padding:0px">Vận chuyển:</td>
-			        			<td style="border-style:hidden;padding:0px"><s:property value="tourTrangChu.ngayKhoiHanh"></s:property></td>
+			        			<td style="border-style:hidden;padding:0px"><s:property value="tourTrangChu.vanChuyen"></s:property></td>
 			        		</tr>
 			        		<tr>
 			        			<td style="border-style:hidden;padding:0px">Khách sạn:</td>
@@ -64,7 +64,7 @@
 						                <td><s:property value="giaVeNguoiLon"/></td>
 						                <td style="text-align: center;"><s:property value="soCho"/></td>
 						                <td style="text-align: center;">
-						                	<s:a action="bookingTour.trip?maTour=%{maTour}" target="_blank">
+						                	<s:a action="bookingTour.trip?maTour=%{maChiTietTour}" target="_blank">
 						                		<button style="color: #fff;background-color:#d2322d;border: 1px solid #ac2925;padding: 5px 10px;border-radius: 10px;">Book</button>
 									        </s:a>
 						                	<%-- <s:submit value="Chi tiết" name="btnUpdate" cssClass="btn button-chitiet"/> --%>

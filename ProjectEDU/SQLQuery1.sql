@@ -73,16 +73,16 @@ Create table KhachHang(
 	SoDT varchar(20) Check(SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or SoDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
 	DiaChi nvarchar(500),
 	GhiChu nvarchar(max),
-	MatKhau varchar(max),
-	MaChiTietTour varchar(10) foreign key references ChiTietTour(MaChiTietTour)
+	MatKhau varchar(max)
 )
 -- Chi Tiet Dat Tour
 Create table ChiTietKhachHang(
-	MaChiTietDatTour varchar(10) primary key,
+	MaChiTiet varchar(10) primary key,
 	MaKH varchar(10) foreign key references KhachHang(MaKH),
 	HoTen nvarchar(100),
 	NgaySinh date,
-	GioiTinh bit default ('false')
+	GioiTinh bit default ('false'),
+	LoaiKH int
 )
 Create table HopDong(
 	MaHopDong varchar(10) primary key,

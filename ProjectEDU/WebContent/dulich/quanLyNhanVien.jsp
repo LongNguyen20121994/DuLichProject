@@ -15,9 +15,9 @@
 </head>
 
 <script type="text/javascript">
-function isBlank(str) {
-    return (!str || /^\s*$/.test(str));
-}
+	function isBlank(str) {
+	    return (!str || /^\s*$/.test(str));
+	}
 	function checkForm(){
 		var name=document.getElementById("soCMND");
 		var na=/^[0-9]+$/;
@@ -28,7 +28,7 @@ function isBlank(str) {
 		}
 
 		if(isBlank(document.getElementById("hoTen").value)) {
-			alert("blank");
+			mess += "\nHọ tên không được để trống!";
 		}
 		if(mess != ""){
 			alert(mess);
