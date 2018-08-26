@@ -3,12 +3,37 @@ package model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.bean.DLKhachHang;
 import model.dao.khoi.ConnectDB;
 
 public class KhachHangDAO {
 
+	public boolean deleteListKhachHang(List<String> listCT) {
+		ConnectDB connectDB = new ConnectDB();
+		String str = "('";
+		for (int i = 0; i < listCT.size() - 1; i++) {
+			str += listCT.get(i) + "','";
+		}
+		str += listCT.get(listCT.size() - 1) + "')";
+		String sql = "delete from KhachHang where MaKH in " + str;
+		PreparedStatement stmt = null;
+		connectDB.openConnection();
+		try {
+			stmt = connectDB.getConnect().prepareStatement(sql);
+			if (stmt.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			connectDB.closeConnection();
+		}
+		return false;
+	}
+	
 	public DLKhachHang getInfo(String makh) {
 		ConnectDB con = new ConnectDB();
 		con.openConnection();
@@ -106,6 +131,60 @@ public class KhachHangDAO {
         	if(check > 0){
         		return true;
         	}
+        	return false;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+	}
+
+	public List<DLKhachHang> getAll() {
+		List<DLKhachHang> list = new ArrayList<DLKhachHang>();
+		ConnectDB con = new ConnectDB();
+		String sql = "select MaKH, HoTen, Email, SoDT, DiaChi, GhiChu from KhachHang";
+		con.openConnection();
+		try {
+			PreparedStatement stmt = con.getConnect().prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			DLKhachHang ct;
+			while(rs.next()){
+				ct = new DLKhachHang();
+				ct.setMaKH(rs.getString(1));
+				ct.setHoTen(rs.getString(2));
+				ct.setEmail(rs.getString(3));
+				ct.setSoDT(rs.getString(4));
+				ct.setDiaChi(rs.getString(5));
+				ct.setGhiChu(rs.getString(6));
+				list.add(ct);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.closeConnection();
+		}
+		return list;
+	}
+	
+	public boolean updateKhachHang(DLKhachHang kh) {
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "update KhachHang set HoTen=?, Email=?, SoDT=?, DiaChi=?, GhiChu=? where MaKH=?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+			stmt.setString(1, kh.getHoTen());
+			stmt.setString(2, kh.getEmail());
+			stmt.setString(3, kh.getSoDT());
+			stmt.setString(4, kh.getDiaChi());
+			stmt.setString(5, kh.getGhiChu());
+			stmt.setString(6, kh.getMaKH());
+			if(stmt.executeUpdate() > 0){
+				return true;
+			}
         	return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

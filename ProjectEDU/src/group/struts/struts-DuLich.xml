@@ -90,7 +90,6 @@
             <result name="error" type="chain">info</result>
             <result name="success">dulich/bookingTour.jsp</result>
         </action>
-        <!-- <action name="bookingTourTiep" class="controller.dulich.BookingTourAction" method="showDatTour"> -->
         <action name="bookingTourTiep" class="controller.dulich.BookingTourAction">
             <result name="error" type="chain">info</result>
             <result name="success">dulich/thanhToan.jsp</result>
@@ -98,7 +97,6 @@
 	<!-- Kết thúc hiển thị -->
 	
 	<!-- Bắt đầu gửi mail -->
-		<!-- <action name="sendMailXacNhan" class="controller.khoi.SendMailXacNhanAction" /> -->
 		<action name="sendMailMatKhau" class="controller.dulich.SendMailXacNhanAction" >
 	        <result name="success">dulich/thanhcong.jsp</result>
 	        <!-- <result name="info" type="chain">info</result> -->
@@ -175,5 +173,25 @@
             <result name="login" type="chain">showLogin</result>
         </action>
 	<!-- Kết thúc thêm môn thi -->
+	
+	<!-- Bắt đầu quan ly khach hang -->
+		<action name="quanLyKhachHang" class="controller.dulich.QuanLyKhachHangAction" method="showCapNhatKhachHang">
+	        <result name="success">dulich/quanLyTaiKhoanKhachHang.jsp</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="capNhatKhachHang" class="controller.dulich.QuanLyKhachHangAction">
+            <result name="success" type="chain">quanLyKhachHang</result>
+            <result name="input" type="chain">quanLyKhachHang</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+        <action name="capNhatListKhachHang" class="controller.dulich.QuanLyKhachHangAction" method="capNhatListKhachHang">
+            <result name="success" type="chain">quanLyKhachHang</result>
+            <result name="input" type="chain">quanLyKhachHang</result>
+            <result name="login" type="chain">showLogin</result>
+            <result name="info" type="chain">info</result>
+        </action>
+	<!-- Kết thúc quan ly khach hang -->
 	</package>
 </struts>

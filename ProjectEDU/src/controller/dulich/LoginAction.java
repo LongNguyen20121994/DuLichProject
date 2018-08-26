@@ -6,20 +6,9 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import common.Library;
 import model.bean.DLNhanVien;
-import model.bean.GiangVien;
-import model.bean.GiaoVien;
 import model.bean.Info;
-import model.bean.QuanLyCumThi;
-import model.bean.QuanTriVien;
-import model.bean.ThiSinh;
 import model.bo.DLNhanVienBO;
-import model.bo.khoi.GiangVienBO;
-import model.bo.khoi.GiaoVienBO;
-import model.bo.khoi.QuanLyCumThiBO;
-import model.bo.khoi.QuanTriVienBO;
-import model.bo.khoi.ThiSinhBO;
 
 @SuppressWarnings("serial")
 public class LoginAction extends ActionSupport {
@@ -80,21 +69,6 @@ public class LoginAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		/*if (account.equals("1")) {
-			return loginThiSinh();
-		}
-		if (account.equals("2")) {
-			return loginGiaoVien();
-		}
-		if (account.equals("3")) {
-			return loginGiangVien();
-		}
-		if (account.equals("4")) {
-			return loginCumThi();
-		}
-		if (account.equals("5")) {
-			return loginQuanTriVien();
-		}*/
 		if (account.equals("1")) {
 			return loginAdminTrip();
 		}
@@ -107,21 +81,15 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if(session.get("soCMND") == null){
 			list = new HashMap<String,String>();
-			/*list.put("1", "Thí sinh đăng ký dự thi");
-			list.put("2", "Trường trung học phổ thông");
-			list.put("3", "Trường đại học - cao đẳng");
-			list.put("4", "Cụm thi - Địa điểm thi");
-			list.put("5", "Quản trị viên");*/
 			list.put("1", "Admin trip");
 			list.put("2", "Nhân viên");
-			list.put("3", "Khách hàng");
 			return SUCCESS;
 		} else {
 			info = new Info("Thông báo","Tài khoản của bạn đã được đăng nhập!.");
 			return ERROR;
 		}
 	}
-	public String loginThiSinh() {
+	/*public String loginThiSinh() {
 		ThiSinhBO login = new ThiSinhBO();
 		ThiSinh tmp = login.getInfo(soCMND);
 		if(tmp != null){
@@ -330,7 +298,7 @@ public class LoginAction extends ActionSupport {
 						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
 						return "info";
 					}
-					/*} else {
+					} else {
 					if(tmp.getMatKhau().equals(matKhau)){
 						logined = true;
 						return "doiMK";
@@ -354,57 +322,28 @@ public class LoginAction extends ActionSupport {
 						return "info";
 					}
 				}
-			}*/
+			}
 		} else {
 			info = new Info("Đăng nhập","Tài khoản không tồn tại. Vui lòng kiểm tra lại!");
 			return "info";
 		}
-	}
+	}*/
 
 	public String loginAdminTrip() {
 		DLNhanVienBO login = new DLNhanVienBO();
-		//QuanTriVienBO login = new QuanTriVienBO();
 		DLNhanVien tmp = login.getInfo(soCMND, 1);
-		//QuanTriVien tmp = login.getInfo(soCMND);
 		if(tmp != null){
-			//if(tmp.isTrangThai()){
-				//if(tmp.isLogined()){
-					if(tmp.getMatKhau().equals(matKhau)){
-						Map<String, Object> session = ActionContext.getContext().getSession();
-						session.put("soCMND", tmp.getSoCMND());
-						session.put("hoTen", tmp.getHoTen());
-						session.put("hinhAnh", tmp.getHinhAnh());
-						session.put("account","1");
-						return "success";
-					} else {
-						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
-						return "info";
-					}
-				/*} else {
-					if(tmp.getMatKhau().equals(matKhau)){
-						logined = true;
-						return "doiMK";
-					} else {
-						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
-						return "info";
-					}
-				}*/
-			/*} else {
-				if(tmp.getMatKhau().equals(matKhau)){
-					info = new Info("Đăng nhập","Tài khoản của bạn chưa được kích hoạt."
-							+ " Liên hệ với quản trị viên để biết thêm thông tin!");
-					return "info";
-				} else {
-					if(tmp.getMatKhau().equals(Library.md5(matKhau))){
-						info = new Info("Đăng nhập","Tài khoản của bạn đang bị khóa."
-								+ " Liên hệ với quản trị viên để biết thêm thông tin!");
-						return "info";
-					} else {
-						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
-						return "info";
-					}
-				}
-			}*/
+			if(tmp.getMatKhau().equals(matKhau)){
+				Map<String, Object> session = ActionContext.getContext().getSession();
+				session.put("soCMND", tmp.getSoCMND());
+				session.put("hoTen", tmp.getHoTen());
+				session.put("hinhAnh", tmp.getHinhAnh());
+				session.put("account","1");
+				return "success";
+			} else {
+				info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
+				return "info";
+			}
 		} else {
 			info = new Info("Đăng nhập","Tài khoản không tồn tại. Vui lòng kiểm tra lại!");
 			return "info";
@@ -412,48 +351,19 @@ public class LoginAction extends ActionSupport {
 	}
 	public String loginNhanVienTrip() {
 		DLNhanVienBO login = new DLNhanVienBO();
-		//QuanTriVienBO login = new QuanTriVienBO();
 		DLNhanVien tmp = login.getInfo(soCMND, 0);
-		//QuanTriVien tmp = login.getInfo(soCMND);
 		if(tmp != null){
-			//if(tmp.isTrangThai()){
-				//if(tmp.isLogined()){
-					if(tmp.getMatKhau().equals(matKhau)){
-						Map<String, Object> session = ActionContext.getContext().getSession();
-						session.put("soCMND", tmp.getSoCMND());
-						session.put("hoTen", tmp.getHoTen());
-						session.put("hinhAnh", tmp.getHinhAnh());
-						session.put("account","2");
-						return "success";
-					} else {
-						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
-						return "info";
-					}
-				/*} else {
-					if(tmp.getMatKhau().equals(matKhau)){
-						logined = true;
-						return "doiMK";
-					} else {
-						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
-						return "info";
-					}
-				}*/
-			/*} else {
-				if(tmp.getMatKhau().equals(matKhau)){
-					info = new Info("Đăng nhập","Tài khoản của bạn chưa được kích hoạt."
-							+ " Liên hệ với quản trị viên để biết thêm thông tin!");
-					return "info";
-				} else {
-					if(tmp.getMatKhau().equals(Library.md5(matKhau))){
-						info = new Info("Đăng nhập","Tài khoản của bạn đang bị khóa."
-								+ " Liên hệ với quản trị viên để biết thêm thông tin!");
-						return "info";
-					} else {
-						info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
-						return "info";
-					}
-				}
-			}*/
+			if(tmp.getMatKhau().equals(matKhau)){
+				Map<String, Object> session = ActionContext.getContext().getSession();
+				session.put("soCMND", tmp.getSoCMND());
+				session.put("hoTen", tmp.getHoTen());
+				session.put("hinhAnh", tmp.getHinhAnh());
+				session.put("account","2");
+				return "success";
+			} else {
+				info = new Info("Đăng nhập","Mật khẩu đăng nhập không đúng. Vui lòng kiểm tra lại!");
+				return "info";
+			}
 		} else {
 			info = new Info("Đăng nhập","Tài khoản không tồn tại. Vui lòng kiểm tra lại!");
 			return "info";

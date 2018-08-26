@@ -5,7 +5,7 @@
 		<span class="glyphicon glyphicon-th-large" style="font-size:large;"></span> Trang Nhân Viên
 	</h4>
 </li>
-<li class="listnone item2 list0-item"><s:a action=""><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý tài khoản Khách đặt tour</s:a></li>
+<li class="listnone item2 list0-item"><s:a action="quanLyKhachHang.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý tài khoản Khách đặt tour</s:a></li>
 <li class="listnone item2 list0-item"><s:a action="showDangKyKhachSan.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Khách sạn</s:a></li>
 <li class="listnone item2 list0-item"><s:a action="quanLyPhuongTien.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Phương tiện di chuyển</s:a></li>
 <li class="listnone item2 list0-item"><s:a action="showDangKyTour.trip"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Quản lý Tour</s:a></li>

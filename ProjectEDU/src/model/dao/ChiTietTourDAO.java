@@ -94,6 +94,53 @@ public class ChiTietTourDAO {
             con.closeConnection();
         }
 	}
+	
+	public boolean updateSoLuong(String mact, String soluong) {
+		int sochodadat = 0;
+		ConnectDB con = new ConnectDB();
+		con.openConnection();
+		String sql = "select SoChoDaDat from ChiTietTour where MaChiTietTour=?";
+        PreparedStatement stmt = null;
+        try {
+    		stmt = con.getConnect().prepareStatement(sql);
+    		stmt.setString(1, mact);
+    		ResultSet rs = stmt.executeQuery();
+    		DLChiTietTour tur = null;
+    		if(rs.next()){
+    			tur = new DLChiTietTour();
+    			sochodadat = rs.getInt(1);
+    		}else {
+    			stmt.close();
+    			return false;
+    		}
+        	stmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+
+		con.openConnection();
+		sql = "update ChiTietTour set SoChoDaDat=? where MaChiTietTour=?";
+        stmt = null;
+        try {
+			stmt = con.getConnect().prepareStatement(sql);
+			stmt.setString(1, mact);
+			stmt.setInt(2, sochodadat + Integer.parseInt(soluong));
+			int check = stmt.executeUpdate();
+        	stmt.close();
+        	if(check > 0){
+        		return true;
+        	}
+        	return false;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+	}
 
 	public boolean deleteListLichTrinh(List<String> listMaCTTour) {
 		ConnectDB connectDB = new ConnectDB();

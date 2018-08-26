@@ -199,7 +199,9 @@ public class BookingTourAction extends ActionSupport  {
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				session.put("email", kh.getEmail());
 				session.put("makh", kh.getMaKH());
-				session.put("tieude", tour.getTieuDe());				
+				session.put("tieude", tour.getTieuDe());
+				session.put("mact", maChiTietTour);
+				session.put("soluong", tourTrangChu.getSoNguoiLon() + tourTrangChu.getSoTreEm() + tourTrangChu.getSoTreNho() + tourTrangChu.getSoSoSinh());
 				
 				HopDongBO hdbo = new HopDongBO();
 				hd = new DLHopDong();
@@ -249,6 +251,7 @@ public class BookingTourAction extends ActionSupport  {
 							ctkh.setMaChiTiet("CTK"+taoMa(max+i));
 							ctkh.setMaKH(kh.getMaKH());
 							ctkh.setLoaiKH(1);
+							ctkhbo.insertKhachHang(ctkh);
 							listCtkhNL.add(ctkh);
 						}
 					}
@@ -259,6 +262,7 @@ public class BookingTourAction extends ActionSupport  {
 							ctkh.setMaChiTiet("CTK"+taoMa(max+i + listCtkhNL.size()));
 							ctkh.setMaKH(kh.getMaKH());
 							ctkh.setLoaiKH(2);
+							ctkhbo.insertKhachHang(ctkh);
 							listCtkhTE.add(ctkh);
 						}
 					}
@@ -269,6 +273,7 @@ public class BookingTourAction extends ActionSupport  {
 							ctkh.setMaChiTiet("CTK"+taoMa(max+i + listCtkhNL.size() +  listCtkhTE.size()));
 							ctkh.setMaKH(kh.getMaKH());
 							ctkh.setLoaiKH(3);
+							ctkhbo.insertKhachHang(ctkh);
 							listCtkhTN.add(ctkh);
 						}
 					}
@@ -279,6 +284,7 @@ public class BookingTourAction extends ActionSupport  {
 							ctkh.setMaChiTiet("CTK"+taoMa(max+i + listCtkhNL.size() + listCtkhTE.size()+ listCtkhTN.size()));
 							ctkh.setMaKH(kh.getMaKH());
 							ctkh.setLoaiKH(4);
+							ctkhbo.insertKhachHang(ctkh);
 							listCtkhSS.add(ctkh);
 						}
 					}

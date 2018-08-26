@@ -15,6 +15,10 @@ public class ChiTietTourBO {
 		// TODO Auto-generated method stub
 		return new ChiTietTourDAO().updateChiTietTour(ctTour);
 	}
+	
+	public boolean updateSoLuong(String mact, String soluong) {
+		return new ChiTietTourDAO().updateSoLuong(mact, soluong);
+	}
 
 	public String getMaxRecord() {
 		return new ChiTietTourDAO().getMaxRecord();
